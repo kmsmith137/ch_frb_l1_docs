@@ -1,0 +1,8 @@
+
+Do one of::
+   ssh tubular.drao.nrc.ca
+   ssh liberty.drao.nrc.ca
+
+Then you can ssh a CHIMEFRB-specific machine, for example::
+   ssh cfdn7          # analysis node
+   ssh frb-archiver   # file server

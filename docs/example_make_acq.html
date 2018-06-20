@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Making an acqusition &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Example Offline Analysis Scripts" href="example_offline_analysis_scripts.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Making an acqusition</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a> &raquo;</li>
+        
+      <li>Making an acqusition</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="making-an-acqusition">
+<h1>Making an acqusition<a class="headerlink" href="#making-an-acqusition" title="Permalink to this headline">¶</a></h1>
+<p>This script can be run on a DRAO node (suggestion: <code class="docutils literal"><span class="pre">cfdn7</span></code>, which is dedicated to offline analysis),
+to create an rf_pipelines stream object from previously captured data.</p>
+<p>In this example, we use 10 seconds of data in beam 111 from a run in April 2018 (arbitrarily chosen).</p>
+<p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-acq.py</span></code>.)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#</span>
+<span class="c1"># This script can be run on a DRAO node (suggestion: ``cfdn7``, which is dedicated to </span>
+<span class="c1"># offline analysis), to create an rf_pipelines stream object from previously captured data.</span>
+<span class="c1">#</span>
+<span class="c1"># In this example, we use 10 seconds of data in beam 111 from a run in April 2018 </span>
+<span class="c1"># (arbitrarily chosen).</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">rf_pipelines</span>
+
+
+<span class="c1"># Top-level acquisition directory (on central CHIME FRB file server)</span>
+<span class="n">dirname</span> <span class="o">=</span> <span class="s1">&#39;/frb-archiver-1/acq_data&#39;</span>
+
+<span class="c1"># Subdirectory corresponding to a run from April 2018</span>
+<span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="s1">&#39;frb_run_11_20180407_beams_111to118_130to137_146to150&#39;</span><span class="p">)</span>
+
+<span class="c1"># Sub-subdirectory corresponding to beam 111</span>
+<span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="s1">&#39;beam_0111&#39;</span><span class="p">)</span>
+
+<span class="n">dirname</span> <span class="o">=</span> <span class="s1">&#39;/Users/kmsmith/chime_data&#39;</span>
+
+
+<span class="c1">############################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># Now we choose 10 files arbitrarily, and construct an rf_pipelines stream object.</span>
+<span class="c1">#</span>
+<span class="c1"># Currently we can&#39;t do this by calling rf_pipelines.streams.chime_stream_from_times().</span>
+<span class="c1"># This is because chime_stream_from_times() assumes the old HDF5 file format, whereas we&#39;ve</span>
+<span class="c1"># now switched to a msgpack-based file format.</span>
+<span class="c1">#</span>
+<span class="c1"># TODO: write a version of rf_pipelines.streams.chime_stream_from_times() which uses</span>
+<span class="c1"># the new msgpack format.  One nontrivial difference: the HDF5 format contained timestamps,</span>
+<span class="c1"># whereas the new format doesn&#39;t!  (More accurately, the new format uses &quot;fpga counts&quot; as</span>
+<span class="c1"># its timestamps, which can&#39;t yet be converted to an externally meaningful time, although</span>
+<span class="c1"># this may be possible in the future.)  For now, the best we can do is to use the creation</span>
+<span class="c1"># time of the msgpack file (os.stat().st_ctime) as an approximate timestamp.</span>
+<span class="c1">#</span>
+<span class="c1"># Note that there are currently two different low-level stream classes for CHIME</span>
+<span class="c1"># HDF5 and msgpack files (the naming convention could be improved here!!)</span>
+<span class="c1">#</span>
+<span class="c1">#    chime_stream_from_filename_list() - old HDF5 format</span>
+<span class="c1">#    chime_frb_stream_from_filename_list() - new msgpack format</span>
+
+
+<span class="c1"># Arbitrarily chosen range of file indices.</span>
+<span class="n">index_list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">308990</span><span class="p">,</span> <span class="mi">309000</span><span class="p">)</span>
+
+<span class="n">filename_list</span> <span class="o">=</span> <span class="p">[</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;chunk_</span><span class="si">%08d</span><span class="s1">.msg&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_list</span> <span class="p">]</span>
+
+<span class="c1"># Sanity check</span>
+<span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filename_list</span><span class="p">)</span>  
+
+<span class="c1"># See chime_frb_stream_from_filename_list() docstring for info on these arguments</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">rf_pipelines</span><span class="o">.</span><span class="n">chime_frb_stream_from_filename_list</span><span class="p">(</span>
+    <span class="n">filename_list</span><span class="p">,</span> 
+    <span class="n">nt_chunk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="n">noise_source_align</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="k">print</span> <span class="s1">&#39;Stream object created successfully!&#39;</span>
+
+
+<span class="c1">############################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># Serialize the stream object to a json object, and save to an external .json file.</span>
+<span class="c1">#</span>
+<span class="c1"># This is a useful way to save the stream object, for later use in rf_pipelines command-line</span>
+<span class="c1"># utilities (e.g. rfp-run).</span>
+<span class="c1">#</span>
+<span class="c1"># Note: rf_pipelines.utils.json_write() is roughly equivalent to</span>
+<span class="c1">#    json.dump(stream.jsonize(), file, indent=4)</span>
+
+
+<span class="n">rf_pipelines</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">json_write</span><span class="p">(</span><span class="s1">&#39;example_acq.json&#39;</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">clobber</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+<span class="c1">############################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># As an ultra-low-budget way to see the data, if you uncomment the following, a few</span>
+<span class="c1"># waterfall plots will be generated in the current directory.  This may be useful</span>
+<span class="c1"># as a quick sanity check!  A better way to browse the data is to use the rf_pipelines</span>
+<span class="c1"># web viewer, which will be documented soon in its own example script!</span>
+
+
+<span class="c1"># t = rf_pipelines.plotter_transform(</span>
+<span class="c1">#     img_prefix = &#39;chime_acq&#39;, </span>
+<span class="c1">#     img_nfreq = 256, </span>
+<span class="c1">#     img_nt = 256, </span>
+<span class="c1">#     downsample_nt = 16, </span>
+<span class="c1">#     n_zoom = 1</span>
+<span class="c1"># )</span>
+<span class="c1">#</span>
+<span class="c1"># p = rf_pipelines.pipeline([stream, t])</span>
+<span class="c1"># p.run(outdir=&#39;.&#39;)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="example_offline_analysis_scripts.html" class="btn btn-neutral" title="Example Offline Analysis Scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
