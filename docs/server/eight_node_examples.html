@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Eight-node examples (OUT OF DATE) &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Config reference: L1 server" href="l1_config_reference/index.html" />
+    <link rel="prev" title="Two-node examples (OUT OF DATE)" href="two_node_examples.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Real-Time L1 Server</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html">High-level overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_examples.html">Quick-start examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_file_overview.html">Configuration file overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_node_examples.html">Two-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Eight-node examples (OUT OF DATE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-5">Example 5</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="l1_config_reference/index.html">Config reference: L1 server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l0_config_reference.html">Config reference: L0 simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc_reference.html">RPC reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">The Real-Time L1 Server</a> &raquo;</li>
+        
+      <li>Eight-node examples (OUT OF DATE)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eight-node-examples-out-of-date">
+<h1>Eight-node examples (OUT OF DATE)<a class="headerlink" href="#eight-node-examples-out-of-date" title="Permalink to this headline">¶</a></h1>
+<p><strong>This part of the manual is out of date, and should be ignored until updated!</strong></p>
+<p>The DRAO backend consists of the following machines:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Gateway machines: <code class="docutils literal"><span class="pre">tubular.drao.nrc.ca</span></code> and <code class="docutils literal"><span class="pre">liberty.drao.nrc.ca</span></code>.
+All ssh connections to the outside world go through one of these machines!</p>
+</li>
+<li><p class="first">L1 compute nodes: <code class="docutils literal"><span class="pre">cf0g0</span></code>, <code class="docutils literal"><span class="pre">cf0g1</span></code>, …, <code class="docutils literal"><span class="pre">cf0g7</span></code>.  These machines are diskless and
+share a root filesystem.  The root filesystem is mounted read-write on <cite>cf0g0</cite> and
+mounted read-only on the other nodes.  Therefore, to make changes (such as recompiling,
+editing a config file, etc.) you should use <cite>cf0g0</cite>, and the changes will automatically
+appear on the other nodes.</p>
+<p>There is also an SSD (actually two SSD’s in RAID-0) in each compute node, mounted
+at <code class="docutils literal"><span class="pre">/local</span></code>.</p>
+</li>
+<li><p class="first">L1 head node: <code class="docutils literal"><span class="pre">cf0hn</span></code>.  This exports (via NFS) the root filesystem to the compute nodes,
+and is used for a few other things, like rebooting the nodes (see “Cookbook of miscelleanous
+tasks” below).</p>
+</li>
+<li><p class="first">L4 node: <code class="docutils literal"><span class="pre">cf0g9</span></code>.  Our web services run here, and can be accessed from outside DRAO
+using ad hoc ssh tunnels.  See [Web services](#user-content-web-services) below.</p>
+</li>
+<li><p class="first">NFS server: <code class="docutils literal"><span class="pre">cf0fs</span></code>.  A central machine where L1 nodes can write data (although currently
+we usually use the local SSD’s in the L1 nodes instead of the NFS server).</p>
+<p>Right now our NFS server is a pulsar node which has been retrofitted with a few HDD’s.
+It may be a little underpowered, but we have a much larger NFS server coming soon.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="example-5">
+<h2>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h2>
+<p>This is a production-scale example with
+nodes <code class="docutils literal"><span class="pre">cf0g[0-3]</span></code> acting as receivers and <code class="docutils literal"><span class="pre">cf0g[4-7]</span></code> acting as senders.
+The L1 server will dedisperse 8 beams, with 16384 frequency channels,
+and use real RFI removal (as in example 4).</p>
+<p>We currently need a separate config file for each node (i.e. node <cite>cf0g0</cite>
+uses <code class="docutils literal"><span class="pre">l1_example5_0.yaml</span></code>, node <cite>cf0g1</cite> uses <code class="docutils literal"><span class="pre">l1_example5_1.yaml</span></code>, etc.)</p>
+<p>Note that node <cite>cf0g0</cite> gets all of its packets from <cite>cf0g4</cite>, node <cite>cf0g1</cite> gets
+all of its packets from <cite>cf0g5</cite>, etc.  This does not reflect what happens
+on the real backend, where every L0 node sends packets to every L1 node.
+However it’s all we can script with our existing tools!</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>Before running example L1 servers on the DRAO backend, use htop to
+check that they are not processing real data!</strong></p>
+</li>
+<li><p class="first">Log into <cite>cf0g0</cite>, <cite>cf0g1</cite>, <cite>cf0g2</cite>, <cite>cf0g3</cite> separately and start L1 servers:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># on cf0g0</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example5_0</span><span class="o">.</span><span class="n">yaml</span> <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_production_v1</span><span class="o">.</span><span class="n">json</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_production_noups_nbeta1_v2</span><span class="o">.</span><span class="n">hdf5</span> <span class="n">l1b_placeholder</span>
+
+<span class="c1"># on cf0g1</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example5_1</span><span class="o">.</span><span class="n">yaml</span> <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_production_v1</span><span class="o">.</span><span class="n">json</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_production_noups_nbeta1_v2</span><span class="o">.</span><span class="n">hdf5</span> <span class="n">l1b_placeholder</span>
+
+<span class="c1"># on cf0g2</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example5_2</span><span class="o">.</span><span class="n">yaml</span> <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_production_v1</span><span class="o">.</span><span class="n">json</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_production_noups_nbeta1_v2</span><span class="o">.</span><span class="n">hdf5</span> <span class="n">l1b_placeholder</span>
+
+<span class="c1"># on cf0g3</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example5_3</span><span class="o">.</span><span class="n">yaml</span> <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_production_v1</span><span class="o">.</span><span class="n">json</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_production_noups_nbeta1_v2</span><span class="o">.</span><span class="n">hdf5</span> <span class="n">l1b_placeholder</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">When the servers finish initializing and are listening for packets, log
+into <cite>cf0g4</cite>, <cite>cf0g5</cite>, <cite>cf0g6</cite>, <cite>cf0g7</cite> separately and start L0 simulators:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># on cf0g4</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example5_4</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">1200</span>
+
+<span class="c1"># on cf0g5</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example5_5</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">1200</span>
+
+<span class="c1"># on cf0g6</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example5_6</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">1200</span>
+
+<span class="c1"># on cf0g7</span>
+<span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example5_7</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">1200</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="l1_config_reference/index.html" class="btn btn-neutral float-right" title="Config reference: L1 server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="two_node_examples.html" class="btn btn-neutral" title="Two-node examples (OUT OF DATE)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

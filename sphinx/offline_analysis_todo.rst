@@ -1,0 +1,22 @@
+Offline Analysis TODO
+=====================
+
+ - Inventory captured data, make pulsar acquisitions.  (This may be helpful: "Example Offline Analysis Scripts" -> "Making an acquisition")
+
+ - Understand Miles' framework for forecasting SNR.
+
+ - Set up offline scripting framework for reproducing SNR values in database, comparing with forecasts.
+
+ - Incorporate detrending correction.  Can we use less detrending?  (in real-time pipeline?  in offline analysis of bright pulsars?)
+
+ - Overclipping studies.  What happens in simulation?  If we dedisperse the mask, do we see peaks?
+
+ - Simulating a pulsar.  Are bonsai's SNR estimates still unbiased if pulses are repeating (rather than isolated)?
+
+ - Variance estimation.  How should we be weighting the channels?
+
+ - Related: estimating the spectrum of the pulsar.
+
+ - Pulsar masker/unmasking transform.
+
+ - Determining arrival times of pulses (either through external ephemeris or internal analysis).

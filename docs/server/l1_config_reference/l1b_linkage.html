@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>L1B linkage &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Misc parameters" href="misc.html" />
+    <link rel="prev" title="File-writing parameters" href="file_writing.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">The Real-Time L1 Server</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../high_level_overview.html">High-level overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start_examples.html">Quick-start examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration_file_overview.html">Configuration file overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two_node_examples.html">Two-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eight_node_examples.html">Eight-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Config reference: L1 server</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="high_level_parameters.html">High-level parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer_sizes.html">Buffer sizes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_writing.html">File-writing parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">L1B linkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">Misc parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../l0_config_reference.html">Config reference: L0 simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rpc_reference.html">RPC reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">The Real-Time L1 Server</a> &raquo;</li>
+        
+          <li><a href="index.html">Config reference: L1 server</a> &raquo;</li>
+        
+      <li>L1B linkage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="l1b-linkage">
+<h1>L1B linkage<a class="headerlink" href="#l1b-linkage" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">l1b_executable_filename</span></code> (string).</p>
+<blockquote>
+<div><p>Filename of the L1b executable.  The L1 server spawns
+L1b subprocesses using the following command line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">l1b_executable_filename</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_filename</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">beam_id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here, l1b_config_filename is one of the command-line arguments when the L1 server is started
+(see [configuration file overview](#user-content-configuration-file-overview) above for the
+L1 server command-line syntax).  The beam_id is an integer.</p>
+<p>When each L1b subprocess is spawned, its standard input (file descriptor 0) will be connected to a unix pipe
+which will be used to send coarse-grained triggers from L1a to L1b.  The bonsai configuration
+information (e.g. dimensions of coarse-grained trigger arrays) will also be sent over the
+pipe, so there is no need for the bonsai_config_filename to appear on the L1b command line.</p>
+<p>Currently, the L1b process should be written in python, and the <cite>bonsai.PipedDedisperser</cite>
+python class should be used to receive coarse-grained triggers through the pipe.  The
+program <cite>toy-l1b.py</cite> is a toy example, which “processes” coarse-grained triggers by
+combining them into a waterfall plot.</p>
+<p>If l1b_executable_filename is an empty string, then L1b subprocesses will not be spawned.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">l1b_search_path</span></code> (boolean, default=false).</p>
+<blockquote>
+<div><p>If true, then duplicate the actions of the
+shell in searching for the l1b executable, by trying all colon-separated directories
+in the $PATH environnment variable.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">l1b_buffer_nsamples</span></code> (integer, default=0).</p>
+<p>Number of time samples which can be buffered between L1a and L1b.</p>
+<p>Under the hood, this gets converted to a buffer size in bytes, which is used to set
+the capacity of the unix pipe between L1 and L1b.  The default (0) means that a
+system default pipe capacity is used (usually 64 kbytes, which is uncomfortably small).</p>
+<p>It is important to note that setting the capacity of a pipe is a linux-only feature!
+Therefore, on other operating systems, setting l1b_buffer_nsamples=0 is the only option.
+In linux, there is also a maximum allowed capacity (/proc/sys/fs/pipe-max-size).  If you
+get an error such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Couldn</span><span class="s1">&#39;t set pipe_capacity=XX: You may need to increase /proc/sys/fs/pipe-max-size.</span>
+</pre></div>
+</div>
+<p>then you’ll need to increase the maximum (as root).  This can be done as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">echo</span> <span class="mi">16777216</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">fs</span><span class="o">/</span><span class="n">pipe</span><span class="o">-</span><span class="nb">max</span><span class="o">-</span><span class="n">size</span>   <span class="c1"># set capacity to 16MB</span>
+</pre></div>
+</div>
+<p>but the change will only persist until reboot.  To change it permanently, you can
+create a file <cite>/etc/sysctl.d/pipe-max-size.conf</cite> containing the single line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="o">.</span><span class="n">pipe</span><span class="o">-</span><span class="nb">max</span><span class="o">-</span><span class="n">size</span> <span class="o">=</span> <span class="mi">16777216</span>
+</pre></div>
+</div>
+<p>A minor detail: when the L1 server computes the pipe capacity from <cite>l1b_buffer_nsamples</cite>, the buffer size
+will be rounded up to a multiple of the bonsai chunk size (‘nt_chunk’ in the bonsai config
+file), and a little bit of padding will be added for metadata.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">l1b_pipe_timeout</span></code> (floating-point, default=0).</p>
+<p>Timeout in seconds for the unix pipe connecting L1a and L1b.</p>
+<p>This parameter determines what happens when L1a tries to write to the pipe and the pipe
+is full (presumably because L1b is running slow).  The dedispersion thread will sleep
+until the timeout expires, or the pipe becomes writeable, whichever comes first.  If a
+second write also fails because the pipe is full, then the L1 server will throw an
+exception.  (This will be replaced later by some recovery logic which resets the server.)</p>
+<p><strong>Important:</strong> the default parameters (l1b_buffer_nsamples = l1b_pipe_timeout = 0) are asking for trouble!
+In this case, the L1 server will crash if the pipe fills for an instant, and the pipe capacity will be a system
+default (usually 64 kbytes) which is probably too small to hold the coarse-grained triggers from a single bonsai
+chunk.  In this situation, the L1 server can crash even in its normal mode of operation, in the middle of sending
+a chunk of data from L1a to L1b.</p>
+<p>In the production L1 server, we plan to set l1b_pipe_timeout=0,
+but set l1b_buffer_nsamples to some reasonable value (say 4096, corresponding to a 4-second buffer).
+This solution is suitable for a real-time search, since it puts a hard limit on how far L1b can
+fall behind in its processing (4 seconds) before it is considered an error.  This configuration only works on Linux,
+which is OK for the real L1 nodes.  This configuration is used in example 3 above.</p>
+<p>In subscale testing, I like to set l1b_pipe_timeout to a reasonable value (a few seconds).
+In this configuration, there is no hard limit on how far L1b can fall behind cumulatively,
+as long as it calls PipedDedisperser.get_triggers() frequently enough.  This configuration
+is used in examples 1 and 2 above.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">l1b_pipe_blocking</span></code> (boolean, default=false).</p>
+<p>If true, then L1a’s writes to the pipe will be blocking.
+This has the same effect as setting l1b_pipe_timeout to a huge value.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="misc.html" class="btn btn-neutral float-right" title="Misc parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_writing.html" class="btn btn-neutral" title="File-writing parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -6,6 +6,11 @@ into one web-browseable place!  Currently, there is nothing here except a few ex
 scripts, but more documentation (and aggregation of old documentation) is in the works.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
+   installation
+   help_my_pipeline_is_broken
+   offline_analysis_todo
    example_offline_analysis_scripts
+   drao/index
+   server/index

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example Offline Analysis Scripts" href="example_offline_analysis_scripts.html" /> 
+    <link rel="next" title="Installation" href="installation.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -78,7 +78,12 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="offline_analysis_todo.html">Offline Analysis TODO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/index.html">The Real-Time L1 Server</a></li>
 </ul>
 
             
@@ -148,8 +153,61 @@ into one web-browseable place!  Currently, there is nothing here except a few ex
 scripts, but more documentation (and aggregation of old documentation) is in the works.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#compiling-bitshuffle">Compiling bitshuffle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#compiling-the-core-packages">Compiling the core packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#quick-install-frb1">Quick install: frb1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#quick-install-compute-node">Quick install: compute node</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="offline_analysis_todo.html">Offline Analysis TODO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="example_make_acq.html">Making an acqusition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drao/index.html">DRAO computing environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="drao/machines.html">Inventory of machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drao/web_services.html">Web Services (out-of-date?)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="server/index.html">The Real-Time L1 Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="server/high_level_overview.html">High-level overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="server/high_level_overview.html#ingredients">Ingredients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/high_level_overview.html#caveats">Caveats</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server/quick_start_examples.html">Quick-start examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="server/quick_start_examples.html#example-1">Example 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/quick_start_examples.html#example-2">Example 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server/configuration_file_overview.html">Configuration file overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="server/configuration_file_overview.html#l0-simulator-parameter-file">L0 simulator parameter file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/configuration_file_overview.html#l1-server-parameter-files">L1 server parameter files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server/l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/two_node_examples.html">Two-node examples (OUT OF DATE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="server/two_node_examples.html#example-3">Example 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/two_node_examples.html#example-4">Example 4</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server/eight_node_examples.html">Eight-node examples (OUT OF DATE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="server/eight_node_examples.html#example-5">Example 5</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server/l1_config_reference/index.html">Config reference: L1 server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="server/l1_config_reference/high_level_parameters.html">High-level parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/l1_config_reference/buffer_sizes.html">Buffer sizes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/l1_config_reference/file_writing.html">File-writing parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/l1_config_reference/l1b_linkage.html">L1B linkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="server/l1_config_reference/misc.html">Misc parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server/l0_config_reference.html">Config reference: L0 simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/rpc_reference.html">RPC reference</a></li>
 </ul>
 </li>
 </ul>
@@ -164,7 +222,7 @@ scripts, but more documentation (and aggregation of old documentation) is in the
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="example_offline_analysis_scripts.html" class="btn btn-neutral float-right" title="Example Offline Analysis Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>File-writing parameters &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="L1B linkage" href="l1b_linkage.html" />
+    <link rel="prev" title="Buffer sizes" href="buffer_sizes.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">The Real-Time L1 Server</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../high_level_overview.html">High-level overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start_examples.html">Quick-start examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration_file_overview.html">Configuration file overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two_node_examples.html">Two-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eight_node_examples.html">Eight-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Config reference: L1 server</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="high_level_parameters.html">High-level parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer_sizes.html">Buffer sizes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File-writing parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l1b_linkage.html">L1B linkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">Misc parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../l0_config_reference.html">Config reference: L0 simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rpc_reference.html">RPC reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">The Real-Time L1 Server</a> &raquo;</li>
+        
+          <li><a href="index.html">Config reference: L1 server</a> &raquo;</li>
+        
+      <li>File-writing parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-writing-parameters">
+<h1>File-writing parameters<a class="headerlink" href="#file-writing-parameters" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">output_devices</span></code> (list of strings).</p>
+<p>This is a list of devices (or filesystems) on the L1 server which can be written to independently.
+Each output_device is identified by a pathname (usually the mount point of a filesystem) such as <code class="docutils literal"><span class="pre">&quot;/ssd&quot;</span></code>
+or <code class="docutils literal"><span class="pre">&quot;/frb-archiver1&quot;</span></code>.  Each output_device will get a separate I/O thread.</p>
+<p>When the L1 server needs to write a file, it looks for a “matching” output_device whose identifying pathname is a prefix
+of the filename being written.  For example, the output_device <cite>/ssd</cite> would match the filename <cite>/ssd/dir/file</cite>.
+The file will then be queued for writing by the appropriate I/O thread.</p>
+<p>In subscale testing on a laptop, I usually set <code class="docutils literal"><span class="pre">output_devices:</span> <span class="pre">[&quot;&quot;]</span></code>, which creates one output_device
+which matches all filenames, and a single I/O thread to process all write requests.</p>
+<p>On the real nodes, I usually set:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">output_devices</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;/ssd&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-1&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-2&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;/frb-archiver-3&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-4&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>which defines 5 file I/O threads, corresponding to (4 NIC’s) + (1 SSD) in the node.
+Recall that the L1 node is configured so that it “thinks” the NFS server is four different
+servers, mounted on directories /frb-archiver1, /frb-archiver2, /frb-archiver3, /frb-archiver4.
+File writes to each of these four filesystems will be sent from the corresponding NIC.</p>
+<p>Note that <code class="docutils literal"><span class="pre">output_devices:</span> <span class="pre">[</span> <span class="pre">]</span></code> (an empty list) means that the server spawns no I/O threads and all write_requests
+fail, whereas <code class="docutils literal"><span class="pre">output_devices:</span> <span class="pre">[&quot;&quot;]</span></code> means that the server spawns one I/O thread which matches every write request.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>If the following parameters are defined, then the node will continuously stream all incoming data
+to either its local SSD or NFS.</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">stream_acqname</span></code> (string, optional).</p>
+<p>If this parameter is specified, then the node will continuously stream all incoming data
+to either its local SSD or NFS.  Warning: it’s very easy to use a lot of disk space this way!</p>
+<p>The ‘string_acqname’ parameter is a unique identifying directory name for the acqisition.
+If the given acquisition already exists (probably from a previous run) then the L1 server will abort.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">stream_devname</span></code> (string, optional).</p>
+<p>Either <code class="docutils literal"><span class="pre">&quot;ssd&quot;</span></code> (the default) or <code class="docutils literal"><span class="pre">&quot;nfs&quot;</span></code>.</p>
+<p>NFS bandwidth is limited, so if you’re writing to NFS then you probably want to reduce the
+number of beam_ids, by assigning a value to ‘stream_beam_ids’ (see below).</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">stream_beam_ids</span></code> (list of integers, optional).</p>
+<p>A list of beam_ids to stream to disk.</p>
+<p>Must be a subset of ‘beam_ids’, the set of all beam_ids processed by the server.
+If unspecified, every beam_id processed by the server will be streamed.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="l1b_linkage.html" class="btn btn-neutral float-right" title="L1B linkage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="buffer_sizes.html" class="btn btn-neutral" title="Buffer sizes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

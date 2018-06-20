@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Help! My pipeline is broken" href="help_my_pipeline_is_broken.html" />
+    <link rel="prev" title="High-level overview" href="high_level_overview.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Real-Time L1 Server</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html">High-level overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-bitshuffle">Compiling bitshuffle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling">Compiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_examples.html">Quick-start examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_file_overview.html">Configuration file overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_node_examples.html">Two-node examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eight_node_examples.html">Eight-node examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l1_config_reference/index.html">L1 config file reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l0_config_reference.html">L0 simulator config reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc_reference.html">RPC reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">The Real-Time L1 Server</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Here are installation instructions for the CHIMEFRB L1 code, consisting of the following git repositories.</p>
+<p>Depending on what you’re doing, you may only need a subset of these!
+In particular, the modules marked “frb1 only” include hardcoded pathnames on
+<cite>frb1.physics.mcgill.ca</cite>, and probably won’t be useful on other machines.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/kiyo-masui/bitshuffle">kiyo-masui/bitshuffle</a>:
+“bitwise” compression algorithm used throughout CHIME.</li>
+<li><a class="reference external" href="https://github.com/kmsmith137/simd_helpers">kmsmith137/simd_helpers</a>:
+header-only library for writing x86 assembly language kernels.</li>
+<li><a class="reference external" href="https://github.com/kmsmith137/pyclops">kmsmith137/pyclops</a>:
+some hacks for writing hybrid C++/python code.</li>
+<li><a class="reference external" href="https://github.com/kmsmith137/rf_kernels">kmsmith137/rf_kernels</a>:
+fast C++/assembly kernels for RFI removal and related tasks.</li>
+<li><a class="reference external" href="https://github.com/kmsmith137/sp_hdf5">kmsmith137/sp_hdf5</a>:
+header-only library for reading/writing hdf5 from C++.</li>
+<li><a class="reference external" href="https://github.com/kmsmith137/simpulse">kmsmith137/simpulse</a>:
+library for simulating FRB’s and pulsars.</li>
+<li><a class="reference external" href="https://github.com/CHIMEFRB/ch_frb_io">CHIMEFRB/ch_frb_io</a>:
+networking code, CHIME-specific file formats.</li>
+<li><a class="reference external" href="https://github.com/CHIMEFRB/bonsai">CHIMEFRB/bonsai</a>:
+fast tree dedispersion on x86.</li>
+<li><a class="reference external" href="https://github.com/kmsmith137/rf_pipelines">kmsmith137/rf_pipelines</a>:
+plugin-based radio astronomy pipelines.
+(Note: this repo now includes the web viewer code which was previously
+in <a class="reference external" href="https://github.com/mburhanpurkar/web_viewer">mburhanpurkar/web_viewer</a>.)</li>
+<li><a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a>:
+scritping framework for RFI removal and offline L1 analysis.  <cite>(frb1 only)</cite></li>
+<li><a class="reference external" href="https://github.com/kmsmith137/ch_frb_l1">kmsmith137/ch_frb_l1</a>:
+toplevel repo, whose documentation you’re reading right now.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>If you’re compiling on one of the CHIME machines, or Kendrick’s desktop (orangutan),
+then all of these should already be installed, and you can skip to the next step (<a class="reference internal" href="#compiling">Compiling</a>).</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Python-centric things which can be installed painlessly with <cite>pip</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scipy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">Pillow</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">h5py</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">Cython</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">zmq</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">msgpack</span><span class="o">-</span><span class="n">python</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pyyaml</span>
+</pre></div>
+</div>
+<p>To install without root privileges, do <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code>.
+To upgrade a previous pip install, do <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span></code>.</p>
+<p>You might need to upgrade your cython, since bonsai currently requires a very
+recent cython (I know that cython 0.24 works, and cython 0.20 is too old).</p>
+</li>
+<li><p class="first">libhdf5.</p>
+<p><strong>Currently, the pipeline requires HDF5 version 1.8.12 or later,
+but does not work with version 1.10.x.  This will be fixed eventually!</strong></p>
+<p>In the meantime, for instructions for installing a version of HDF5
+which is neither too old nor too new, please see <a class="reference external" href="https://github.com/kmsmith137/sp_hdf5/blob/master/README.md">kmsmith137/sp_hdf5/README.md</a>.</p>
+</li>
+<li><p class="first">lz4.</p>
+<blockquote>
+<div><ul class="simple">
+<li>osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">lz4</span></code></li>
+<li>centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">lz4-devel</span></code></li>
+<li>ubuntu one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">liblz4-dev</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">msgpack.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">msgpack</span></code></p>
+</li>
+<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">msgpack-devel.x86_64</span></code></p>
+</li>
+<li><p class="first">ubuntu: don’t install the apt-get version, it is too old!  (e.g. it is missing <cite>/usr/include/msgpack/fbuffer.hpp</cite>).
+Instead you should build from scratch, see next bullet point.</p>
+</li>
+<li><p class="first">Building from scratch.  This is easy because we only use the msgpack headers, not the compiled library.
+You can either follow Kendrick’s procedure for building from scratch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">msgpack</span><span class="o">/</span><span class="n">msgpack</span><span class="o">-</span><span class="n">c</span>
+<span class="n">sudo</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">msgpack</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="n">include</span><span class="o">/*</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
+</pre></div>
+</div>
+<p>or Dustin’s procedure: download the <a class="reference external" href="https://github.com/msgpack/msgpack-c/releases/download/cpp-2.1.0/msgpack-2.1.0.tar.gz">msgpack source package</a>,
+and then extract it and add its subdirectory <code class="docutils literal"><span class="pre">msgpack-2.1.0/include</span></code> into the
+include path.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">zeromq and cppzmq.</p>
+<ul>
+<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">cppzmq-devel.x86_64</span></code></p>
+</li>
+<li><p class="first">ubuntu: don’t use the apt-get packages, they are too old!.  You’ll need to build both zeromq and cppzmq from scratch, see bullet point below.</p>
+</li>
+<li><p class="first">osx: zeromq can be installed with <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">zeromq</span></code>, but you’ll need to build cppzmq from scratch, see bullet point below.</p>
+</li>
+<li><p class="first">Building zmq from scratch.  Download from zeromq.org, and then do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Building cppzmq from scratch.  Since it’s a header-only library with two source files, I just ignored the build system and did:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">zeromq</span><span class="o">/</span><span class="n">cppzmq</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">cppzmq</span>
+<span class="n">sudo</span> <span class="n">cp</span> <span class="n">zmq</span><span class="o">.</span><span class="n">hpp</span> <span class="n">zmq_addon</span><span class="o">.</span><span class="n">hpp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first"><a class="reference external" href="https://github.com/open-source-parsers/jsoncpp">jsoncpp</a></p>
+<ul>
+<li><p class="first">osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">jsoncpp</span></code></p>
+</li>
+<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">jsoncpp-devel</span></code></p>
+</li>
+<li><p class="first">ubuntu one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libjsoncpp-dev</span></code></p>
+</li>
+<li><p class="first">Building jsoncpp from scratch is a pain, but the following procedure worked for me:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>git clone https://github.com/open-source-parsers/jsoncpp
+mkdir -p build/debug
+cd build/debug
+cmake -DCMAKE_INSTALL_PREFIX=$HOME -DCMAKE_CXX_FLAGS=-fPIC -DCMAKE_C_FLAGS=-fPIC -DCMAKE_BUILD_TYPE=debug -G &quot;Unix Makefiles&quot; ../..
+make install
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a href="#id1"><span class="problematic" id="id2">yaml-cpp_</span></a></li>
+</ul>
+<blockquote>
+<div><ul>
+<li><p class="first">osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">yaml-cpp</span></code>.</p>
+</li>
+<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">yaml-cpp-devel</span></code>.</p>
+</li>
+<li><p class="first">ubuntu two-liner:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libboost</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">dev</span>    <span class="c1"># overkill?</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libyaml</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Note: if only libyaml-cpp-dev is installed, then some necessary boost libraries will be missing.
+Installing libboost-all-dev fixes this, but also installs around 200MB of software!  I didn’t
+bother trying to figure out exactly which boost libraries were needed.</p>
+</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="compiling-bitshuffle">
+<h2>Compiling bitshuffle<a class="headerlink" href="#compiling-bitshuffle" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>You’ll need this if you want to read or write bitshuffle-compressed files with ch_frb_io
+(note that CHIME pathfinder data is generally bitshuffle-compresed).</p>
+<p>The following recipe worked for me:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>git clone https://github.com/kiyo-masui/bitshuffle.git
+cd bitshuffle/
+
+# The HDF5 library can dynamically load the bitshuffle plugin, i.e. you don&#39;t need
+# to link the bitshuffle library when you compile ch_frb_io, but you need to set this
+# environment variable to tell libhdf5 where to look.  Suggest adding this to .bashrc!
+
+export HDF5_PLUGIN_PATH=$HOME/lib/hdf5_plugins
+
+# If you have root privileges and want to install &quot;system-wide&quot;, omit the --user flag
+# The --h5plugin* flags will build/install the plugin needed to use bitshuffle from C++
+
+python setup.py install --user --h5plugin --h5plugin-dir=$HOME/lib/hdf5_plugins
+</pre></div>
+</div>
+<p>If you run into trouble, you’ll want to refer to the installation instructions in the bitshuffle repo.</p>
+</div></blockquote>
+</div>
+<div class="section" id="compiling">
+<h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
+<p>If you’re using one of the CHIME machines (frb1, frb-compute-X), then all
+external dependencies should already be installed, and you can use one of the
+following “cheat sheets” to install the L1 pipeline from scratch.</p>
+<p>If you’re using another machine (e.g. a laptop) then the installation process
+is more involved.  You’ll probably need to write some Makefile include files
+(“Makefile.local” files).  We hope to streamline this process at some point!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="help_my_pipeline_is_broken.html" class="btn btn-neutral float-right" title="Help! My pipeline is broken" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="high_level_overview.html" class="btn btn-neutral" title="High-level overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

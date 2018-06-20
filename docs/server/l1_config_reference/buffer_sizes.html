@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Buffer sizes &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File-writing parameters" href="file_writing.html" />
+    <link rel="prev" title="High-level parameters" href="high_level_parameters.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">The Real-Time L1 Server</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../high_level_overview.html">High-level overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start_examples.html">Quick-start examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration_file_overview.html">Configuration file overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two_node_examples.html">Two-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eight_node_examples.html">Eight-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Config reference: L1 server</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="high_level_parameters.html">High-level parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Buffer sizes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_writing.html">File-writing parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l1b_linkage.html">L1B linkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">Misc parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../l0_config_reference.html">Config reference: L0 simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rpc_reference.html">RPC reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">The Real-Time L1 Server</a> &raquo;</li>
+        
+          <li><a href="index.html">Config reference: L1 server</a> &raquo;</li>
+        
+      <li>Buffer sizes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="buffer-sizes">
+<h1>Buffer sizes<a class="headerlink" href="#buffer-sizes" title="Permalink to this headline">¶</a></h1>
+<p>The following parameters in the L1 server config file define buffer sizes.</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">unassembled_ringbuf_nsamples</span></code> (integer, default 4096).</p>
+<p>The “unassembled” ring buffer sits between the network thread and assembler thread.
+If the assembler thread is running slow, then this ring buffer will start to fill up.
+The unassembled_ringbuf_nsamples parameter sets the size of the ring buffer, in time samples.</p>
+<p>Currently, if the unassembled ring buffer fills up, then the L1 server throws an exception.
+This behavior will eventually be replaced with some recovery logic which resets the server.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">assembled_ringbuf_nsamples</span></code> (integer, default 8192).</p>
+<p>The “assembled” ring buffer sits between the assembler thread and the dedispersion threads.
+If the dedispersion threads are running slow, then this ring buffer will start to fill up.
+The assembled_ringbuf_nsamples parameter sets the size of the ring buffer, in time samples.</p>
+<p>Currently, if the assembled ring buffer fills up, then the L1 server throws an exception.
+This behavior will eventually be replaced with some recovery logic which resets the server.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">telescoping_ringbuf_nsamples</span></code> (list of integers, optional).</p>
+<p>After data is processed by the assembler thread, it goes to the “telescoping” ring buffer,
+which saves it for later retrieval by RPC’s.</p>
+<p>As the name suggests, the buffer is telescoping, in the sense that data is saved at
+multiple levels of time downsampling.  For example, the most recent 60 seconds of
+data might be saved at full time resolution (1 ms), the next 60 seconds of data
+might be saved at 2 ms resolution, and the next 180 seconds might be saved at 4 ms
+resolution.</p>
+<p>The telescoping_ringbuf_nsamples field is a list of integers, which defines how many
+samples (i.e. milliseconds) are saved at each level of downsampling.  The scheme described
+in the previous paragraph could be configured as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Telescoping ring buffer configuration</span>
+<span class="c1">#      60 seconds at 1 ms time resolution</span>
+<span class="c1">#   +  60 seconds at 2 ms time resolution</span>
+<span class="c1">#   + 180 seconds at 4 ms time resolution</span>
+
+<span class="n">telescoping_ringbuf_nsamples</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">180000</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that the elements of the telescoping_ringbuf_nsamples list are <em>non-downsampled</em>
+sample counts, i.e. the number “180000” above corresponds to (180000 * 1 ms), not
+(180000 * 4 ms).</p>
+<p>If the telescoping_ringbuf_nsamples field is absent (or an empty list) then the
+telescoping ring buffer is disabled, and the node will not save data for RPC-based
+retrieval.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">write_staging_area_gb</span></code> (floating-point, default 0.0)</p>
+<p>Allocates additional memory (in addition to memory reserved for the assembled_ringbuf
+and telescoping_ringbuf) for “staging” intensity data after an RPC write request is
+received, but before the data is actually written to disk or NFS.</p>
+<p>The value of ‘write_staging_area_gb’ is the total memory reserved on the whole node
+in GB (i.e. not memory per stream, or per beam).  It is highly recommended to set this
+parameter to a nonzero value if you plan to save data with RPC’s!</p>
+<p>Currently, there is some guesswork involved in setting this parameter, since it’s
+hard to figure out how much memory is being used by other things (e.g. bonsai).
+I plan to address this soon!  In the meantime, I recommend 2 GB/beam for production-scale
+runs, and 0.1 GB/beam for subscale testing runs.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_writing.html" class="btn btn-neutral float-right" title="File-writing parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="high_level_parameters.html" class="btn btn-neutral" title="High-level parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick-start examples &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration file overview" href="configuration_file_overview.html" />
+    <link rel="prev" title="High-level overview" href="high_level_overview.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Real-Time L1 Server</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html">High-level overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quick-start examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-1">Example 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2">Example 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_file_overview.html">Configuration file overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l1_streams.html">L1 streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_node_examples.html">Two-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eight_node_examples.html">Eight-node examples (OUT OF DATE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l1_config_reference/index.html">Config reference: L1 server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l0_config_reference.html">Config reference: L0 simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc_reference.html">RPC reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">The Real-Time L1 Server</a> &raquo;</li>
+        
+      <li>Quick-start examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start-examples">
+<h1>Quick-start examples<a class="headerlink" href="#quick-start-examples" title="Permalink to this headline">¶</a></h1>
+<p>The following quick-start examples are small enough to run on a laptop.</p>
+<div class="section" id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>
+<p>Simplest example: one beam, 1024 frequency channels, one dedispersion tree.
+The L0 simulator and L1 server run on the same machine (e.g. a laptop), and exchange packets
+over the loopback interface (127.0.0.1).</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>This step only needs to be done once.</strong> Initialize the bonsai HDF5 file,
+using the utility <code class="docutils literal"><span class="pre">bonsai-mkweight</span></code>, which should have been installed in
+your $PATH when bonsai was built.  For more discussion of this step,
+see the section [“The bonsai config file”](#user-content-bonsai-config) below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
+<span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_example1</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_example1</span><span class="o">.</span><span class="n">hdf5</span>
+<span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start the L1 server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
+   <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example1</span><span class="o">.</span><span class="n">yaml</span>  \
+   <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_placeholder</span><span class="o">.</span><span class="n">json</span>  \
+   <span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_example1</span><span class="o">.</span><span class="n">hdf5</span>  \
+   <span class="n">l1b_config_placeholder</span>
+</pre></div>
+</div>
+<p>There are four configuration files, which will be described in the
+next section ([Configuration file overview](#user-content-configuration-file-overview)).</p>
+<p>After you start the L1 server, you should see the line “ch_frb_io: listening for packets…”
+and the server will pause.</p>
+</li>
+<li><p class="first">In another window, start the L0 simulator:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example1</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<p>This will simulate 30 seconds of data.  If you switch back to the L1 server’s window,
+you’ll see some incremental output, as chunks of data are processed.</p>
+<p>After it finishes, you’ll see a line “toy-l1b.py: wrote toy_l1b_beam0.png”.  This is a
+plot of the coarse-grained triggers, with time on the x-axis and DM on the y-axis.  The
+plot will not contain any FRB’s, because the simulation is pure noise.  Note that the blue
+“stairstep” region in the left part of the plot is symptomatic of the “slow start” problem
+mentioned under “Caveats” near the beginning of this file.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="example-2">
+<h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h2>
+<p>Example 2: similar to example 1, but slightly more complicated as follows.</p>
+<p>We process 4 beams, which are divided between UDP ports 6677 and 6688 (two beams per UDP port).
+This is more representative of the real L1 server configuration, where we process 4 beams/NIC
+with either two or four NIC’s (i.e. 8 or 16 beams total).
+See the section [L1 streams](#user-content-l1-streams) below for more discussion.</p>
+<p>In example 2, we also use three dedispersion trees which search different
+parts of the (DM, pulse width) parameter space.  See comments in the bonsai
+config files for more details (and MANUAL.md in the bonsai repo).
+This is more representative of the real search, where we plan to use
+6 or 7 trees (I think!)</p>
+<p>The steps below are similar to example 1, so discussion is minimal.</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>This step only needs to be done once.</strong> Initialize the bonsai HDF5 file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
+<span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_example2</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_example2</span><span class="o">.</span><span class="n">hdf5</span>
+<span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start the L1 server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
+   <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example2</span><span class="o">.</span><span class="n">yaml</span>  \
+   <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_placeholder</span><span class="o">.</span><span class="n">json</span>  \
+   <span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_example2</span><span class="o">.</span><span class="n">hdf5</span>  \
+   <span class="n">l1b_config_placeholder</span>
+</pre></div>
+</div>
+<p>There are four configuration files, which will be described in the
+next section ([Configuration file overview](#user-content-configuration-file-overview)).</p>
+</li>
+<li><p class="first">In another window, start the L0 simulator:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example2</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<p>After the example finishes, you should see four plots <cite>toy_l1b_beam$N.png</cite>,
+where N=0,1,2,3.  Each plot corresponds to one beam, and contains three
+rows of output, corresponding to the three dedispersion trees in this example.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration_file_overview.html" class="btn btn-neutral float-right" title="Configuration file overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="high_level_overview.html" class="btn btn-neutral" title="High-level overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -64,6 +64,8 @@ print '    file://%s' % os.path.join(os.getcwd(), 'docs/index.html')
 dirs_already_checked = set([''])
 
 def check_nojekyll(opaque_arg, dirname, fnames):
+    if dirname.startswith('docs/.doctrees') or dirname.startswith('docs/.buildinfo'):
+        return
     parent = os.path.dirname(dirname)
     if parent not in dirs_already_checked:
         if not os.path.exists(os.path.join(parent, '.nojekyll')):

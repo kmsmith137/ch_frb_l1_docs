@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Web Services (out-of-date?) &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Real-Time L1 Server" href="../server/index.html" />
+    <link rel="prev" title="Inventory of machines" href="machines.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">DRAO computing environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="machines.html">Inventory of machines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web Services (out-of-date?)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">The Real-Time L1 Server</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">DRAO computing environment</a> &raquo;</li>
+        
+      <li>Web Services (out-of-date?)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="web-services-out-of-date">
+<h1>Web Services (out-of-date?)<a class="headerlink" href="#web-services-out-of-date" title="Permalink to this headline">¶</a></h1>
+<p>The following documentation is probably out-of-date, and I plan to verify/update it soon!</p>
+<ul>
+<li><p class="first">Dustin’s “webapp”, for live L1 monitoring and control.</p>
+<p>There is a persistent instance of the webapp maintained by Dustin, which runs at port 5002 on cf0g9.
+Since this is behind the DRAO firewall, you’ll need to create an ad hoc ssh tunnel.
+In a terminal window on your laptop, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">5002</span><span class="p">:</span><span class="n">cf0g9</span><span class="p">:</span><span class="mi">5002</span> <span class="n">tubular</span>
+</pre></div>
+</div>
+<p>Leave this window open!  (If you close the ssh session in the window, then the tunnel will terminate.)
+Then point your browser to <code class="docutils literal"><span class="pre">localhost:5002</span></code> and the webapp should appear.  If this doesn’t work, let Dustin know!</p>
+<p>If for some reason you want to run your own instance of the webapp, you can launch it as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cf0g9</span>
+<span class="n">cd</span> <span class="n">git</span><span class="o">/</span><span class="n">ch_frb_l1</span>
+<span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">webapp</span><span class="o">.</span><span class="n">sh</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_production_16beam_webapp</span><span class="o">.</span><span class="n">yaml</span> <span class="n">PORT</span>
+</pre></div>
+</div>
+<p>where PORT is a TCP port number which doesn’t conflict with any our existing services (see “Port number assignments” below).
+Then follow the instructions in the previous paragraph with 5002 replaced by PORT.</p>
+</li>
+<li><p class="first">Maya’s “web viewer”, for viewing results of our offline analysis pipeline.</p>
+<p>There is a persistent instance of the web viewer maintained by Kendrick, which runs at port 5003 on cf0g9.
+The instructions are the same as the “Dustin webapp” case above, with 5002 replaced by 5003.
+(I.e. <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">5003:cf0g9:5003</span> <span class="pre">tubular</span></code>, then point browser at <code class="docutils literal"><span class="pre">localhost:5003</span></code>.)</p>
+<p>If for some reason you want to run your own instance of the web viewer, you can launch it as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cf0g9</span>
+<span class="n">cd</span> <span class="n">git</span><span class="o">/</span><span class="n">rf_pipelines</span><span class="o">/</span><span class="n">web_viewer</span>
+<span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="n">viewer</span><span class="o">.</span><span class="n">sh</span> <span class="o">/</span><span class="n">frb</span><span class="o">-</span><span class="n">archiver</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">web_viewer</span> <span class="n">PORT</span>
+</pre></div>
+</div>
+<p>where PORT is a TCP port number which doesn’t conflict with any our existing services (see “Port number assignments” below).
+Then view it through the ssh tunnel as usual (<code class="docutils literal"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">PORT:cf0g9:PORT</span> <span class="pre">tubular</span></code>, then point browser at <code class="docutils literal"><span class="pre">localhost:PORT</span></code>).</p>
+</li>
+<li><p class="first">Port number assignments (placeholder section for now, to be fleshed out later):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">5001</span> <span class="o">=</span> <span class="n">Michelle</span><span class="s1">&#39;s L4 server</span>
+<span class="mi">5002</span> <span class="o">=</span> <span class="n">Dustin</span><span class="s1">&#39;s &quot;webapp&quot;</span>
+<span class="mi">5003</span> <span class="o">=</span> <span class="n">Maya</span><span class="s1">&#39;s &quot;web viewer&quot;</span>
+<span class="mi">5004</span> <span class="o">=</span> <span class="n">Alex</span><span class="s1">&#39;s coarse-grained trigger viewer</span>
+
+<span class="mi">5100</span><span class="o">-</span><span class="mi">5109</span> <span class="o">=</span> <span class="n">Davor</span>
+<span class="mi">5110</span><span class="o">-</span><span class="mi">5119</span> <span class="o">=</span> <span class="n">Michelle</span>
+<span class="mi">5120</span><span class="o">-</span><span class="mi">5129</span> <span class="o">=</span> <span class="n">Dustin</span>
+<span class="mi">5130</span><span class="o">-</span><span class="mi">5139</span> <span class="o">=</span> <span class="n">Kendrick</span>
+<span class="mi">5140</span><span class="o">-</span><span class="mi">5149</span> <span class="o">=</span> <span class="n">Alex</span>
+<span class="mi">5150</span><span class="o">-</span><span class="mi">5159</span> <span class="o">=</span> <span class="n">Utkarsh</span>
+
+<span class="mi">5555</span> <span class="o">=</span> <span class="n">L1</span> <span class="n">RPC</span>
+<span class="n">UDP</span> <span class="mi">1313</span> <span class="o">=</span> <span class="n">used</span> <span class="n">by</span> <span class="n">correlator</span> <span class="n">to</span> <span class="n">send</span> <span class="n">real</span> <span class="n">data</span> <span class="n">packets</span>
+<span class="n">UDP</span> <span class="mi">6677</span> <span class="o">=</span> <span class="n">used</span> <span class="k">for</span> <span class="n">simulated</span> <span class="n">data</span> <span class="n">packets</span> <span class="ow">in</span> <span class="n">examples</span> <span class="ow">in</span> <span class="n">MANUAL</span><span class="o">.</span><span class="n">md</span>
+
+<span class="mi">9090</span> <span class="o">=</span> <span class="n">Prometheus</span>
+<span class="mi">9100</span> <span class="o">=</span> <span class="n">node_exporter</span>
+<span class="mi">9116</span> <span class="o">=</span> <span class="n">snmp_exporter</span>
+<span class="mi">9093</span> <span class="o">=</span> <span class="n">alertmanager</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../server/index.html" class="btn btn-neutral float-right" title="The Real-Time L1 Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="machines.html" class="btn btn-neutral" title="Inventory of machines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
