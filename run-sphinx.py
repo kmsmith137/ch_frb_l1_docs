@@ -52,6 +52,18 @@ def xsystem(cmd, show=True):
 
 xsystem("sphinx-build -E -b html sphinx docs")
 
+
+# The only thing I don't like about the RTD Sphinx theme is that it doesn't put any
+# spacing between bullet points in unordered lists.  I got carried away and wrote
+# this code to hack the Sphinx-generated CSS!
+
+with open('docs/_static/css/theme.css', 'a') as f:
+    maxdepth = 9
+    print >>f, "ul li { margin: 10px 0; }"
+    for d in xrange(1, maxdepth+1):
+        print >>f, "li.toctree-l%d { margin: 0 0; }" % d
+
+
 print
 print 'A local copy of the documentation has been built successfully!'
 print 'To view it, point your web browser here:'
