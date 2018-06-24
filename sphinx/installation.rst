@@ -81,11 +81,12 @@ then all of these should already be installed, and you can skip to the next step
 
       - Building from scratch.  This is easy because we only use the msgpack headers, not the compiled library.
         You can either follow Kendrick's procedure for building from scratch::
+
           git clone https://github.com/msgpack/msgpack-c
           sudo cp -r msgpack-c/include/* /usr/local/include
-        or Dustin's procedure: download the `msgpack source package`_,
-        and then extract it and add its subdirectory ``msgpack-2.1.0/include`` into the
-        include path.
+
+        or Dustin's procedure for building from scratch: (1) download the `msgpack source package`_,
+        (2) extract it and add its subdirectory ``msgpack-2.1.0/include`` into the include path.
 
   - zeromq and cppzmq.  
 
@@ -378,7 +379,7 @@ Compilation::
 Quick install: compute node
 ---------------------------
 
-Here are instructions for building the L1 pipeline from scratch on the frb-compute-X nodex.
+Here are instructions for building the L1 pipeline from scratch on the frb-compute-X nodes.
 All external dependencies should already be installed.
 
 Note that we don't build the `ch_frb_rfi` module here, since this module includes hardcoded
@@ -483,4 +484,4 @@ Compilation::
 .. _kmsmith137/sp_hdf5/README.md: https://github.com/kmsmith137/sp_hdf5/blob/master/README.md
 .. _msgpack source package: https://github.com/msgpack/msgpack-c/releases/download/cpp-2.1.0/msgpack-2.1.0.tar.gz
 .. _jsoncpp: https://github.com/open-source-parsers/jsoncpp
-.. _yaml-cpp_: https://github.com/jbeder/yaml-cpp
+.. _yaml-cpp: https://github.com/jbeder/yaml-cpp

@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 #
-# This script can be run on a DRAO node (suggestion: ``cfdn7``, which is dedicated to 
-# offline analysis), to create an rf_pipelines stream object from previously captured data.
+# This script creates an rf_pipelines stream object from previously captured data.
+# It should be run on a DRAO node, e.g.
+#   - cfdn0 (/home is mounted read-write)
+#   - cfdn7 (dedicated for offline analysis)
 #
 # In this example, we use 10 seconds of data in beam 111 from a run in April 2018 
 # (arbitrarily chosen).
@@ -19,8 +21,6 @@ dirname = os.path.join(dirname, 'frb_run_11_20180407_beams_111to118_130to137_146
 
 # Sub-subdirectory corresponding to beam 111
 dirname = os.path.join(dirname, 'beam_0111')
-
-dirname = '/Users/kmsmith/chime_data'
 
 
 ############################################################################################

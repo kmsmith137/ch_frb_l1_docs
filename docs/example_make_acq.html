@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Making an acqusition &mdash; ch_frb_l1  documentation</title>
+  <title>Making an acquisition &mdash; ch_frb_l1  documentation</title>
   
 
   
@@ -83,7 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
 <li class="toctree-l1"><a class="reference internal" href="offline_analysis_todo.html">Offline Analysis TODO</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Making an acqusition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Making an acquisition</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="drao/index.html">DRAO computing environment</a></li>
@@ -135,7 +135,7 @@
         
           <li><a href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a> &raquo;</li>
         
-      <li>Making an acqusition</li>
+      <li>Making an acquisition</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,16 +152,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="making-an-acqusition">
-<h1>Making an acqusition<a class="headerlink" href="#making-an-acqusition" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="making-an-acquisition">
+<h1>Making an acquisition<a class="headerlink" href="#making-an-acquisition" title="Permalink to this headline">¶</a></h1>
 <p>This script can be run on a DRAO node (suggestion: <code class="docutils literal"><span class="pre">cfdn7</span></code>, which is dedicated to offline analysis),
 to create an rf_pipelines stream object from previously captured data.</p>
 <p>In this example, we use 10 seconds of data in beam 111 from a run in April 2018 (arbitrarily chosen).</p>
 <p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-acq.py</span></code>.)</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#</span>
-<span class="c1"># This script can be run on a DRAO node (suggestion: ``cfdn7``, which is dedicated to </span>
-<span class="c1"># offline analysis), to create an rf_pipelines stream object from previously captured data.</span>
+<span class="c1"># This script creates an rf_pipelines stream object from previously captured data.</span>
+<span class="c1"># It should be run on a DRAO node, e.g.</span>
+<span class="c1">#   - cfdn0 (/home is mounted read-write)</span>
+<span class="c1">#   - cfdn7 (dedicated for offline analysis)</span>
 <span class="c1">#</span>
 <span class="c1"># In this example, we use 10 seconds of data in beam 111 from a run in April 2018 </span>
 <span class="c1"># (arbitrarily chosen).</span>

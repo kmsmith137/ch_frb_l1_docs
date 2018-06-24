@@ -12,6 +12,8 @@ After logging into one of the gateway machines, here are some machines you can s
     which can access the file server over the network (as ``/frb-archiver-1`` or ``/frb-archiver-2``,
     which access the same server over different physical ethernet networks).
 
+  - ``cfdn0``: this is the only(?) seacan node where ``/home`` is mounted read-write.
+
   - ``cfdn7``: seacan node dedicated to offline analysis.
 
 A longer list is coming soon!

@@ -12,8 +12,7 @@ over the loopback interface (127.0.0.1).
 
   - **This step only needs to be done once.** Initialize the bonsai HDF5 file, 
     using the utility ``bonsai-mkweight``, which should have been installed in 
-    your $PATH when bonsai was built.  For more discussion of this step, 
-    see the section ["The bonsai config file"](#user-content-bonsai-config) below::
+    your $PATH when bonsai was built.
 
       cd bonsai_configs/
       bonsai-mkweight bonsai_example1.txt bonsai_example1.hdf5
@@ -28,7 +27,7 @@ over the loopback interface (127.0.0.1).
          l1b_config_placeholder
 
     There are four configuration files, which will be described in the
-    next section ([Configuration file overview](#user-content-configuration-file-overview)).
+    next section (:ref:`L1 server parameter files`).
 
     After you start the L1 server, you should see the line "ch_frb_io: listening for packets..."
     and the server will pause.
@@ -55,7 +54,7 @@ Example 2: similar to example 1, but slightly more complicated as follows.
 We process 4 beams, which are divided between UDP ports 6677 and 6688 (two beams per UDP port).
 This is more representative of the real L1 server configuration, where we process 4 beams/NIC
 with either two or four NIC's (i.e. 8 or 16 beams total).
-See the section [L1 streams](#user-content-l1-streams) below for more discussion.
+See the section :ref:`L1 streams` below for more discussion.
 
 In example 2, we also use three dedispersion trees which search different
 parts of the (DM, pulse width) parameter space.  See comments in the bonsai
@@ -80,12 +79,11 @@ The steps below are similar to example 1, so discussion is minimal.
          l1b_config_placeholder
 
     There are four configuration files, which will be described in the
-    next section ([Configuration file overview](#user-content-configuration-file-overview)).
+    next section (:ref:`Configuration file overview`).
 
   - In another window, start the L0 simulator::
 
        ./ch-frb-simulate-l0 l0_configs/l0_example2.yaml 30
-
 
     After the example finishes, you should see four plots `toy_l1b_beam$N.png`,
     where N=0,1,2,3.  Each plot corresponds to one beam, and contains three

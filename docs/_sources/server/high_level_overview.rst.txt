@@ -45,7 +45,7 @@ The L1 server is not finished yet! Please note the following caveats:
     timescales in future versions.
 
     Note: because of the "slow start" problem, the two-node backend examples
-    [3](#user-content-example3) and [4](#user-content-example4) in this manual
+    (:ref:`Example 3` and :ref:`Example 4`) in this manual
     have been increased from 5-minute runs to 20-minute runs.
 
   - Currently, bonsai config files must be constructed by a two-step process as follows.
@@ -69,7 +69,7 @@ The L1 server is not finished yet! Please note the following caveats:
     bonsai configuration (no low-DM upsampled tree or spectral index search).  Our best 8-beam configuration
     uses a real RFI removal scheme developed by Masoud, and the most optimal bonsai configuration
     (with a low-DM upsampled tree and two trial spectral indices).  See :ref:`Example 3` and :ref:`Example 4`
-    in the :ref:`Two-node examples` section.
+    in the "Two-node examples" section.
     
   - The L1 server is fragile; if anything goes wrong
     (such as a thread running slow and filling a ring buffer)

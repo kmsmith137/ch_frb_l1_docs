@@ -1,7 +1,10 @@
 Offline Analysis TODO
 =====================
 
- - Inventory captured data, make pulsar acquisitions.  (This may be helpful: "Example Offline Analysis Scripts" -> "Making an acquisition")
+ - Inventory captured data, make pulsar acquisitions.
+
+     - This may be helpful: :ref:`Making an acquisition`
+                            
 
  - Understand Miles' framework for forecasting SNR.
 
@@ -13,7 +16,7 @@ Offline Analysis TODO
 
  - Simulating a pulsar.  Are bonsai's SNR estimates still unbiased if pulses are repeating (rather than isolated)?
 
- - Variance estimation.  How should we be weighting the channels?
+ - Variance estimation.  How should we be weighting the channels?  Is the radiometer equation satisfied?
 
  - Related: estimating the spectrum of the pulsar.
 

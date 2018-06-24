@@ -18,8 +18,7 @@ channels, etc.
 
 I recommend looking at the toy examples first (l0_configs/l0_toy_1beam.yaml and
 l0_configs/l0_toy_4beams.yaml) to get a general sense of what they contain.  For
-detailed information on the L1 config file, see
-["Config file reference: L0 simulator"](#user-content-l0-config) below.
+detailed information on the L1 config file, see :ref:`Config reference: L1 server` below.
 
 L1 server parameter files
 -------------------------
@@ -45,8 +44,7 @@ The L1 server takes four parameter files as follows:
 
     I recommend looking at the toy examples first (l1_configs/l1_toy_1beam.yaml and
     l1_configs/l1_toy_4beams.yaml) to get a general sense of what they contain.  For
-    detailed information on the L1 config file, see
-    ["Config file reference: L1 server"](#user-content-l1-config) below.
+    detailed information on the L1 config file, see :ref:`Config reference: L1 server`.
 
   - **The RFI config file (rfi_config.json)**
 

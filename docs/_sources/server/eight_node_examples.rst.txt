@@ -22,7 +22,7 @@ The DRAO backend consists of the following machines:
     tasks" below).
 
   - L4 node: ``cf0g9``.  Our web services run here, and can be accessed from outside DRAO
-    using ad hoc ssh tunnels.  See [Web services](#user-content-web-services) below.
+    using ad hoc ssh tunnels.
 
   - NFS server: ``cf0fs``.  A central machine where L1 nodes can write data (although currently
     we usually use the local SSD's in the L1 nodes instead of the NFS server).

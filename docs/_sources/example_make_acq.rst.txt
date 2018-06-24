@@ -1,5 +1,5 @@
-Making an acqusition
-====================
+Making an acquisition
+=====================
 
 This script can be run on a DRAO node (suggestion: ``cfdn7``, which is dedicated to offline analysis),
 to create an rf_pipelines stream object from previously captured data.

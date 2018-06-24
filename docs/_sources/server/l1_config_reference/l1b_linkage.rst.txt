@@ -9,7 +9,7 @@ L1B linkage
         <l1b_executable_filename> <l1b_config_filename> <beam_id>
 
      Here, l1b_config_filename is one of the command-line arguments when the L1 server is started
-     (see [configuration file overview](#user-content-configuration-file-overview) above for the 
+     (see :ref:`Configuration file overview` above for the
      L1 server command-line syntax).  The beam_id is an integer.
 
      When each L1b subprocess is spawned, its standard input (file descriptor 0) will be connected to a unix pipe

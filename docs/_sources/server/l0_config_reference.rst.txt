@@ -1,5 +1,5 @@
 Config reference: L0 simulator
-=============================
+==============================
 
 In this section, we document the YAML configuration file which is used by the L0 simulator.
 
