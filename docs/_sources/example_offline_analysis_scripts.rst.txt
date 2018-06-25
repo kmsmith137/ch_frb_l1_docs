@@ -6,3 +6,4 @@ Example Offline Analysis Scripts
 
    example_make_acq
    example_make_jsonized_bonsai_transform
+   example_injecting_pulse

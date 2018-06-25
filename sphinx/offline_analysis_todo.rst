@@ -109,7 +109,10 @@ Items marked ``KMS`` are things Kendrick is actively working on!
    repeating pulses at the same DM.  We should do a quick simulation study to check whether bonsai's SNR estimates
    are still unbiased in this case.
 
-   ``KMS``: will add an example script showing how to run the pipeline with simulated pulses injected.
+   Here is an example script showing how to inject a simulated pulse into a pipeline run: :ref:`Injecting a simulated pulse`.
+
+   This script should be hackable to inject a simulated pulsar (using a long chain of frb_injector_transforms, this approach will
+   waste some CPU time but should be fine for a one-time study!)
 
  - Channel weighting.  Here is an important topic that we will be working on for a while!
 
