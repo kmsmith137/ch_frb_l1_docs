@@ -39,7 +39,7 @@ Items marked ``KMS`` are things Kendrick is actively working on!
        but let's make a new transform, so that we can write the output of the dedispersion transform to an hdf5 file for later
        processing.  See the :ref:`Making a bonsai transform` example script.
 
-     - Run the stream-rfi-bonsai transform chain with the ``rfp-run`` utility (which is part of rf_pipelines)::
+     - Run the "stream -> rfi -> bonsai" pipeline with the ``rfp-run`` utility (which is part of rf_pipelines)::
 
           # Type 'rfp-run' with no arguments for a list of all its command-line options.
 
@@ -68,8 +68,6 @@ Items marked ``KMS`` are things Kendrick is actively working on!
        Currently it gets written to the current working directory when the pipeline is run.
        This is a recipe for different runs overwriting each other and creating confusion!
 
-     - ``KMS``: it would be convenient for pulsars to have a bonsai configuration file which doesn't search to such high DM.
-
  - More work on detrending.  Here is one possible reason why our reported SNR for pulsars might be low.
    Our RFI removal chain includes a "detrender" (i.e. fitting and subtracting a slowly varying baseline) along the 
    frequency axis of the (frequency, time) array.  This removes a fraction of the SNR, which will depend on the parameters
@@ -84,6 +82,14 @@ Items marked ``KMS`` are things Kendrick is actively working on!
    This effect can be reduced substantially by changing a parameter in the RFI removal pipeline (the degree of the polynomial 
    fit that we use in the detrender).  We should definitely be doing this for pulsars, and maybe for the real-time FRB search.
    What is the lowest polynomial degree we can "get away with" without getting a lot of false positives from RFI?
+
+   Update: Masoud has a new RFI chain with less detrending.  We should revisit the SNR study and see how much of a difference
+   this makes.
+
+   The SNR study was done using the frb_olympics_ code.
+
+   Some notes are available here:
+   https://github.com/kmsmith137/frb_olympics/tree/master/examples/example2_rf_pipelines
 
  - Overclipping studies.  Here is another possible reason our reported SNR for pulsars might be low.
    We usually study bright pulsars, where the pulses may be mistaken for RFI and masked by the "clipper" transforms
@@ -162,3 +168,4 @@ Items marked ``KMS`` are things Kendrick is actively working on!
    Or do we need to infer the arrival time directly from the data, by running a simplified pulsar search code?
 
 .. _mrafieir/ch_frb_rfi: https://github.com/mrafieir/ch_frb_rfi
+.. _frb_olympics: https://github.com/kmsmith137/frb_olympics

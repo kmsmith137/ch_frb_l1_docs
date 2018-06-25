@@ -179,14 +179,13 @@ and serialize it to a json file, for later use with <code class="docutils litera
 <span class="c1"># The bonsai transform has its own configuration file.  This can be in a few</span>
 <span class="c1"># different file formats, but for &quot;production-scale&quot; instances I recommend using</span>
 <span class="c1"># the HDF5 format, which contains precomputed transfer matrices.  (If an alternative</span>
-<span class="c1"># file format is used, then bonsai will take ~10 minutes to start up!)</span>
+<span class="c1"># file format is used, then bonsai will take a few minutes to start up!)</span>
 <span class="c1">#</span>
 <span class="c1"># On the CHIME nodes, there are some pregenerated bonsai config files in </span>
-<span class="c1"># /data/bonsai_configs.  None of them are a very good choice for pulsars,</span>
-<span class="c1"># since they use 7 trees to search for max DM 13000, which is total overkill</span>
-<span class="c1"># for pulsars (with DM &lt;~ 100).</span>
+<span class="c1"># /data/bonsai_configs.  In this example, we use the &quot;pulsar&quot; config, which</span>
+<span class="c1"># searches to max DM 205.  (The &quot;production&quot; configs search to max DM 13000.)</span>
 
-<span class="n">config_filename</span> <span class="o">=</span> <span class="s1">&#39;/data/bonsai_configs/bonsai_production_ups_nbeta2_v2.hdf5&#39;</span>
+<span class="n">config_filename</span> <span class="o">=</span> <span class="s1">&#39;/data/bonsai_configs/bonsai_pulsar_v2.hdf5&#39;</span>
 
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">rf_pipelines</span><span class="o">.</span><span class="n">bonsai_dedisperser</span><span class="p">(</span>
@@ -201,7 +200,7 @@ and serialize it to a json file, for later use with <code class="docutils litera
     <span class="c1"># These settings control plots for the web viewer.</span>
     <span class="c1"># To disable the web viewer plots, set img_prefix=None.</span>
     <span class="n">img_prefix</span> <span class="o">=</span> <span class="s1">&#39;triggers&#39;</span><span class="p">,</span>
-    <span class="n">img_ndm</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span>
+    <span class="n">img_ndm</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
     <span class="n">img_nt</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
     <span class="n">downsample_nt</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
     <span class="n">n_zoom</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>

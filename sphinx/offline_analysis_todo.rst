@@ -83,6 +83,14 @@ Items marked ``KMS`` are things Kendrick is actively working on!
    fit that we use in the detrender).  We should definitely be doing this for pulsars, and maybe for the real-time FRB search.
    What is the lowest polynomial degree we can "get away with" without getting a lot of false positives from RFI?
 
+   Update: Masoud has a new RFI chain with less detrending.  We should revisit the SNR study and see how much of a difference
+   this makes.
+
+   The SNR study was done using the frb_olympics_ code.
+
+   Some notes are available here:
+   https://github.com/kmsmith137/frb_olympics/tree/master/examples/example2_rf_pipelines
+
  - Overclipping studies.  Here is another possible reason our reported SNR for pulsars might be low.
    We usually study bright pulsars, where the pulses may be mistaken for RFI and masked by the "clipper" transforms
    in our RFI removal chain.
@@ -160,3 +168,4 @@ Items marked ``KMS`` are things Kendrick is actively working on!
    Or do we need to infer the arrival time directly from the data, by running a simplified pulsar search code?
 
 .. _mrafieir/ch_frb_rfi: https://github.com/mrafieir/ch_frb_rfi
+.. _frb_olympics: https://github.com/kmsmith137/frb_olympics

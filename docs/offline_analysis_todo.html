@@ -195,7 +195,7 @@ some plotter transforms for the web viewer.</p>
 but let’s make a new transform, so that we can write the output of the dedispersion transform to an hdf5 file for later
 processing.  See the <a class="reference internal" href="example_offline_analysis_scripts/make_jsonized_bonsai_transform.html#making-a-bonsai-transform"><span class="std std-ref">Making a bonsai transform</span></a> example script.</p>
 </li>
-<li><p class="first">Run the stream-rfi-bonsai transform chain with the <code class="docutils literal"><span class="pre">rfp-run</span></code> utility (which is part of rf_pipelines):</p>
+<li><p class="first">Run the “stream -&gt; rfi -&gt; bonsai” pipeline with the <code class="docutils literal"><span class="pre">rfp-run</span></code> utility (which is part of rf_pipelines):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span> <span class="c1"># Type &#39;rfp-run&#39; with no arguments for a list of all its command-line options.</span>
 
 <span class="n">rfp</span><span class="o">-</span><span class="n">run</span> <span class="o">-</span><span class="n">w</span> <span class="n">example</span> \    <span class="c1"># name of run for web viewer</span>
@@ -222,8 +222,6 @@ were reported by the real-time pipeline.</p>
 Currently it gets written to the current working directory when the pipeline is run.
 This is a recipe for different runs overwriting each other and creating confusion!</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">KMS</span></code>: it would be convenient for pulsars to have a bonsai configuration file which doesn’t search to such high DM.</p>
-</li>
 </ul>
 </div></blockquote>
 </li>
@@ -238,6 +236,11 @@ parameters, the SNR loss is small, but for pulsars it can be very significant.</
 <p>This effect can be reduced substantially by changing a parameter in the RFI removal pipeline (the degree of the polynomial
 fit that we use in the detrender).  We should definitely be doing this for pulsars, and maybe for the real-time FRB search.
 What is the lowest polynomial degree we can “get away with” without getting a lot of false positives from RFI?</p>
+<p>Update: Masoud has a new RFI chain with less detrending.  We should revisit the SNR study and see how much of a difference
+this makes.</p>
+<p>The SNR study was done using the <a class="reference external" href="https://github.com/kmsmith137/frb_olympics">frb_olympics</a> code.</p>
+<p>Some notes are available here:
+<a class="reference external" href="https://github.com/kmsmith137/frb_olympics/tree/master/examples/example2_rf_pipelines">https://github.com/kmsmith137/frb_olympics/tree/master/examples/example2_rf_pipelines</a></p>
 </li>
 <li><p class="first">Overclipping studies.  Here is another possible reason our reported SNR for pulsars might be low.
 We usually study bright pulsars, where the pulses may be mistaken for RFI and masked by the “clipper” transforms
