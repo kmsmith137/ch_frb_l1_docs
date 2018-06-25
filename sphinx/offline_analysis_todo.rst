@@ -39,7 +39,7 @@ Items marked ``KMS`` are things Kendrick is actively working on!
        but let's make a new transform, so that we can write the output of the dedispersion transform to an hdf5 file for later
        processing.  See the :ref:`Making a bonsai transform` example script.
 
-     - Run the stream-rfi-bonsai transform chain with the ``rfp-run`` utility (which is part of rf_pipelines)::
+     - Run the "stream -> rfi -> bonsai" pipeline with the ``rfp-run`` utility (which is part of rf_pipelines)::
 
           # Type 'rfp-run' with no arguments for a list of all its command-line options.
 
@@ -67,8 +67,6 @@ Items marked ``KMS`` are things Kendrick is actively working on!
      - ``KMS``: the bonsai HDF5 file should get written to the web viewer directory (or pipeline rundir).
        Currently it gets written to the current working directory when the pipeline is run.
        This is a recipe for different runs overwriting each other and creating confusion!
-
-     - ``KMS``: it would be convenient for pulsars to have a bonsai configuration file which doesn't search to such high DM.
 
  - More work on detrending.  Here is one possible reason why our reported SNR for pulsars might be low.
    Our RFI removal chain includes a "detrender" (i.e. fitting and subtracting a slowly varying baseline) along the 

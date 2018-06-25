@@ -17,14 +17,13 @@ import rf_pipelines
 # The bonsai transform has its own configuration file.  This can be in a few
 # different file formats, but for "production-scale" instances I recommend using
 # the HDF5 format, which contains precomputed transfer matrices.  (If an alternative
-# file format is used, then bonsai will take ~10 minutes to start up!)
+# file format is used, then bonsai will take a few minutes to start up!)
 #
 # On the CHIME nodes, there are some pregenerated bonsai config files in 
-# /data/bonsai_configs.  None of them are a very good choice for pulsars,
-# since they use 7 trees to search for max DM 13000, which is total overkill
-# for pulsars (with DM <~ 100).
+# /data/bonsai_configs.  In this example, we use the "pulsar" config, which
+# searches to max DM 205.  (The "production" configs search to max DM 13000.)
 
-config_filename = '/data/bonsai_configs/bonsai_production_ups_nbeta2_v2.hdf5'
+config_filename = '/data/bonsai_configs/bonsai_pulsar_v2.hdf5'
 
 
 t = rf_pipelines.bonsai_dedisperser(
@@ -39,7 +38,7 @@ t = rf_pipelines.bonsai_dedisperser(
     # These settings control plots for the web viewer.
     # To disable the web viewer plots, set img_prefix=None.
     img_prefix = 'triggers',
-    img_ndm = 1024,
+    img_ndm = 512,
     img_nt = 256,
     downsample_nt = 16,
     n_zoom = 4,
