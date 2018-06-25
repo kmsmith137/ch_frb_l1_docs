@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reading a msgpack file &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DRAO computing environment" href="../drao/index.html" />
+    <link rel="prev" title="Injecting a simulated pulse" href="injecting_pulse.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Example Offline Analysis Scripts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="make_acq.html">Making an acquisition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_jsonized_bonsai_transform.html">Making a bonsai transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="injecting_pulse.html">Injecting a simulated pulse</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reading a msgpack file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">The Real-Time L1 Server</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Example Offline Analysis Scripts</a> &raquo;</li>
+        
+      <li>Reading a msgpack file</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reading-a-msgpack-file">
+<h1>Reading a msgpack file<a class="headerlink" href="#reading-a-msgpack-file" title="Permalink to this headline">¶</a></h1>
+<p>This example script shows how to read CHIME data files (in msgpack format)
+directly, without going through the pipeline.</p>
+<p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/example-reading-msgpack-file.py</span></code>.)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#</span>
+<span class="c1"># This example script shows how to read CHIME data files (in msgpack format)</span>
+<span class="c1"># directly, without going through the pipeline.</span>
+<span class="c1">#</span>
+<span class="c1"># Note: rpc_client.py is part of the ch_frb_l1 repository, but it is not currently</span>
+<span class="c1"># installed anywhere, when &#39;make install&#39; is done in the ch_frb_l1 repo.  In the</span>
+<span class="c1"># meantime, you can use ch_frb_l1/rpc_client.py by copying or symlinking it to the</span>
+<span class="c1"># directory containing this script.</span>
+
+<span class="kn">import</span> <span class="nn">rpc_client</span>
+
+<span class="c1"># Arbitrarily selected file, visible from DRAO node such as cfdn0 or cfdn9.</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;/frb-archiver-1/acq_data/frb_run_11_20180407_beams_111to118_130to137_146to150&#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;/beam_0111/chunk_00308000.msg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Object of type rpc_client.AssembledChunk.</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">rpc_client</span><span class="o">.</span><span class="n">read_msgpack_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># The decode() method returns a pair of 2-d float32 arrays (data, mask).</span>
+<span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+<span class="c1"># Each array is indexed by (frequency, time), where the frequency index is an &quot;upsampled&quot;</span>
+<span class="c1"># frequency.  The number of upsampled frequencies is equal to (1024 * ac.nupfreq), where</span>
+<span class="c1"># 1024 is the hardcoded number of &quot;coarse&quot; (i.e. non-upsampled) frequencies, and ac.nupfreq</span>
+<span class="c1"># is an upsampling factor (currently always 16).</span>
+
+<span class="k">assert</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="n">ac</span><span class="o">.</span><span class="n">nupfreq</span><span class="p">,</span> <span class="n">ac</span><span class="o">.</span><span class="n">nt</span><span class="p">)</span>
+
+<span class="c1"># The &#39;scales&#39; and &#39;offsets&#39; arrays are used to encode/decode the data as 8-bit integers.</span>
+<span class="c1"># Usually these arrays are not needed, since they are transparently applied by decode(),</span>
+<span class="c1"># but they are needed for studying quantization noise.  The encoding is:</span>
+<span class="c1">#</span>
+<span class="c1">#   data = scale * (8-bit value) + offset</span>
+
+<span class="p">(</span><span class="n">scales</span><span class="p">,</span> <span class="n">offsets</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">ac</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">ac</span><span class="o">.</span><span class="n">offsets</span><span class="p">)</span>
+
+<span class="c1"># The scales and offsets arrays are indexed by (freqency, time) but the resolution</span>
+<span class="c1"># is lower than the (data, weights) arrays.  The number of frequencies is always 1024</span>
+<span class="c1"># (the hardcoded number of &quot;coarse&quot; frequencies), and the number of time samples</span>
+<span class="c1"># is (ac.nt / ac.nt_per_packet), where ac.nt_per_packet is a time downsampling factor.</span>
+
+<span class="k">assert</span> <span class="n">scales</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">offsets</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">ac</span><span class="o">.</span><span class="n">nt</span> <span class="o">//</span> <span class="n">ac</span><span class="o">.</span><span class="n">nt_per_packet</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: looks good!&#39;</span> <span class="o">%</span> <span class="n">filename</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../drao/index.html" class="btn btn-neutral float-right" title="DRAO computing environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="injecting_pulse.html" class="btn btn-neutral" title="Injecting a simulated pulse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
