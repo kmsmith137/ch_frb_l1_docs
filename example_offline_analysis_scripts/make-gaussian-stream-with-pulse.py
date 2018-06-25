@@ -17,7 +17,7 @@ s = rf_pipelines.gaussian_noise_stream(
     nt_tot = 512*1024,
     freq_lo_MHz = 400.0,
     freq_hi_MHz = 800.0,
-    dt_sample = 0.984e-3,
+    dt_sample = 0.98304e-3,   # matches value in bonsai dedisperser (from CHIME)
     sample_rms = 1.0,
     nt_chunk = 1024
 )
