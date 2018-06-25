@@ -11,6 +11,6 @@ scripts, but more documentation (and aggregation of old documentation) is in the
    installation
    help_my_pipeline_is_broken
    offline_analysis_todo
-   example_offline_analysis_scripts
+   example_offline_analysis_scripts/index
    drao/index
    server/index

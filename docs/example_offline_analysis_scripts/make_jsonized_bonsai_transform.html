@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Inventory of machines &mdash; ch_frb_l1  documentation</title>
+  <title>Making a bonsai transform &mdash; ch_frb_l1  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Web Services" href="web_services.html" />
-    <link rel="prev" title="DRAO computing environment" href="index.html" /> 
+    <link rel="next" title="Injecting a simulated pulse" href="injecting_pulse.html" />
+    <link rel="prev" title="Making an acquisition" href="make_acq.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -82,12 +82,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../offline_analysis_todo.html">Offline Analysis TODO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../example_offline_analysis_scripts/index.html">Example Offline Analysis Scripts</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">DRAO computing environment</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Inventory of machines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="web_services.html">Web Services</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Example Offline Analysis Scripts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="make_acq.html">Making an acquisition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Making a bonsai transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="injecting_pulse.html">Injecting a simulated pulse</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../drao/index.html">DRAO computing environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">The Real-Time L1 Server</a></li>
 </ul>
 
@@ -134,9 +135,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">DRAO computing environment</a> &raquo;</li>
+          <li><a href="index.html">Example Offline Analysis Scripts</a> &raquo;</li>
         
-      <li>Inventory of machines</li>
+      <li>Making a bonsai transform</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -153,23 +154,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="inventory-of-machines">
-<h1>Inventory of machines<a class="headerlink" href="#inventory-of-machines" title="Permalink to this headline">¶</a></h1>
-<p>The DRAO gateway machines are <code class="docutils literal"><span class="pre">tubular.drao.nrc.ca</span></code> and <code class="docutils literal"><span class="pre">liberty.drao.nrc.ca</span></code>.
-All ssh connections to the outside world go through one of these machines!
-You will need to get accounts on these machines before doing any computing at DRAO.</p>
-<p>After logging into one of the gateway machines, here are some machines you can ssh to:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">frb-archiver</span></code>: large (~150 TB) central file server where we store all of our data.
-You shouldn’t run analysis code directly on the file server; instead use an analysis node
-which can access the file server over the network (as <code class="docutils literal"><span class="pre">/frb-archiver-1</span></code> or <code class="docutils literal"><span class="pre">/frb-archiver-2</span></code>,
-which access the same server over different physical ethernet networks).</li>
-<li><code class="docutils literal"><span class="pre">cfdn0</span></code>: this is the only(?) seacan node where <code class="docutils literal"><span class="pre">/home</span></code> is mounted read-write.</li>
-<li><code class="docutils literal"><span class="pre">cfdn7</span></code>: seacan node dedicated to offline analysis.</li>
-</ul>
-</div></blockquote>
-<p>A longer list is coming soon!</p>
+  <div class="section" id="making-a-bonsai-transform">
+<h1>Making a bonsai transform<a class="headerlink" href="#making-a-bonsai-transform" title="Permalink to this headline">¶</a></h1>
+<p>This script can be run on a DRAO node</p>
+<p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-jsonized-bonsai-transform.py</span></code>.)</p>
 </div>
 
 
@@ -180,10 +168,10 @@ which access the same server over different physical ethernet networks).</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="web_services.html" class="btn btn-neutral float-right" title="Web Services" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="injecting_pulse.html" class="btn btn-neutral float-right" title="Injecting a simulated pulse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="DRAO computing environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="make_acq.html" class="btn btn-neutral" title="Making an acquisition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

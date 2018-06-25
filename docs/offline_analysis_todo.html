@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example Offline Analysis Scripts" href="example_offline_analysis_scripts.html" />
+    <link rel="next" title="Example Offline Analysis Scripts" href="example_offline_analysis_scripts/index.html" />
     <link rel="prev" title="Help! My pipeline is broken" href="help_my_pipeline_is_broken.html" /> 
 
   
@@ -82,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Offline Analysis TODO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_offline_analysis_scripts/index.html">Example Offline Analysis Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="drao/index.html">DRAO computing environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">The Real-Time L1 Server</a></li>
 </ul>
@@ -155,7 +155,7 @@
 <li><p class="first">Inventory captured data, make pulsar acquisitions.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="example_make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, showing how to construct an rf_pipelines stream object from a set of data files,
+<li><a class="reference internal" href="example_offline_analysis_scripts/make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, showing how to construct an rf_pipelines stream object from a set of data files,
 and serialize the stream to a json file for later use in <code class="docutils literal"><span class="pre">rfp-run</span></code>.</li>
 </ul>
 </div></blockquote>
@@ -184,7 +184,7 @@ write a little code to loop over the git history and retrieve them all!</li>
 <blockquote>
 <div><ul>
 <li><p class="first">Make an rf_pipelines stream object and serialize it to a json file.
-See the <a class="reference internal" href="example_make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, although you’ll want to use more data!  (The example
+See the <a class="reference internal" href="example_offline_analysis_scripts/make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, although you’ll want to use more data!  (The example
 script only uses 10 data files, i.e. 10 seconds of data.)</p>
 </li>
 <li><p class="first">Choose a RFI transform chain.  There are some json-serialized RFI chains in the <a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a> repo.
@@ -193,7 +193,7 @@ some plotter transforms for the web viewer.</p>
 </li>
 <li><p class="first">Make a bonsai transform and serialize it to json.  There are some json-serialized bonsai transforms in <a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a>,
 but let’s make a new transform, so that we can write the output of the dedispersion transform to an hdf5 file for later
-processing.  See the <a class="reference internal" href="example_make_jsonized_bonsai_transform.html#making-a-bonsai-transform"><span class="std std-ref">Making a bonsai transform</span></a> example script.</p>
+processing.  See the <a class="reference internal" href="example_offline_analysis_scripts/make_jsonized_bonsai_transform.html#making-a-bonsai-transform"><span class="std std-ref">Making a bonsai transform</span></a> example script.</p>
 </li>
 <li><p class="first">Run the stream-rfi-bonsai transform chain with the <code class="docutils literal"><span class="pre">rfp-run</span></code> utility (which is part of rf_pipelines):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span> <span class="c1"># Type &#39;rfp-run&#39; with no arguments for a list of all its command-line options.</span>
@@ -258,7 +258,7 @@ Then if we see the pulsar in the output of the dedispersion transform, we’ll k
 pulses are isolated (as expected for FRB’s).  It has never been tested on a simulated pulsar, with regularly
 repeating pulses at the same DM.  We should do a quick simulation study to check whether bonsai’s SNR estimates
 are still unbiased in this case.</p>
-<p>Here is an example script showing how to inject a simulated pulse into a pipeline run: <a class="reference internal" href="example_injecting_pulse.html#injecting-a-simulated-pulse"><span class="std std-ref">Injecting a simulated pulse</span></a>.</p>
+<p>Here is an example script showing how to inject a simulated pulse into a pipeline run: <a class="reference internal" href="example_offline_analysis_scripts/injecting_pulse.html#injecting-a-simulated-pulse"><span class="std std-ref">Injecting a simulated pulse</span></a>.</p>
 <p>This script should be hackable to inject a simulated pulsar (using a long chain of frb_injector_transforms, this approach will
 waste some CPU time but should be fine for a one-time study!)</p>
 </li>
@@ -309,7 +309,7 @@ Or do we need to infer the arrival time directly from the data, by running a sim
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="example_offline_analysis_scripts.html" class="btn btn-neutral float-right" title="Example Offline Analysis Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="example_offline_analysis_scripts/index.html" class="btn btn-neutral float-right" title="Example Offline Analysis Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="help_my_pipeline_is_broken.html" class="btn btn-neutral" title="Help! My pipeline is broken" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
