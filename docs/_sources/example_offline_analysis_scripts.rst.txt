@@ -5,3 +5,4 @@ Example Offline Analysis Scripts
    :maxdepth: 1
 
    example_make_acq
+   example_make_jsonized_bonsai_transform

@@ -1,6 +1,10 @@
 The Real-Time L1 Server
 =======================
 
+This is the documentation for the **real-time** L1 server, which runs on the search nodes.
+
+If you are interested in offline postprocessing of CHIME data, none of this will apply!
+
 .. toctree::
    :maxdepth: 2
 

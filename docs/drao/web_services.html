@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Web Services (out-of-date?) &mdash; ch_frb_l1  documentation</title>
+  <title>Web Services &mdash; ch_frb_l1  documentation</title>
   
 
   
@@ -85,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">DRAO computing environment</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="machines.html">Inventory of machines</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Web Services (out-of-date?)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web Services</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">The Real-Time L1 Server</a></li>
@@ -136,7 +136,7 @@
         
           <li><a href="index.html">DRAO computing environment</a> &raquo;</li>
         
-      <li>Web Services (out-of-date?)</li>
+      <li>Web Services</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -153,40 +153,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="web-services-out-of-date">
-<h1>Web Services (out-of-date?)<a class="headerlink" href="#web-services-out-of-date" title="Permalink to this headline">¶</a></h1>
-<p>The following documentation is probably out-of-date, and I plan to verify/update it soon!</p>
+  <div class="section" id="web-services">
+<h1>Web Services<a class="headerlink" href="#web-services" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p class="first">Dustin’s “webapp”, for live L1 monitoring and control.</p>
-<p>There is a persistent instance of the webapp maintained by Dustin, which runs at port 5002 on cf0g9.
+<li><p class="first">Maya’s “web viewer”, for viewing results of our offline analysis pipeline.</p>
+<p>There is a persistent instance of the web viewer maintained by Kendrick, which runs at port 5003 on cfdn9.
 Since this is behind the DRAO firewall, you’ll need to create an ad hoc ssh tunnel.
 In a terminal window on your laptop, do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">5002</span><span class="p">:</span><span class="n">cf0g9</span><span class="p">:</span><span class="mi">5002</span> <span class="n">tubular</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">5003</span><span class="p">:</span><span class="n">cfdn9</span><span class="p">:</span><span class="mi">5003</span> <span class="n">tubular</span>
+</pre></div>
+</div>
+<p>Leave this window open!  (If you close the ssh session in the window, then the tunnel will terminate.)
+Then point your browser to <code class="docutils literal"><span class="pre">localhost:5003</span></code> and the web viewer should appear.  If this doesn’t work, let Kendrick know!</p>
+<p>If for some reason you want to run your own instance of the web viewer, you can launch it as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cfdn9</span>
+<span class="n">cd</span> <span class="n">git</span><span class="o">/</span><span class="n">rf_pipelines</span><span class="o">/</span><span class="n">web_viewer</span>
+<span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="n">viewer</span><span class="o">.</span><span class="n">sh</span> <span class="o">/</span><span class="n">frb</span><span class="o">-</span><span class="n">archiver</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">web_viewer</span> <span class="n">PORT</span>
+</pre></div>
+</div>
+<p>where PORT is a TCP port number which doesn’t conflict with any our existing services (see “Port number assignments” below).
+Then view it through the ssh tunnel as usual (<code class="docutils literal"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">PORT:cfdn9:PORT</span> <span class="pre">tubular</span></code>, then point browser at <code class="docutils literal"><span class="pre">localhost:PORT</span></code>).</p>
+</li>
+<li><p class="first">Dustin’s “webapp”, for live L1 monitoring and control.</p>
+<p>There is a persistent instance of the webapp maintained by Dustin, which runs at port 5002 on cfdn9.
+Since this is behind the DRAO firewall, you’ll need to create an ad hoc ssh tunnel.
+In a terminal window on your laptop, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">5002</span><span class="p">:</span><span class="n">cfdn9</span><span class="p">:</span><span class="mi">5002</span> <span class="n">tubular</span>
 </pre></div>
 </div>
 <p>Leave this window open!  (If you close the ssh session in the window, then the tunnel will terminate.)
 Then point your browser to <code class="docutils literal"><span class="pre">localhost:5002</span></code> and the webapp should appear.  If this doesn’t work, let Dustin know!</p>
 <p>If for some reason you want to run your own instance of the webapp, you can launch it as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cf0g9</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cfdn9</span>
 <span class="n">cd</span> <span class="n">git</span><span class="o">/</span><span class="n">ch_frb_l1</span>
 <span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">webapp</span><span class="o">.</span><span class="n">sh</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_production_16beam_webapp</span><span class="o">.</span><span class="n">yaml</span> <span class="n">PORT</span>
 </pre></div>
 </div>
 <p>where PORT is a TCP port number which doesn’t conflict with any our existing services (see “Port number assignments” below).
 Then follow the instructions in the previous paragraph with 5002 replaced by PORT.</p>
-</li>
-<li><p class="first">Maya’s “web viewer”, for viewing results of our offline analysis pipeline.</p>
-<p>There is a persistent instance of the web viewer maintained by Kendrick, which runs at port 5003 on cf0g9.
-The instructions are the same as the “Dustin webapp” case above, with 5002 replaced by 5003.
-(I.e. <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">5003:cf0g9:5003</span> <span class="pre">tubular</span></code>, then point browser at <code class="docutils literal"><span class="pre">localhost:5003</span></code>.)</p>
-<p>If for some reason you want to run your own instance of the web viewer, you can launch it as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">cf0g9</span>
-<span class="n">cd</span> <span class="n">git</span><span class="o">/</span><span class="n">rf_pipelines</span><span class="o">/</span><span class="n">web_viewer</span>
-<span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="n">viewer</span><span class="o">.</span><span class="n">sh</span> <span class="o">/</span><span class="n">frb</span><span class="o">-</span><span class="n">archiver</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">web_viewer</span> <span class="n">PORT</span>
-</pre></div>
-</div>
-<p>where PORT is a TCP port number which doesn’t conflict with any our existing services (see “Port number assignments” below).
-Then view it through the ssh tunnel as usual (<code class="docutils literal"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">PORT:cf0g9:PORT</span> <span class="pre">tubular</span></code>, then point browser at <code class="docutils literal"><span class="pre">localhost:PORT</span></code>).</p>
 </li>
 <li><p class="first">Port number assignments (placeholder section for now, to be fleshed out later):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">5001</span> <span class="o">=</span> <span class="n">Michelle</span><span class="s1">&#39;s L4 server</span>

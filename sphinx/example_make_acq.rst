@@ -1,8 +1,7 @@
 Making an acquisition
 =====================
 
-This script can be run on a DRAO node (suggestion: ``cfdn7``, which is dedicated to offline analysis),
-to create an rf_pipelines stream object from previously captured data.
+This script can be run on a DRAO node to create an rf_pipelines stream object from previously captured data.
 
 In this example, we use 10 seconds of data in beam 111 from a run in April 2018 (arbitrarily chosen).
 

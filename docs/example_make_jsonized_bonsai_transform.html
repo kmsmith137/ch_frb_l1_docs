@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Making a bonsai transform &mdash; ch_frb_l1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DRAO computing environment" href="drao/index.html" />
+    <link rel="prev" title="Making an acquisition" href="example_make_acq.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ch_frb_l1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help_my_pipeline_is_broken.html">Help! My pipeline is broken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="offline_analysis_todo.html">Offline Analysis TODO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example_make_acq.html">Making an acquisition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Making a bonsai transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drao/index.html">DRAO computing environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/index.html">The Real-Time L1 Server</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ch_frb_l1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="example_offline_analysis_scripts.html">Example Offline Analysis Scripts</a> &raquo;</li>
+        
+      <li>Making a bonsai transform</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="making-a-bonsai-transform">
+<h1>Making a bonsai transform<a class="headerlink" href="#making-a-bonsai-transform" title="Permalink to this headline">¶</a></h1>
+<p>This script can be run on a DRAO node</p>
+<p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-jsonized-bonsai-transform.py</span></code>.)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#</span>
+<span class="c1"># This script makes a bonsai transform, and serializes it to a json file</span>
+<span class="c1"># for later use in &#39;rfp-run&#39;.</span>
+<span class="c1">#</span>
+<span class="c1"># Note that there are already some json-serialized bonsai transforms in</span>
+<span class="c1"># the &#39;ch_frb_rfi&#39; repository (in json_files/bonsai_16k), so you may not</span>
+<span class="c1"># need to make a new one.</span>
+<span class="c1">#</span>
+<span class="c1"># A possible reason to make a new one: maybe you want to write bonsai&#39;s</span>
+<span class="c1"># output to an HDF5 file?</span>
+
+
+<span class="kn">import</span> <span class="nn">rf_pipelines</span>
+
+
+<span class="c1"># The bonsai transform has its own configuration file.  This can be in a few</span>
+<span class="c1"># different file formats, but for &quot;production-scale&quot; instances I recommend using</span>
+<span class="c1"># the HDF5 format, which contains precomputed transfer matrices.  (If an alternative</span>
+<span class="c1"># file format is used, then bonsai will take ~10 minutes to start up!)</span>
+<span class="c1">#</span>
+<span class="c1"># On the CHIME nodes, there are some pregenerated bonsai config files in </span>
+<span class="c1"># /data/bonsai_configs.  None of them are a very good choice for pulsars,</span>
+<span class="c1"># since they use 7 trees to search for max DM 13000, which is total overkill</span>
+<span class="c1"># for pulsars (with DM &lt;~ 100).</span>
+
+<span class="n">config_filename</span> <span class="o">=</span> <span class="s1">&#39;/data/bonsai_configs/bonsai_production_ups_nbeta2_v2.hdf5&#39;</span>
+
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">rf_pipelines</span><span class="o">.</span><span class="n">bonsai_dedisperser</span><span class="p">(</span>
+    <span class="n">config_filename</span> <span class="o">=</span> <span class="n">config_filename</span><span class="p">,</span>
+    <span class="n">fill_rfi_mask</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>    <span class="c1"># always necessary for real dae</span>
+
+    <span class="c1"># Write the output of the dedispersion transform to an HDF5 file.</span>
+    <span class="c1"># FIXME: this should get written to the web viewer directory (or pipeline rundir).</span>
+    <span class="c1"># Currently it gets written to the current working directory when the pipeline is run.</span>
+    <span class="n">hdf5_output_filename</span> <span class="o">=</span> <span class="s1">&#39;triggers.hdf5&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># These settings control plots for the web viewer.</span>
+    <span class="c1"># To disable the web viewer plots, set img_prefix=None.</span>
+    <span class="n">img_prefix</span> <span class="o">=</span> <span class="s1">&#39;triggers&#39;</span><span class="p">,</span>
+    <span class="n">img_ndm</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span>
+    <span class="n">img_nt</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+    <span class="n">downsample_nt</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">n_zoom</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">plot_threshold1</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">plot_threshold2</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">plot_all_trees</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+
+<span class="n">rf_pipelines</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">json_write</span><span class="p">(</span><span class="s1">&#39;example_bonsai_transform.json&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">clobber</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="drao/index.html" class="btn btn-neutral float-right" title="DRAO computing environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example_make_acq.html" class="btn btn-neutral" title="Making an acquisition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

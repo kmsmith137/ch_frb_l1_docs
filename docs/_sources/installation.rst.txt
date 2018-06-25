@@ -379,7 +379,7 @@ Compilation::
 Quick install: compute node
 ---------------------------
 
-Here are instructions for building the L1 pipeline from scratch on the frb-compute-X nodex.
+Here are instructions for building the L1 pipeline from scratch on the frb-compute-X nodes.
 All external dependencies should already be installed.
 
 Note that we don't build the `ch_frb_rfi` module here, since this module includes hardcoded

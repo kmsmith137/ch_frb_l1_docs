@@ -149,32 +149,151 @@
             
   <div class="section" id="offline-analysis-todo">
 <h1>Offline Analysis TODO<a class="headerlink" href="#offline-analysis-todo" title="Permalink to this headline">¶</a></h1>
+<p>Items marked <code class="docutils literal"><span class="pre">KMS</span></code> are things Kendrick is actively working on!</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Inventory captured data, make pulsar acquisitions.</p>
 <blockquote>
 <div><ul class="simple">
-<li>This may be helpful: <a class="reference internal" href="example_make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a></li>
+<li><a class="reference internal" href="example_make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, showing how to construct an rf_pipelines stream object from a set of data files,
+and serialize the stream to a json file for later use in <code class="docutils literal"><span class="pre">rfp-run</span></code>.</li>
+</ul>
+</div></blockquote>
+<p>To determine whether there is a bright pulsar in a run, we will want to convert FPGA timestamps to real timestamps.</p>
+<blockquote>
+<div><ul class="simple">
+<li>There is a json file which contains all the necessary information, automatically committed to git whenever the FPGA counts are reset
+(<a class="reference external" href="https://github.com/CHIMEFRB/frb-configs/tree/master/RunParameters">https://github.com/CHIMEFRB/frb-configs/tree/master/RunParameters</a>).  Unfortunately it overwrites the previous file, so we need to
+write a little code to loop over the git history and retrieve them all!</li>
+<li>Example code: <a class="reference external" href="https://github.com/CHIMEFRB/Intensity-Analysis-Utils/blob/master/iautils/scripts/msgpack2fil.py">https://github.com/CHIMEFRB/Intensity-Analysis-Utils/blob/master/iautils/scripts/msgpack2fil.py</a>
+(search for fpga_time)</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">Understand Miles’ framework for forecasting SNR.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Miles framework: <a class="reference external" href="https://github.com/CHIMEFRB/Sensitivity">https://github.com/CHIMEFRB/Sensitivity</a></li>
+<li>ATNF catalog: <a class="reference external" href="http://www.atnf.csiro.au/people/pulsar/psrcat">http://www.atnf.csiro.au/people/pulsar/psrcat</a></li>
+<li>ATNF parameter list: <a class="reference external" href="http://www.atnf.csiro.au/research/pulsar/psrcat/psrcat_help.html#par_list">http://www.atnf.csiro.au/research/pulsar/psrcat/psrcat_help.html#par_list</a></li>
+</ul>
+</div></blockquote>
 </li>
-<li><p class="first">Set up offline scripting framework for reproducing SNR values in database, comparing with forecasts.</p>
+<li><p class="first">Set up offline scripting framework for reproducing SNR values, comparing with forecasts.</p>
+<p>Roughly, the chain of steps might look like this:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Make an rf_pipelines stream object and serialize it to a json file.
+See the <a class="reference internal" href="example_make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, although you’ll want to use more data!  (The example
+script only uses 10 data files, i.e. 10 seconds of data.)</p>
 </li>
-<li><p class="first">Incorporate detrending correction.  Can we use less detrending?  (in real-time pipeline?  in offline analysis of bright pulsars?)</p>
+<li><p class="first">Choose a RFI transform chain.  There are some json-serialized RFI chains in the <a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a> repo.
+In this example, I’ll use <code class="docutils literal"><span class="pre">ch_frb_rfi/json_files/rfi_16k/17-12-02-two-pass-v3.json</span></code>, which also contains
+some plotter transforms for the web viewer.</p>
 </li>
-<li><p class="first">Overclipping studies.  What happens in simulation?  If we dedisperse the mask, do we see peaks?</p>
+<li><p class="first">Make a bonsai transform and serialize it to json.  There are some json-serialized bonsai transforms in <a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a>,
+but let’s make a new transform, so that we can write the output of the dedispersion transform to an hdf5 file for later
+processing.  See the <a class="reference internal" href="example_make_jsonized_bonsai_transform.html#making-a-bonsai-transform"><span class="std std-ref">Making a bonsai transform</span></a> example script.</p>
+</li>
+<li><p class="first">Run the stream-rfi-bonsai transform chain with the <code class="docutils literal"><span class="pre">rfp-run</span></code> utility (which is part of rf_pipelines):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="c1"># Type &#39;rfp-run&#39; with no arguments for a list of all its command-line options.</span>
+
+<span class="n">rfp</span><span class="o">-</span><span class="n">run</span> <span class="o">-</span><span class="n">w</span> <span class="n">example</span> \    <span class="c1"># name of run for web viewer</span>
+  <span class="n">example_acq</span><span class="o">.</span><span class="n">json</span> \      <span class="c1"># first in pipeline: stream</span>
+  <span class="n">ch_frb_rfi</span><span class="o">/</span><span class="n">json_files</span><span class="o">/</span><span class="n">rfi_16k</span><span class="o">/</span><span class="mi">17</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="n">two</span><span class="o">-</span><span class="k">pass</span><span class="o">-</span><span class="n">v3</span><span class="o">.</span><span class="n">json</span>   <span class="c1"># second: RFI chain</span>
+  <span class="n">example_bonsai_transform</span><span class="o">.</span><span class="n">json</span>     <span class="c1"># last in pipeline: dedisperser</span>
+</pre></div>
+</div>
+<p>Depending on how long your stream is, this may take a while to run.  You may want to use <code class="docutils literal"><span class="pre">screen</span></code> or <code class="docutils literal"><span class="pre">tmux</span></code> to run the command above.</p>
+<p>After the pipeline run ends, there should be an entry in the web viewer, containing waterfall and trigger plots.
+(For information on the web viewer, see <a class="reference internal" href="drao/web_services.html#web-services"><span class="std std-ref">Web Services</span></a>.)</p>
+<p>There should also be a large HDF5 file containing bonsai’s output arrays during the run.  We can postprocess
+this file to determine the SNR of each pulse.</p>
+</li>
+<li><p class="first">Another option for determining the pulsar SNR would be to figure out how to use Alex Josephy’s “L1B” code,
+a real-time tool which runs in the pipeline, postprocesses the bonsai output arrays, and generates an event list.</p>
+</li>
+<li><p class="first">At some point we should figure out how to query the SQL database to figure out what SNR values
+were reported by the real-time pipeline.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">KMS</span></code>: the bonsai HDF5 file format currently isn’t documented anywhere!  I’ll do this soon.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">KMS</span></code>: the bonsai HDF5 file should get written to the web viewer directory (or pipeline rundir).
+Currently it gets written to the current working directory when the pipeline is run.
+This is a recipe for different runs overwriting each other and creating confusion!</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">KMS</span></code>: it would be convenient for pulsars to have a bonsai configuration file which doesn’t search to such high DM.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">More work on detrending.  Here is one possible reason why our reported SNR for pulsars might be low.
+Our RFI removal chain includes a “detrender” (i.e. fitting and subtracting a slowly varying baseline) along the
+frequency axis of the (frequency, time) array.  This removes a fraction of the SNR, which will depend on the parameters
+of the pulse.</p>
+<p>In the memo <a class="reference download internal" href="_downloads/18-03-19-pulsar-snr.pdf" download=""><code class="xref download docutils literal"><span class="pre">18-03-19-pulsar-snr.pdf</span></code></a>, we made an initial study of this
+effect and found that the fractional SNR loss was a simple function of (pulse DM) / (pulse width).  For typical FRB
+parameters, the SNR loss is small, but for pulsars it can be very significant.</p>
+<p>Does this effect completely or partially explain our low reported SNR’s?</p>
+<p>This effect can be reduced substantially by changing a parameter in the RFI removal pipeline (the degree of the polynomial
+fit that we use in the detrender).  We should definitely be doing this for pulsars, and maybe for the real-time FRB search.
+What is the lowest polynomial degree we can “get away with” without getting a lot of false positives from RFI?</p>
+</li>
+<li><p class="first">Overclipping studies.  Here is another possible reason our reported SNR for pulsars might be low.
+We usually study bright pulsars, where the pulses may be mistaken for RFI and masked by the “clipper” transforms
+in our RFI removal chain.</p>
+<p>Is this happening?  If so, how should we modify our RFI transform chain so that we avoid overclipping bright pulsars,
+while still removing most of the RFI?  (Reminder: we don’t need to use the same RFI transform chain for postprocessing
+pulsars as we do in the real-time search.)</p>
+</li>
+<li><p class="first">I like the following idea for a quick hack to test whether we’re overclipping bright pulsars.</p>
+<p>We write a new transform which <em>overwrites</em> the data array with 0 or 1, depending on whether the data element
+is unmasked or masked (i.e. the complement of the mask array), and sets the mask array to all ones.  We put this
+transform after RFI removal and before dedispersion.
+Then if we see the pulsar in the output of the dedispersion transform, we’ll know that we’re overclipping.</p>
+<p><code class="docutils literal"><span class="pre">KMS</span></code>: will add an example script showing how to write a new rf_pipelines transform in python.</p>
 </li>
 <li><p class="first">Simulating a pulsar.  Are bonsai’s SNR estimates still unbiased if pulses are repeating (rather than isolated)?</p>
+<p>Here is something we should have done a long time ago!  The variance estimation logic in bonsai assumes that
+pulses are isolated (as expected for FRB’s).  It has never been tested on a simulated pulsar, with regularly
+repeating pulses at the same DM.  We should do a quick simulation study to check whether bonsai’s SNR estimates
+are still unbiased in this case.</p>
+<p><code class="docutils literal"><span class="pre">KMS</span></code>: will add an example script showing how to run the pipeline with simulated pulses injected.</p>
 </li>
-<li><p class="first">Variance estimation.  How should we be weighting the channels?  Is the radiometer equation satisfied?</p>
+<li><p class="first">Channel weighting.  Here is an important topic that we will be working on for a while!</p>
+<p>Currently, bonsai assigns equal weight to each frequency channel.  The optimal weighting would be to
+weight frequency channel “i” by (s_i / v_i), where s_i is the frequency spectrum of the pulsar (i.e.
+the strength of the pulsar in channel i), and v_i is the variance of channel i.</p>
+<p>We don’t know how much the quantity (s_i / v_i) varies from channel to channel, so we don’t know
+how suboptimal our current weighting is!</p>
+<p>There is already a <code class="docutils literal"><span class="pre">VarianceEstimator</span></code> class in rf_pipelines, so we should be able to use that
+to get estimates for v_i.</p>
+<p>Getting estimates for s_i is harder and will require significant new code!  It helps a lot that
+we know the period and dispersion measure of the pulsar in advance.</p>
+<p><code class="docutils literal"><span class="pre">KMS</span></code>: will add an example script showing how to use the VarianceEstimator.</p>
 </li>
-<li><p class="first">Related: estimating the spectrum of the pulsar.</p>
+<li><p class="first">Some low-level data quality studies that don’t require running the pipeline!</p>
+<p>Is the radiometer equation satisfied?  The radiometer equation states that the variance V
+of the sampled intensity data is related to its mean value by V = (2/N) I^2, where N is the number
+of channelized electric field values which contribute to a sample.  (I believe N=96 for CHIME but
+I need to double-check!)</p>
+<p>The radiometer equation always applies if the intensity samples are formed by summing the squares
+of N uncorrelated Gaussian electric field samples, even if the weighting used to obtain those
+samples is suboptimal.  So if we see large deviations from the radiometer equation, then something
+is seriously wrong “upstream” from the FRB search backend!</p>
+<p>Is quantization noise an issue?  This should be an easy question to answer, we can just compute the
+variance of each channel (with median filtering to remove RFI) and check that it is significantly
+larger than the quantization scale.</p>
 </li>
-<li><p class="first">Pulsar masker/unmasking transform.</p>
-</li>
-<li><p class="first">Determining arrival times of pulses (either through external ephemeris or internal analysis).</p>
+<li><p class="first">If we end up finding it difficult to write an RFI transform chain which avoids overclipping bright pulsars,
+here is an idea which may be helpful.</p>
+<p>We can write a pair of transforms, the <code class="docutils literal"><span class="pre">pulsar_masker</span></code> and <code class="docutils literal"><span class="pre">pulsar_unmasker</span></code>, which respectively mask
+pulses from a known pulsar, and undo this masking.  Then we can use a weaker level of RFI removal for data
+in pulses than for data outside pulses.  This would be implemented by applying the pulsar_masker, then applying
+“strong” RFI removal, then the pulsar_unmasker, then “weak” RFI removal.</p>
+<p>For this to work, we would need to know the arrival times of the pulses, which is a mini-project in itself!
+Are our timestamps good enough to get this information (the pulsar “ephemeris”) from external sources?
+Or do we need to infer the arrival time directly from the data, by running a simplified pulsar search code?</p>
 </li>
 </ul>
 </div></blockquote>
