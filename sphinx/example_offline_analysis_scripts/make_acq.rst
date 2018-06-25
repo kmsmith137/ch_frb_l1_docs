@@ -7,5 +7,5 @@ In this example, we use 10 seconds of data in beam 111 from a run in April 2018 
 
 (Source: ``ch_frb_l1_docs/example_offline_analysis_scripts/make-acq.py``.)
 
-.. literalinclude:: ../example_offline_analysis_scripts/make-acq.py
+.. literalinclude:: ../../example_offline_analysis_scripts/make-acq.py
     :language: python

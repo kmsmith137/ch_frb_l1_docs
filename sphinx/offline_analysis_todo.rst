@@ -147,6 +147,8 @@ Items marked ``KMS`` are things Kendrick is actively working on!
    variance of each channel (with median filtering to remove RFI) and check that it is significantly
    larger than the quantization scale.
 
+   The following example script may be useful: :ref:`Reading a msgpack file`.
+
  - If we end up finding it difficult to write an RFI transform chain which avoids overclipping bright pulsars,
    here is an idea which may be helpful.
 

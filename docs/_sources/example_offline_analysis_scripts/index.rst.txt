@@ -7,3 +7,4 @@ Example Offline Analysis Scripts
    make_acq
    make_jsonized_bonsai_transform
    injecting_pulse
+   reading_msgpack_file

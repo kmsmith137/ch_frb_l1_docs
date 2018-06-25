@@ -86,6 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="make_acq.html">Making an acquisition</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Making a bonsai transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="injecting_pulse.html">Injecting a simulated pulse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reading_msgpack_file.html">Reading a msgpack file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../drao/index.html">DRAO computing environment</a></li>
@@ -156,8 +157,62 @@
             
   <div class="section" id="making-a-bonsai-transform">
 <h1>Making a bonsai transform<a class="headerlink" href="#making-a-bonsai-transform" title="Permalink to this headline">¶</a></h1>
-<p>This script can be run on a DRAO node</p>
+<p>This script can be run on a DRAO node to create a bonsai (dedispersion) transform,
+and serialize it to a json file, for later use with <code class="docutils literal"><span class="pre">rfp-run</span></code>.</p>
 <p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-jsonized-bonsai-transform.py</span></code>.)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#</span>
+<span class="c1"># This script makes a bonsai transform, and serializes it to a json file</span>
+<span class="c1"># for later use in &#39;rfp-run&#39;.</span>
+<span class="c1">#</span>
+<span class="c1"># Note that there are already some json-serialized bonsai transforms in</span>
+<span class="c1"># the &#39;ch_frb_rfi&#39; repository (in json_files/bonsai_16k), so you may not</span>
+<span class="c1"># need to make a new one.</span>
+<span class="c1">#</span>
+<span class="c1"># A possible reason to make a new one: maybe you want to write bonsai&#39;s</span>
+<span class="c1"># output to an HDF5 file?</span>
+
+
+<span class="kn">import</span> <span class="nn">rf_pipelines</span>
+
+
+<span class="c1"># The bonsai transform has its own configuration file.  This can be in a few</span>
+<span class="c1"># different file formats, but for &quot;production-scale&quot; instances I recommend using</span>
+<span class="c1"># the HDF5 format, which contains precomputed transfer matrices.  (If an alternative</span>
+<span class="c1"># file format is used, then bonsai will take ~10 minutes to start up!)</span>
+<span class="c1">#</span>
+<span class="c1"># On the CHIME nodes, there are some pregenerated bonsai config files in </span>
+<span class="c1"># /data/bonsai_configs.  None of them are a very good choice for pulsars,</span>
+<span class="c1"># since they use 7 trees to search for max DM 13000, which is total overkill</span>
+<span class="c1"># for pulsars (with DM &lt;~ 100).</span>
+
+<span class="n">config_filename</span> <span class="o">=</span> <span class="s1">&#39;/data/bonsai_configs/bonsai_production_ups_nbeta2_v2.hdf5&#39;</span>
+
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">rf_pipelines</span><span class="o">.</span><span class="n">bonsai_dedisperser</span><span class="p">(</span>
+    <span class="n">config_filename</span> <span class="o">=</span> <span class="n">config_filename</span><span class="p">,</span>
+    <span class="n">fill_rfi_mask</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>    <span class="c1"># always necessary for real dae</span>
+
+    <span class="c1"># Write the output of the dedispersion transform to an HDF5 file.</span>
+    <span class="c1"># FIXME: this should get written to the web viewer directory (or pipeline rundir).</span>
+    <span class="c1"># Currently it gets written to the current working directory when the pipeline is run.</span>
+    <span class="n">hdf5_output_filename</span> <span class="o">=</span> <span class="s1">&#39;triggers.hdf5&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># These settings control plots for the web viewer.</span>
+    <span class="c1"># To disable the web viewer plots, set img_prefix=None.</span>
+    <span class="n">img_prefix</span> <span class="o">=</span> <span class="s1">&#39;triggers&#39;</span><span class="p">,</span>
+    <span class="n">img_ndm</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span>
+    <span class="n">img_nt</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+    <span class="n">downsample_nt</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">n_zoom</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">plot_threshold1</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">plot_threshold2</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">plot_all_trees</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+
+<span class="n">rf_pipelines</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">json_write</span><span class="p">(</span><span class="s1">&#39;example_bonsai_transform.json&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">clobber</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 

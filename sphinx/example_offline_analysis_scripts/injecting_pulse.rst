@@ -13,5 +13,5 @@ to dedisperse the data and plot the result in the web viewer.
 
 (Source: ``ch_frb_l1_docs/example_offline_analysis_scripts/make-gaussian-stream-with-pulse.py``.)
 
-.. literalinclude:: ../example_offline_analysis_scripts/make-gaussian-stream-with-pulse.py
+.. literalinclude:: ../../example_offline_analysis_scripts/make-gaussian-stream-with-pulse.py
     :language: python
