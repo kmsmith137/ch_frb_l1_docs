@@ -72,6 +72,10 @@ then all of these should already be installed, and you can skip to the next step
       - centos one-liner: ``sudo yum install lz4-devel``
       - ubuntu one-liner: ``sudo apt-get install liblz4-dev``
 
+  - libcurl.
+
+      - ubuntu one-liner: ``sudo apt-get install libcurl4-openssl-dev``
+
   - msgpack.
 
       - osx one-liner: ``brew install msgpack``
