@@ -28,9 +28,8 @@ Example 3
     frequency channels and 1 ms sampling.  The total bandwidth is 2.2 Gbps,
     distributed on 4x1 Gbps NIC's by assigning four beams to each NIC.
 
-  - Because of the "slow start" problem described in "Caveats" at the
-    beginning of this manual, this example is now a 20-minute run (previously,
-    it was a 5-minute run).
+  - Because of the "slow start" problem described previously in :ref:`Caveats`,
+    this example is now a 20-minute run (previously, it was a 5-minute run).
 
   - First, check that the node is in the network configuration shown above.
     This is not guaranteed to be the case, since we're still experimenting with	

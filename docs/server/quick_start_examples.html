@@ -176,12 +176,12 @@ over the loopback interface (127.0.0.1).</p>
 <div><ul>
 <li><p class="first"><strong>This step only needs to be done once.</strong> Initialize the bonsai HDF5 file,
 using the utility <code class="docutils literal"><span class="pre">bonsai-mkweight</span></code>, which should have been installed in
-your $PATH when bonsai was built.</p>
-<blockquote>
-<div><p>cd bonsai_configs/
-bonsai-mkweight bonsai_example1.txt bonsai_example1.hdf5
-cd ..</p>
-</div></blockquote>
+your $PATH when bonsai was built:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
+<span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_example1</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_example1</span><span class="o">.</span><span class="n">hdf5</span>
+<span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">Start the L1 server:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
@@ -206,7 +206,7 @@ you’ll see some incremental output, as chunks of data are processed.</p>
 plot of the coarse-grained triggers, with time on the x-axis and DM on the y-axis.  The
 plot will not contain any FRB’s, because the simulation is pure noise.  Note that the blue
 “stairstep” region in the left part of the plot is symptomatic of the “slow start” problem
-mentioned under “Caveats” near the beginning of this file.</p>
+mentioned previously in <a class="reference internal" href="high_level_overview.html#caveats"><span class="std std-ref">Caveats</span></a>.</p>
 </li>
 </ul>
 </div></blockquote>

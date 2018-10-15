@@ -12,7 +12,7 @@ over the loopback interface (127.0.0.1).
 
   - **This step only needs to be done once.** Initialize the bonsai HDF5 file, 
     using the utility ``bonsai-mkweight``, which should have been installed in 
-    your $PATH when bonsai was built.
+    your $PATH when bonsai was built::
 
       cd bonsai_configs/
       bonsai-mkweight bonsai_example1.txt bonsai_example1.hdf5
@@ -43,7 +43,7 @@ over the loopback interface (127.0.0.1).
     plot of the coarse-grained triggers, with time on the x-axis and DM on the y-axis.  The
     plot will not contain any FRB's, because the simulation is pure noise.  Note that the blue 
     "stairstep" region in the left part of the plot is symptomatic of the "slow start" problem
-    mentioned under "Caveats" near the beginning of this file.
+    mentioned previously in :ref:`Caveats`.
 
 
 Example 2
