@@ -45,6 +45,18 @@ over the loopback interface (127.0.0.1).
     "stairstep" region in the left part of the plot is symptomatic of the "slow start" problem
     mentioned previously in :ref:`Caveats`.
 
+  - Optional: if you would like to try sending RPC's, you can either run './rpc-client'
+    (C++), or 'python rpc_client.py' (python).  While the L1 server is running::
+
+       # Send get_statistics RPC using a C++ client, and print the result.
+       # Port number 5555 from l1_configs/l1_example1.yaml
+       ./rpc-client tcp://127.0.0.1:5555
+
+       # Send a few different RPC's using a python client, and print the results.
+       # Port number 5555 from l1_configs/l1_example1.yaml
+       # See 'python rpc_client.py --help' for a lot of interesting optional arguments.
+       python rpc_client.py tcp://127.0.0.1:5555
+
 
 Example 2
 ---------
@@ -88,3 +100,20 @@ The steps below are similar to example 1, so discussion is minimal.
     After the example finishes, you should see four plots `toy_l1b_beam$N.png`,
     where N=0,1,2,3.  Each plot corresponds to one beam, and contains three
     rows of output, corresponding to the three dedispersion trees in this example.
+
+  - Optional: if you would like to try sending RPC's, you can either run './rpc-client'
+    (C++), or 'python rpc_client.py' (python).
+
+    In this example, the L1 server defines two streams (see :ref:`L1 streams` below), with 
+    associated RPC servers on TCP ports 5555 and 5566 (see l1_configs/l1_example2.yaml).
+    Each stream processes two beams.
+
+    While the L1 server is running::
+
+       # Send get_statistics RPC using a C++ client, and print the result.
+       ./rpc-client tcp://127.0.0.1:5555
+       ./rpc-client tcp://127.0.0.1:5556
+
+       # Send a few different RPC's using a python client, and print the results.
+       # See 'python rpc_client.py --help' for a lot of interesting optional arguments.
+       python rpc_client.py tcp://127.0.0.1:5555 tcp://127.0.0.1:5556

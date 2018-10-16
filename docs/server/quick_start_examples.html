@@ -208,6 +208,19 @@ plot will not contain any FRB’s, because the simulation is pure noise.  Note t
 “stairstep” region in the left part of the plot is symptomatic of the “slow start” problem
 mentioned previously in <a class="reference internal" href="high_level_overview.html#caveats"><span class="std std-ref">Caveats</span></a>.</p>
 </li>
+<li><p class="first">Optional: if you would like to try sending RPC’s, you can either run ‘./rpc-client’
+(C++), or ‘python rpc_client.py’ (python).  While the L1 server is running:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Send get_statistics RPC using a C++ client, and print the result.</span>
+<span class="c1"># Port number 5555 from l1_configs/l1_example1.yaml</span>
+<span class="o">./</span><span class="n">rpc</span><span class="o">-</span><span class="n">client</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5555</span>
+
+<span class="c1"># Send a few different RPC&#39;s using a python client, and print the results.</span>
+<span class="c1"># Port number 5555 from l1_configs/l1_example1.yaml</span>
+<span class="c1"># See &#39;python rpc_client.py --help&#39; for a lot of interesting optional arguments.</span>
+<span class="n">python</span> <span class="n">rpc_client</span><span class="o">.</span><span class="n">py</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5555</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -251,6 +264,22 @@ next section (<a class="reference internal" href="configuration_file_overview.ht
 <p>After the example finishes, you should see four plots <cite>toy_l1b_beam$N.png</cite>,
 where N=0,1,2,3.  Each plot corresponds to one beam, and contains three
 rows of output, corresponding to the three dedispersion trees in this example.</p>
+</li>
+<li><p class="first">Optional: if you would like to try sending RPC’s, you can either run ‘./rpc-client’
+(C++), or ‘python rpc_client.py’ (python).</p>
+<p>In this example, the L1 server defines two streams (see <a class="reference internal" href="l1_streams.html#l1-streams"><span class="std std-ref">L1 streams</span></a> below), with
+associated RPC servers on TCP ports 5555 and 5566 (see l1_configs/l1_example2.yaml).
+Each stream processes two beams.</p>
+<p>While the L1 server is running:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Send get_statistics RPC using a C++ client, and print the result.</span>
+<span class="o">./</span><span class="n">rpc</span><span class="o">-</span><span class="n">client</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5555</span>
+<span class="o">./</span><span class="n">rpc</span><span class="o">-</span><span class="n">client</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5556</span>
+
+<span class="c1"># Send a few different RPC&#39;s using a python client, and print the results.</span>
+<span class="c1"># See &#39;python rpc_client.py --help&#39; for a lot of interesting optional arguments.</span>
+<span class="n">python</span> <span class="n">rpc_client</span><span class="o">.</span><span class="n">py</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5555</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5556</span>
+</pre></div>
+</div>
 </li>
 </ul>
 </div></blockquote>
