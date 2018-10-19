@@ -1,7 +1,7 @@
 Misc parameters
 ===============
 
-  - ``force_asnychronous_dedispersion`` (boolean, default=false).
+  - ``force_asynchronous_dedispersion`` (boolean, default=false).
 
      Forces RFI removal and dedispersion to run in separate threads (shouldn't
      need to specify this explicitly, except for debugging).
