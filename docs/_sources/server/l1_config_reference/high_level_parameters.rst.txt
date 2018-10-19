@@ -41,7 +41,7 @@ High-level parameters
 
     One or more IP addresses, for the L1 server's stream(s).  This can be either a list
     of strings (one for each stream), or a single string (if all streams use the same
-    IP address).  IP addresses are specified as strings, e.g. ``"127.0.0.1"``.
+    IP address).  IP addresses are specified as strings, e.g. ``"127.0.0.1"`` or ``"eno1"``.
 
   - ``port`` (either an integer, or a list of integers).
 
@@ -52,13 +52,42 @@ High-level parameters
   - ``rpc_address`` (list of strings).
 
     The RPC server address for each stream, specified as a string in "zeromq" format
-    (e.g. ``"tcp://127.0.0.1:5555"``).  The 'rpc_address' field must be a list whose length
+    (e.g. ``"tcp://127.0.0.1:5555"`` or ``"tcp://eno1:5555"``).  The 'rpc_address' field must be a list whose length
     is equal to the number of streams on the L1 node, that is, the number of distinct
     (ipaddr, udp_port) pairs.
 
     The RPC address of each stream must be different (by specifying either a different IP
     address or TCP port for each stream).
 
+  - ``prometheus_address`` (list of strings)
+
+    The L1 server also defines one prometheus server per beam.  The syntax is the same
+    as the rpc_address keyword above.
+
+  - ``logger_address`` (string, optional)
+
+    The IP address of the L1 logging server, specified as a string in "zeromq" format
+    (e.g. ``"tcp://10.6.213.19:5555"``).  If unspecified or the empty string, then
+    distributed logging will be disabled.
+
+  - ``nrfifreq`` (integer)
+
+    If nonzero, then data files written to disk by the L1 server will contain the RFI mask,
+    with the specified number of frequency channels.  Note that the RFI JSON file must contain
+    a matching mask_counter transform with the appropriate frequency resolution.  If zero,
+    then data files written by the server will not contain the RFI mask.
+
+  - ``frame0_url`` (string)
+
+    If a nonempty string, then the L1 server will determine the FPGA start time
+    by "curl"-ing the specified URL.  This is necessary in order to convert FPGA
+    counts to absolute times.  The FPGA start time will be written into the
+    data files written to disk by the L1 server.
+
+  - ``frame0_timeout_ms`` (integer, default 3000)
+
+    Timeout for frame0_url curl requests, in milliseconds.
+  
   - ``beam_ids`` (list of integers, optional).
 
     If specified, this is a list of beam_ids which will be processed on the node.  (The

@@ -65,3 +65,8 @@ The following parameters in the L1 server config file define buffer sizes.
     hard to figure out how much memory is being used by other things (e.g. bonsai).
     I plan to address this soon!  In the meantime, I recommend 2 GB/beam for production-scale
     runs, and 0.1 GB/beam for subscale testing runs.
+
+  - ``rfi_mask_meas_history`` (integer, default 300)
+
+    This is the buffer size (in assembled_chunks, which correspond to one second of data)
+    for the mask_counter ring buffers.  These are used to implement the RFI real-time web monitor.

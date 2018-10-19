@@ -41,7 +41,7 @@ High-level parameters
 
     One or more IP addresses, for the L1 server's stream(s).  This can be either a list
     of strings (one for each stream), or a single string (if all streams use the same
-    IP address).  IP addresses are specified as strings, e.g. ``"127.0.0.1"`` or ``eno1``.
+    IP address).  IP addresses are specified as strings, e.g. ``"127.0.0.1"`` or ``"eno1"``.
 
   - ``port`` (either an integer, or a list of integers).
 
@@ -52,7 +52,7 @@ High-level parameters
   - ``rpc_address`` (list of strings).
 
     The RPC server address for each stream, specified as a string in "zeromq" format
-    (e.g. ``"tcp://127.0.0.1:5555"`` or ``tcp://eno1:5555``).  The 'rpc_address' field must be a list whose length
+    (e.g. ``"tcp://127.0.0.1:5555"`` or ``"tcp://eno1:5555"``).  The 'rpc_address' field must be a list whose length
     is equal to the number of streams on the L1 node, that is, the number of distinct
     (ipaddr, udp_port) pairs.
 
@@ -62,7 +62,7 @@ High-level parameters
   - ``prometheus_address`` (list of strings)
 
     The L1 server also defines one prometheus server per beam.  The syntax is the same
-    as the ``rpc_address`` keyword above.
+    as the rpc_address keyword above.
 
   - ``logger_address`` (string, optional)
 
@@ -74,7 +74,7 @@ High-level parameters
 
     If nonzero, then data files written to disk by the L1 server will contain the RFI mask,
     with the specified number of frequency channels.  Note that the RFI JSON file must contain
-    a matching ``mask_counter`` transform with the appropriate frequency resolution.  If zero,
+    a matching mask_counter transform with the appropriate frequency resolution.  If zero,
     then data files written by the server will not contain the RFI mask.
 
   - ``frame0_url`` (string)
