@@ -13,7 +13,6 @@ If you are interested in offline postprocessing of CHIME data, none of this will
    configuration_file_overview
    l1_streams
    two_node_examples
-   eight_node_examples
    l1_config_reference/index
    l0_config_reference
    rpc_reference
