@@ -79,10 +79,10 @@ High-level parameters
 
   - ``frame0_url`` (string)
 
-    If a nonempty string, then the L1 server will determine the FPGA start time
-    by "curl"-ing the specified URL.  This is necessary in order to convert FPGA
-    counts to absolute times.  The FPGA start time will be written into the
-    data files written to disk by the L1 server.
+    If a nonempty string (e.g. ``"http://carillon.chime:54321/get-frame0-time"``),
+    then the L1 server will determine the FPGA start time by "curl"-ing the specified URL.
+    This is necessary in order to convert FPGA counts to absolute times.
+    The FPGA start time will be written into the data files written to disk by the L1 server.
 
   - ``frame0_timeout_ms`` (integer, default 3000)
 

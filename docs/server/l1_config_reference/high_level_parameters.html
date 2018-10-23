@@ -235,10 +235,10 @@ a matching mask_counter transform with the appropriate frequency resolution.  If
 then data files written by the server will not contain the RFI mask.</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">frame0_url</span></code> (string)</p>
-<p>If a nonempty string, then the L1 server will determine the FPGA start time
-by “curl”-ing the specified URL.  This is necessary in order to convert FPGA
-counts to absolute times.  The FPGA start time will be written into the
-data files written to disk by the L1 server.</p>
+<p>If a nonempty string (e.g. <code class="docutils literal"><span class="pre">&quot;http://carillon.chime:54321/get-frame0-time&quot;</span></code>),
+then the L1 server will determine the FPGA start time by “curl”-ing the specified URL.
+This is necessary in order to convert FPGA counts to absolute times.
+The FPGA start time will be written into the data files written to disk by the L1 server.</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">frame0_timeout_ms</span></code> (integer, default 3000)</p>
 <p>Timeout for frame0_url curl requests, in milliseconds.</p>

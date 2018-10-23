@@ -188,6 +188,14 @@ scritping framework for RFI removal and offline L1 analysis.  <cite>(frb1 only)<
 toplevel repo, whose documentation you’re reading right now.</li>
 </ul>
 </div></blockquote>
+<p><strong>Warning:</strong> one problem with our current build system is that it doesn’t track dependencies
+between repositories.  So for example, if you update bonsai and do ‘make install’, you
+should rebuild everything which depends on bonsai (for example rf_pipelines) from scratch.
+Otherwise you can get unpredictable results, such as segfaults.</p>
+<p><strong>Important:</strong> In the previous paragraph, “rebuild from scratch” means <code class="docutils literal"><span class="pre">make</span> <span class="pre">clean;</span> <span class="pre">make</span> <span class="pre">all</span> <span class="pre">install</span></code>.
+Rebuilding with <cite>make all install</cite> wouldn’t be enough, since dependencies aren’t tracked between repositories!</p>
+<p>For this reason, it’s easier to end up with a broken pipeline than you might think.  If you get into trouble,
+see the (<a class="reference internal" href="help_my_pipeline_is_broken.html#help-my-pipeline-is-broken"><span class="std std-ref">Help! My pipeline is broken</span></a>) section below.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>If you’re compiling on one of the CHIME machines, or Kendrick’s desktop (orangutan),
