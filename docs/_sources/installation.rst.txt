@@ -72,8 +72,7 @@ then all of these should already be installed, and you can skip to the next step
 
   - libhdf5. 
 
-    **Currently, the pipeline requires HDF5 version 1.8.12 or later,
-    but does not work with version 1.10.x.  This will be fixed eventually!**
+    **Currently, the pipeline requires HDF5 version 1.8.12-20.  It does not work with 1.8.21+ or 1.10.x.  This will be fixed soon!**
 
     In the meantime, for instructions for installing a version of HDF5
     which is neither too old nor too new, please see `kmsmith137/sp_hdf5/README.md`_.
