@@ -296,6 +296,133 @@ Some more notes on writing Makefile.local files:
     (Note: on osx, you should use DYLD_LIBRARY_PATH environment variable instead of LD_LIBRARY_PATH.)
 
 
+Quick install: frb-analysis
+---------------------------
+
+Here are instructions for building the L1 pipeline from scratch on frb-analysis
+(the CHIMEFRB compute node at DRAO).
+
+Building on this machine is nontrivial!  There is a global conda environment
+which "shadows" the CentOS default packages, but does not work with the L1 pipeline.
+You can disable the conda environment by adding code early in your .bashrc which
+restores the PATH and PYTHONPATH variables to their CentOS defaults (followed by
+"standard" code which configures environment variables for the L1 pipeline).
+
+I suggest adding the following lines to your .bashrc::
+
+  # Restore CentOS defaults (undoing anaconda and astrosoft configuration on frb-analysis)
+  export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+  export PYTHONPATH=
+
+  # Environment modifications expected by pip and easy_install
+  export PATH=$HOME/.local/bin:$PATH
+
+  # Environment modifications expected by L1 pipeline
+  export PATH=$HOME/bin:$PATH
+  export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
+  export PYTHONPATH=$HOME/lib/python2.7/site-packages:$PYTHONPATH
+
+Next you'll need to install (in your user directory, not globally!) up-to-date versions of
+some python packages which are not installed on frb-analysis::
+
+  easy_install --upgrade --user pip
+  pip install --upgrade --user numpy
+  pip install --upgrade --user scipy
+  pip install --upgrade --user matplotlib
+  pip install --upgrade --user Pillow
+  pip install --upgrade --user h5py
+  pip install --upgrade --user Cython
+  pip install --upgrade --user zmq
+  pip install --upgrade --user msgpack-python
+  pip install --upgrade --user pyyaml
+
+Next you'll need to install an **out-of-date** version of the HDF5 library!  The L1 pipeline
+doesn't work with recent versions of HDF5.  This is getting to be a big nuisance issue, and
+and I hope to fix it soon!  In the meantime you'll need to download an old version of HDF5
+(I recommend 1.8.20) and install it in your user directory as follows::
+
+  cd ~
+  wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.20/src/hdf5-1.8.20.tar.gz
+  tar zxvf hdf5-1.8.20.tar.gz
+  cd hdf5-1.8.20/
+  ./configure --enable-cxx --prefix=$HOME
+  make -j 20
+  make install
+
+**Note:** the site/Makefile.local.frb-analysis files in the L1 git repositories assume
+that you're using the CentOS system python (``/usr/bin/python``), and a numpy instance
+which has been installed (by pip install --user) in ``$HOME/.local``.  This will be
+the case if you've followed the instructions below, otherwise you'll need to modify the
+Makefile.local files.
+
+**Note 2:** bitshuffle is temporarily omitted from the instructions below, I'll fix
+this at some point (this should be OK since we've basically phased out bitshuffle-compressed
+HDF5 files from the L1 pipeline).
+
+Now you should be able to check out the pipeline modules and build them as follows::
+
+  git clone https://github.com/kmsmith137/simd_helpers
+  git clone https://github.com/kmsmith137/pyclops
+  git clone https://github.com/kmsmith137/rf_kernels
+  git clone https://github.com/kmsmith137/sp_hdf5
+  git clone https://github.com/kmsmith137/simpulse
+  git clone https://github.com/CHIMEFRB/ch_frb_io
+  git clone https://github.com/CHIMEFRB/bonsai
+  git clone https://github.com/kmsmith137/rf_pipelines
+  git clone https://github.com/mrafieir/ch_frb_rfi
+  git clone https://github.com/kmsmith137/ch_frb_l1
+
+  cd simd_helpers
+  ln -s site/Makefile.local.norootprivs Makefile.local
+  make -j4 install
+  cd ..
+
+  cd pyclops
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd rf_kernels
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd sp_hdf5
+  ln -s site/Makefile.local.linux Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd simpulse
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd ch_frb_io
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd bonsai
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd rf_pipelines
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all install
+  cd ..
+
+  cd ch_frb_rfi
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 install
+  cd ..
+
+  cd ch_frb_l1
+  ln -s site/Makefile.local.frb-analysis Makefile.local
+  make -j4 all
+  cd ..
+
+
 Quick install: frb1
 -------------------
 
