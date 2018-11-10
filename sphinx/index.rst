@@ -10,7 +10,7 @@ is documented!  Here is what we have so far:
 
    installation
    help_my_pipeline_is_broken
-   offline_analysis_todo
+   todo/index
    example_offline_analysis_scripts/index
    drao/index
    server/index
