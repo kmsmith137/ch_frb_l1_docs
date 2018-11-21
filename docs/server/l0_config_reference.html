@@ -216,6 +216,10 @@ the max_packet_size.  (We send as many frequency channels as possible, given the
 max packet size constraint, the number of beams and time samples, and some
 internal constraints of the code.)</p>
 </li>
+<li><p class="first"><code class="docutils literal"><span class="pre">initial_time_index</span></code> (integer, default 0).</p>
+<p>Time index of the first packet sent by the simulator.  (More precisely, the FPGA count
+in the first packet will be initial_time_index * fpga_counts_per_sample.)</p>
+</li>
 </ul>
 </div></blockquote>
 </div>

@@ -68,3 +68,8 @@ In this section, we document the YAML configuration file which is used by the L0
     the max_packet_size.  (We send as many frequency channels as possible, given the
     max packet size constraint, the number of beams and time samples, and some
     internal constraints of the code.)
+
+  - ``initial_time_index`` (integer, default 0).
+
+    Time index of the first packet sent by the simulator.  (More precisely, the FPGA count
+    in the first packet will be initial_time_index * fpga_counts_per_sample.)

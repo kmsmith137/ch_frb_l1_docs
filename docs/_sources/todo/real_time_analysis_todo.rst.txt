@@ -16,9 +16,13 @@ Real-Time Analysis TODO
 
  - Generate timestreams for pulsar search (Alex Roman is currently working on this.)
 
- - Add RFI mask fraction statistics to Prometheus/Grafana.  (In hindsight I think this is really important.
+ - Add RFI mask fraction statistics to Prometheus/Grafana.  In hindsight I think this is really important.
    We're currently trying to figure out whether the RFI environment changed around October 27, and having
-   historical RFI mask fractions would have been really useful.)
+   historical RFI mask fractions would have been really useful.
+
+   Dustin is currently working on this, prototype available at
+   https://grafana.chimenet.ca/d/whlIPT-mk/l1-rfi-masking-summary?orgId=1&from=1541080903847&to=1541253703847
+   but not yet integrated into our primary L1 dashboards (minor permissions problem needs to be resolved).
 
  - Implement an RFI ultra-coarse-grained viewer, now that we have the "plumbing" in place.
 
@@ -59,6 +63,10 @@ Real-Time Analysis TODO
     and is easily accessible through the high-level webapp.  (It's possible that we're already doing this, and
     I'm just out of the loop :))
 
+    Update: according to Dustin, the logs are already viewable through the webapp (but with a minor permissions
+    problem that needs to be resolved).  We do need to be more rigorous about using chlog(), this is a nontrivial
+    amount of work.  
+
   - If the L1 server runs out of memory, then it currently crashes!  This is currently its main failure mode
     (in the typical failure scenario, there is a long-duration RFI storm which triggers continuous write_requests,
     which overload the NFS server and generate a backlog of write_requests on the L1 nodes).
@@ -92,11 +100,16 @@ Real-Time Analysis TODO
     The C++11 std::thread API is a lot better than the vintage-1980 pthread API.  (The only reason we still
     use pthreads is that I started out using C++03 instead of C++11, and this never got fully cleaned up!)
 
-  - Cleanup: general reorganization of ch_frb_l1, and factoring into more functions.
+  - Cleanup: a lot of kludges in the code to convert between beam ID's and beam indices.  Do we want the
+    L1 server to autodetect its beam ID's?
 
-    This is more of a proposal than a well-defined todo item!  The ch_frb_l1 code has grown by incremental hacking,
-    and could benefit from a cleanup pass.  (Random example: L1RpcServer::_handle_request() is currently 500
-    lines, and is begging to be factored into one function for each RPC.)
+  - Cleanup: ch_frb_l1 is full of kludges to pass data from one thread to another.  In hindsight, we should
+    get rid of the different thread context structs, and have every thread's context be a shared_ptr<l1_server>.
+    The l1_server would need thread/safe accessors, for example a "setter" which sets a shared_ptr<bonsai::dedisperser>
+    (called from the dedispersion thread after initializing and allocating it), and a "getter" which returns a
+    shared_ptr<bonsai::dedisperser>, blocking if unavailable (called from the RPC thread, which needs it to
+    implement latency monitoring).
 
-    I think this is important for long-term maintainability, but we should postpone until all major features
-    are implemented (a milestone which is not too far away!)
+  - Cleanup: I think it would be helpful to factor ch_frb_l1 into more functions.  (Random example: L1RpcServer::_handle_request() 
+    is currently 500 lines, and factoring into one function for each RPC would be a nice cleanup.)
+
