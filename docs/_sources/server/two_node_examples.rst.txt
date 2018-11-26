@@ -1,18 +1,15 @@
-Two-node examples (OUT OF DATE)
-===============================
-
-**This part of the manual is out of date, and should be ignored until updated!**
+Two-node examples
+=================
 
 For now, the "two-node McGill backend" refers to the network below.
 The nodes are in a non-link-bonded configuration, with each of their four
-1 Gbps NIC's on a separate /24 network.
+1 Gbps NIC's on a separate /24 network.  (**Note: this figure is out of
+date, since the frb-archiver no longer exists, but I was too lazy to make
+a new figure.**)
 
 .. image:: two_node_backend.png 
    :width: 890px
    :height: 318px
-
-Future versions of the manual will include examples which include
-more machines, for example a file server.
 
 Example 3
 ---------
@@ -30,20 +27,6 @@ Example 3
 
   - Because of the "slow start" problem described previously in :ref:`Caveats`,
     this example is now a 20-minute run (previously, it was a 5-minute run).
-
-  - First, check that the node is in the network configuration shown above.
-    This is not guaranteed to be the case, since we're still experimenting with	
-    alternate network configurations!  You can check the configuration by doing ``ifconfig -a``
-    on each node, and checking that the IP addresses of each built-in gigabit NIC (eno*)
-    are as follows::
-    
-      |      | frb-compute-0 | frb-compute-1  |
-      |------|---------------|----------------|
-      | eno1 | 10.2.1.100    | 10.2.1.101     |
-      | eno2 | 10.2.2.100    | 10.2.2.101     |
-      | eno3 | 10.2.3.100    | 10.2.3.101     |
-      | eno4 | 10.2.4.100    | 10.2.4.101     |
-
 
   - On ``frb-compute-1``, start the L1 server::
 
@@ -70,7 +53,7 @@ Example 3
     you'll see some incremental output every 10 seconds or so, as coarse-grained triggers 
     are received by the toy-l1b processes.
 
-  - When the simulation ends (after 5 minutes), the toy-l1b processes will write
+  - When the simulation ends (after 20 minutes), the toy-l1b processes will write
     their trigger plots (toy_l1b_beam*.png).  These will be large files (20000-by-4000 pixels)!
 
 **Notes on the two-node backend:**
@@ -98,8 +81,9 @@ Example 3
 Example 4
 ---------
 
-  - This is an 8-beam production-scale example.  It uses a real RFI removal scheme developed by Masoud, and the most optimal
-    bonsai configuration (with a low-DM upsampled tree and two trial spectral indices).
+  - This is an 8-beam production-scale example.  It uses a real RFI removal scheme developed by Masoud (but out-of-date
+    compared to what we're currently using in the real-time search), and the most optimal bonsai configuration 
+    (with a low-DM upsampled tree and two trial spectral indices).
 
   - On ``frb-compute-1``, start the L1 server::
 

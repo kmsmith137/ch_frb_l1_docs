@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Two-node examples (OUT OF DATE) &mdash; ch_frb_l1  documentation</title>
+  <title>Two-node examples &mdash; ch_frb_l1  documentation</title>
   
 
   
@@ -89,7 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="quick_start_examples.html">Quick-start examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_file_overview.html">Configuration file overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="l1_streams.html">L1 streams</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Two-node examples (OUT OF DATE)</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Two-node examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#example-3">Example 3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-4">Example 4</a></li>
 </ul>
@@ -146,7 +146,7 @@
         
           <li><a href="index.html">The Real-Time L1 Server</a> &raquo;</li>
         
-      <li>Two-node examples (OUT OF DATE)</li>
+      <li>Two-node examples</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,15 +163,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="two-node-examples-out-of-date">
-<h1>Two-node examples (OUT OF DATE)<a class="headerlink" href="#two-node-examples-out-of-date" title="Permalink to this headline">¶</a></h1>
-<p><strong>This part of the manual is out of date, and should be ignored until updated!</strong></p>
+  <div class="section" id="two-node-examples">
+<h1>Two-node examples<a class="headerlink" href="#two-node-examples" title="Permalink to this headline">¶</a></h1>
 <p>For now, the “two-node McGill backend” refers to the network below.
 The nodes are in a non-link-bonded configuration, with each of their four
-1 Gbps NIC’s on a separate /24 network.</p>
+1 Gbps NIC’s on a separate /24 network.  (<strong>Note: this figure is out of
+date, since the frb-archiver no longer exists, but I was too lazy to make
+a new figure.</strong>)</p>
 <a class="reference internal image-reference" href="../_images/two_node_backend.png"><img alt="../_images/two_node_backend.png" src="../_images/two_node_backend.png" style="width: 890px; height: 318px;" /></a>
-<p>Future versions of the manual will include examples which include
-more machines, for example a file server.</p>
 <div class="section" id="example-3">
 <h2>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -189,20 +188,6 @@ distributed on 4x1 Gbps NIC’s by assigning four beams to each NIC.</p>
 </li>
 <li><p class="first">Because of the “slow start” problem described previously in <a class="reference internal" href="high_level_overview.html#caveats"><span class="std std-ref">Caveats</span></a>,
 this example is now a 20-minute run (previously, it was a 5-minute run).</p>
-</li>
-<li><p class="first">First, check that the node is in the network configuration shown above.
-This is not guaranteed to be the case, since we’re still experimenting with
-alternate network configurations!  You can check the configuration by doing <code class="docutils literal"><span class="pre">ifconfig</span> <span class="pre">-a</span></code>
-on each node, and checking that the IP addresses of each built-in gigabit NIC (eno*)
-are as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">|</span>      <span class="o">|</span> <span class="n">frb</span><span class="o">-</span><span class="n">compute</span><span class="o">-</span><span class="mi">0</span> <span class="o">|</span> <span class="n">frb</span><span class="o">-</span><span class="n">compute</span><span class="o">-</span><span class="mi">1</span>  <span class="o">|</span>
-<span class="o">|------|---------------|----------------|</span>
-<span class="o">|</span> <span class="n">eno1</span> <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">1.100</span>    <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">1.101</span>     <span class="o">|</span>
-<span class="o">|</span> <span class="n">eno2</span> <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">2.100</span>    <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">2.101</span>     <span class="o">|</span>
-<span class="o">|</span> <span class="n">eno3</span> <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">3.100</span>    <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">3.101</span>     <span class="o">|</span>
-<span class="o">|</span> <span class="n">eno4</span> <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">4.100</span>    <span class="o">|</span> <span class="mf">10.2</span><span class="o">.</span><span class="mf">4.101</span>     <span class="o">|</span>
-</pre></div>
-</div>
 </li>
 <li><p class="first">On <code class="docutils literal"><span class="pre">frb-compute-1</span></code>, start the L1 server:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
@@ -228,7 +213,7 @@ from <cite>bonsai_configs/bonsai_production_noups_nbeta1_v2.txt</cite>.</p>
 you’ll see some incremental output every 10 seconds or so, as coarse-grained triggers
 are received by the toy-l1b processes.</p>
 </li>
-<li><p class="first">When the simulation ends (after 5 minutes), the toy-l1b processes will write
+<li><p class="first">When the simulation ends (after 20 minutes), the toy-l1b processes will write
 their trigger plots (toy_l1b_beam*.png).  These will be large files (20000-by-4000 pixels)!</p>
 </li>
 </ul>
@@ -262,8 +247,9 @@ after throwing an exception, because it is trying to write its core dump.  My so
 <h2>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
-<li><p class="first">This is an 8-beam production-scale example.  It uses a real RFI removal scheme developed by Masoud, and the most optimal
-bonsai configuration (with a low-DM upsampled tree and two trial spectral indices).</p>
+<li><p class="first">This is an 8-beam production-scale example.  It uses a real RFI removal scheme developed by Masoud (but out-of-date
+compared to what we’re currently using in the real-time search), and the most optimal bonsai configuration
+(with a low-DM upsampled tree and two trial spectral indices).</p>
 </li>
 <li><p class="first">On <code class="docutils literal"><span class="pre">frb-compute-1</span></code>, start the L1 server:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
