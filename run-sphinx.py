@@ -3,7 +3,7 @@
 # This script will run 'sphinx-build' to generate static web pages in docs/
 # from the .rst and image files in sphinx/.
 #
-#   - After the script has run, you can browse a local copy of the documentationm
+#   - After the script has run, you can browse a local copy of the documentation
 #     by pointing your browser to docs/index.html.
 #
 #   - To publish your local copy to the web (https://kmsmith137.github.io/ch_frb_l1_docs/), 
