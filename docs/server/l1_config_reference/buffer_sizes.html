@@ -173,21 +173,21 @@
 <p>The following parameters in the L1 server config file define buffer sizes.</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">unassembled_ringbuf_nsamples</span></code> (integer, default 4096).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">unassembled_ringbuf_nsamples</span></code> (integer, default 4096).</p>
 <p>The “unassembled” ring buffer sits between the network thread and assembler thread.
 If the assembler thread is running slow, then this ring buffer will start to fill up.
 The unassembled_ringbuf_nsamples parameter sets the size of the ring buffer, in time samples.</p>
 <p>Currently, if the unassembled ring buffer fills up, then the L1 server throws an exception.
 This behavior will eventually be replaced with some recovery logic which resets the server.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">assembled_ringbuf_nsamples</span></code> (integer, default 8192).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">assembled_ringbuf_nsamples</span></code> (integer, default 8192).</p>
 <p>The “assembled” ring buffer sits between the assembler thread and the dedispersion threads.
 If the dedispersion threads are running slow, then this ring buffer will start to fill up.
 The assembled_ringbuf_nsamples parameter sets the size of the ring buffer, in time samples.</p>
 <p>Currently, if the assembled ring buffer fills up, then the L1 server throws an exception.
 This behavior will eventually be replaced with some recovery logic which resets the server.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">telescoping_ringbuf_nsamples</span></code> (list of integers, optional).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">telescoping_ringbuf_nsamples</span></code> (list of integers, optional).</p>
 <p>After data is processed by the assembler thread, it goes to the “telescoping” ring buffer,
 which saves it for later retrieval by RPC’s.</p>
 <p>As the name suggests, the buffer is telescoping, in the sense that data is saved at
@@ -198,7 +198,7 @@ resolution.</p>
 <p>The telescoping_ringbuf_nsamples field is a list of integers, which defines how many
 samples (i.e. milliseconds) are saved at each level of downsampling.  The scheme described
 in the previous paragraph could be configured as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Telescoping ring buffer configuration</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Telescoping ring buffer configuration</span>
 <span class="c1">#      60 seconds at 1 ms time resolution</span>
 <span class="c1">#   +  60 seconds at 2 ms time resolution</span>
 <span class="c1">#   + 180 seconds at 4 ms time resolution</span>
@@ -213,7 +213,7 @@ sample counts, i.e. the number “180000” above corresponds to (180000 * 1 ms)
 telescoping ring buffer is disabled, and the node will not save data for RPC-based
 retrieval.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">write_staging_area_gb</span></code> (floating-point, default 0.0)</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">write_staging_area_gb</span></code> (floating-point, default 0.0)</p>
 <p>Allocates additional memory (in addition to memory reserved for the assembled_ringbuf
 and telescoping_ringbuf) for “staging” intensity data after an RPC write request is
 received, but before the data is actually written to disk or NFS.</p>
@@ -225,7 +225,7 @@ hard to figure out how much memory is being used by other things (e.g. bonsai).
 I plan to address this soon!  In the meantime, I recommend 2 GB/beam for production-scale
 runs, and 0.1 GB/beam for subscale testing runs.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">rfi_mask_meas_history</span></code> (integer, default 300)</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">rfi_mask_meas_history</span></code> (integer, default 300)</p>
 <p>This is the buffer size (in assembled_chunks, which correspond to one second of data)
 for the mask_counter ring buffers.  These are used to implement the RFI real-time web monitor.</p>
 </li>
@@ -284,7 +284,6 @@ for the mask_counter ring buffers.  These are used to implement the RFI real-tim
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

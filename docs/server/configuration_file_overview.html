@@ -167,11 +167,11 @@
 <h1>Configuration file overview<a class="headerlink" href="#configuration-file-overview" title="Permalink to this headline">¶</a></h1>
 <p>Before giving more examples, we pause to give an overview
 of the various config files used in the L0 simulator
-(<code class="docutils literal"><span class="pre">ch-frb-simulate-l0</span></code>) and the L1 server (<code class="docutils literal"><span class="pre">ch-frb-l1</span></code>).</p>
+(<code class="docutils literal notranslate"><span class="pre">ch-frb-simulate-l0</span></code>) and the L1 server (<code class="docutils literal notranslate"><span class="pre">ch-frb-l1</span></code>).</p>
 <div class="section" id="l0-simulator-parameter-file">
 <h2>L0 simulator parameter file<a class="headerlink" href="#l0-simulator-parameter-file" title="Permalink to this headline">¶</a></h2>
 <p>The L0 simulator command-line syntax is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="o">&lt;</span><span class="n">l0_params</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">num_seconds</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="o">&lt;</span><span class="n">l0_params</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">num_seconds</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The l0_params.yaml file contains high-level info such as
@@ -184,7 +184,7 @@ detailed information on the L1 config file, see <a class="reference internal" hr
 <div class="section" id="l1-server-parameter-files">
 <h2>L1 server parameter files<a class="headerlink" href="#l1-server-parameter-files" title="Permalink to this headline">¶</a></h2>
 <p>The L1 server command-line syntax is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="p">[</span><span class="o">-</span><span class="n">fvpm</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">l1_config</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">rfi_config</span><span class="o">.</span><span class="n">json</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">bonsai_config</span><span class="o">.</span><span class="n">hdf5</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_file</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="p">[</span><span class="o">-</span><span class="n">fvpm</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">l1_config</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">rfi_config</span><span class="o">.</span><span class="n">json</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">bonsai_config</span><span class="o">.</span><span class="n">hdf5</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_file</span><span class="o">&gt;</span>
   <span class="o">-</span><span class="n">f</span> <span class="n">forces</span> <span class="n">the</span> <span class="n">L1</span> <span class="n">server</span> <span class="n">to</span> <span class="n">run</span><span class="p">,</span> <span class="n">even</span> <span class="k">if</span> <span class="n">the</span> <span class="n">config</span> <span class="n">files</span> <span class="n">look</span> <span class="n">fishy</span>
   <span class="o">-</span><span class="n">v</span> <span class="n">increases</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">the</span> <span class="n">toplevel</span> <span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="n">logic</span>
   <span class="o">-</span><span class="n">p</span> <span class="n">enables</span> <span class="n">a</span> <span class="n">very</span> <span class="n">verbose</span> <span class="n">debug</span> <span class="n">trace</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pipe</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">between</span> <span class="n">L1a</span> <span class="ow">and</span> <span class="n">L1b</span>
@@ -237,27 +237,27 @@ indices, etc.</p>
 First, a human-editable text file <cite>bonsai_xxx.txt</cite> is written (for an example, see
 bonsai_configs/bonsai_example1.txt).  Second, this must be processed into a “config HDF5”
 file using the utility <cite>bonsai-mkweight</cite>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">hdf5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">hdf5</span>
 </pre></div>
 </div>
-<p>where that the <code class="docutils literal"><span class="pre">bonsai-mkweight</span></code> utility is part of bonsai, not ch_frb_l1.</p>
+<p>where that the <code class="docutils literal notranslate"><span class="pre">bonsai-mkweight</span></code> utility is part of bonsai, not ch_frb_l1.</p>
 <p>The config HDF5 file contains all of the information in an ordinary config file, plus some large binary arrays.
-The config HDF5 file is not human-readable, but can be inspected with <code class="docutils literal"><span class="pre">bonsai-show-config</span></code>.
+The config HDF5 file is not human-readable, but can be inspected with <code class="docutils literal notranslate"><span class="pre">bonsai-show-config</span></code>.
 The binary array data in the config HDF5 file is needed by the L1 server, to do its real-time RFI-mask-filling
 and trigger variance estimation.</p>
 <p>Note that we don’t put config HDF5 files in git, since they are large files, so you may need
 to create them by hand using the above procedure.  Exception: on the CHIME nodes,
 the “production” config HDF5 files should already be in <cite>/data/bonsai_configs</cite>.</p>
 <p>If the L1 server fails with an error such as:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>bonsai_xxx.txt: transfer matrices not found.  Maybe you accidentally specified a .txt file instead of .hdf5?
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bonsai_xxx.txt: transfer matrices not found.  Maybe you accidentally specified a .txt file instead of .hdf5?
 </pre></div>
 </div>
 <p>then it’s failing to find the binary array data it expects in the config HDF5 file.
 Most likely, this is because an ordinary bonsai config file was specified on the command line,
 instead of a config HDF5 file.</p>
-<p>The utility <code class="docutils literal"><span class="pre">bonsai-show-config</span></code> is useful for viewing the contents of
+<p>The utility <code class="docutils literal notranslate"><span class="pre">bonsai-show-config</span></code> is useful for viewing the contents of
 a bonsai parameter file, including derived parameters such as the max DM
-of each tree.  The utility <code class="docutils literal"><span class="pre">bonsai-time-dedisperser</span></code> is useful for estimating
+of each tree.  The utility <code class="docutils literal notranslate"><span class="pre">bonsai-time-dedisperser</span></code> is useful for estimating
 the CPU cost of dedispersion, given a bonsai config file.  (These utilities
 are part of bonsai, not part of ch-frb-l1.)</p>
 <p>The bonsai library is the best-documented part of the L1 pipeline.
@@ -270,12 +270,12 @@ file and pointers to example programs, see
 whether a file with the given filename exists).  However, the filename is passed from the
 L1 server command line to the L1b command line in the following way.  When the
 L1 server is invoked with the command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="o">&lt;</span><span class="n">l1_config</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">rfi_config</span><span class="o">.</span><span class="n">json</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">bonsai_config</span><span class="o">.</span><span class="n">txt</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_file</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="o">&lt;</span><span class="n">l1_config</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">rfi_config</span><span class="o">.</span><span class="n">json</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">bonsai_config</span><span class="o">.</span><span class="n">txt</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_file</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>it will spawn one L1b subprocess for each beam.  These subprocesses are invoked
 with the command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">l1b_executable_filename</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">beam_id</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">l1b_executable_filename</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">l1b_config_file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">beam_id</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>where the second argument is passed through from the L1 command line.</p>
@@ -344,7 +344,6 @@ python script which postprocesses the coarse-grained triggers!</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

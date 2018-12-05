@@ -155,18 +155,18 @@
             
   <div class="section" id="inventory-of-machines">
 <h1>Inventory of machines<a class="headerlink" href="#inventory-of-machines" title="Permalink to this headline">¶</a></h1>
-<p>The DRAO gateway machines are <code class="docutils literal"><span class="pre">tubular.drao.nrc.ca</span></code> and <code class="docutils literal"><span class="pre">liberty.drao.nrc.ca</span></code>.
+<p>The DRAO gateway machines are <code class="docutils literal notranslate"><span class="pre">tubular.drao.nrc.ca</span></code> and <code class="docutils literal notranslate"><span class="pre">liberty.drao.nrc.ca</span></code>.
 All ssh connections to the outside world go through one of these machines!
 You will need to get accounts on these machines before doing any computing at DRAO.</p>
 <p>After logging into one of the gateway machines, here are some machines you can ssh to:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">frb-analysis</span></code>: dedicated node for offline analysis, use this machine by default.</li>
-<li><code class="docutils literal"><span class="pre">frb-archiver</span></code>: large (~150 TB) central file server where we store all of our data.
+<li><code class="docutils literal notranslate"><span class="pre">frb-analysis</span></code>: dedicated node for offline analysis, use this machine by default.</li>
+<li><code class="docutils literal notranslate"><span class="pre">frb-archiver</span></code>: large (~150 TB) central file server where we store all of our data.
 You shouldn’t run analysis code directly on the file server; instead use an analysis node
-which can access the file server over the network (as <code class="docutils literal"><span class="pre">/frb-archiver-1</span></code> or <code class="docutils literal"><span class="pre">/frb-archiver-2</span></code>,
+which can access the file server over the network (as <code class="docutils literal notranslate"><span class="pre">/frb-archiver-1</span></code> or <code class="docutils literal notranslate"><span class="pre">/frb-archiver-2</span></code>,
 which access the same server over different physical ethernet networks).</li>
-<li><code class="docutils literal"><span class="pre">cf1n0</span></code>: this is the only(?) seacan node where <code class="docutils literal"><span class="pre">/home</span></code> is mounted read-write.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cf1n0</span></code>: this is the only(?) seacan node where <code class="docutils literal notranslate"><span class="pre">/home</span></code> is mounted read-write.</li>
 </ul>
 </div></blockquote>
 <p>A longer list is coming soon!</p>
@@ -223,7 +223,6 @@ which access the same server over different physical ethernet networks).</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

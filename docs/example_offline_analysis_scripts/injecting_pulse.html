@@ -159,15 +159,15 @@
 <h1>Injecting a simulated pulse<a class="headerlink" href="#injecting-a-simulated-pulse" title="Permalink to this headline">¶</a></h1>
 <p>This script generates a stream consisting of Gaussian noise plus a single dispersed pulse.
 The stream is represented as an rf_pipelines object, which is serialized to a json file.
-The json file can be used in <code class="docutils literal"><span class="pre">rfp-run</span></code>, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rfp</span><span class="o">-</span><span class="n">run</span> <span class="o">-</span><span class="n">w</span> <span class="n">pulse</span> \                            <span class="c1"># run name for web viewer</span>
+The json file can be used in <code class="docutils literal notranslate"><span class="pre">rfp-run</span></code>, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rfp</span><span class="o">-</span><span class="n">run</span> <span class="o">-</span><span class="n">w</span> <span class="n">pulse</span> \                            <span class="c1"># run name for web viewer</span>
   <span class="n">example_gaussian_stream_with_pulse</span><span class="o">.</span><span class="n">json</span> \   <span class="c1"># stream</span>
   <span class="n">example_bonsai_transform</span><span class="o">.</span><span class="n">json</span>               <span class="c1"># see make-jsonized-bonsai-transform.py</span>
 </pre></div>
 </div>
 <p>to dedisperse the data and plot the result in the web viewer.</p>
-<p>(Source: <code class="docutils literal"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-gaussian-stream-with-pulse.py</span></code>.)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p>(Source: <code class="docutils literal notranslate"><span class="pre">ch_frb_l1_docs/example_offline_analysis_scripts/make-gaussian-stream-with-pulse.py</span></code>.)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#</span>
 <span class="c1"># This script creates a stream consisting of Gaussian noise plus a single pulse,</span>
 <span class="c1"># and serializes the stream to a json file.</span>
@@ -261,7 +261,6 @@ The json file can be used in <code class="docutils literal"><span class="pre">rf
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -155,14 +155,14 @@
             
   <div class="section" id="offline-analysis-todo">
 <h1>Offline Analysis TODO<a class="headerlink" href="#offline-analysis-todo" title="Permalink to this headline">¶</a></h1>
-<p>Items marked <code class="docutils literal"><span class="pre">KMS</span></code> are things Kendrick is actively working on!</p>
+<p>Items marked <code class="docutils literal notranslate"><span class="pre">KMS</span></code> are things Kendrick is actively working on!</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Inventory captured data, make pulsar acquisitions.</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="../example_offline_analysis_scripts/make_acq.html#making-an-acquisition"><span class="std std-ref">Making an acquisition</span></a> example script, showing how to construct an rf_pipelines stream object from a set of data files,
-and serialize the stream to a json file for later use in <code class="docutils literal"><span class="pre">rfp-run</span></code>.</li>
+and serialize the stream to a json file for later use in <code class="docutils literal notranslate"><span class="pre">rfp-run</span></code>.</li>
 </ul>
 </div></blockquote>
 <p>To determine whether there is a bright pulsar in a run, we will want to convert FPGA timestamps to real timestamps.</p>
@@ -194,15 +194,15 @@ See the <a class="reference internal" href="../example_offline_analysis_scripts/
 script only uses 10 data files, i.e. 10 seconds of data.)</p>
 </li>
 <li><p class="first">Choose a RFI transform chain.  There are some json-serialized RFI chains in the <a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a> repo.
-In this example, I’ll use <code class="docutils literal"><span class="pre">ch_frb_rfi/json_files/rfi_16k/17-12-02-two-pass-v3.json</span></code>, which also contains
+In this example, I’ll use <code class="docutils literal notranslate"><span class="pre">ch_frb_rfi/json_files/rfi_16k/17-12-02-two-pass-v3.json</span></code>, which also contains
 some plotter transforms for the web viewer.</p>
 </li>
 <li><p class="first">Make a bonsai transform and serialize it to json.  There are some json-serialized bonsai transforms in <a class="reference external" href="https://github.com/mrafieir/ch_frb_rfi">mrafieir/ch_frb_rfi</a>,
 but let’s make a new transform, so that we can write the output of the dedispersion transform to an hdf5 file for later
 processing.  See the <a class="reference internal" href="../example_offline_analysis_scripts/make_jsonized_bonsai_transform.html#making-a-bonsai-transform"><span class="std std-ref">Making a bonsai transform</span></a> example script.</p>
 </li>
-<li><p class="first">Run the “stream -&gt; rfi -&gt; bonsai” pipeline with the <code class="docutils literal"><span class="pre">rfp-run</span></code> utility (which is part of rf_pipelines):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="c1"># Type &#39;rfp-run&#39; with no arguments for a list of all its command-line options.</span>
+<li><p class="first">Run the “stream -&gt; rfi -&gt; bonsai” pipeline with the <code class="docutils literal notranslate"><span class="pre">rfp-run</span></code> utility (which is part of rf_pipelines):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Type &#39;rfp-run&#39; with no arguments for a list of all its command-line options.</span>
 
 <span class="n">rfp</span><span class="o">-</span><span class="n">run</span> <span class="o">-</span><span class="n">w</span> <span class="n">example</span> \    <span class="c1"># name of run for web viewer</span>
   <span class="n">example_acq</span><span class="o">.</span><span class="n">json</span> \      <span class="c1"># first in pipeline: stream</span>
@@ -210,7 +210,7 @@ processing.  See the <a class="reference internal" href="../example_offline_anal
   <span class="n">example_bonsai_transform</span><span class="o">.</span><span class="n">json</span>     <span class="c1"># last in pipeline: dedisperser</span>
 </pre></div>
 </div>
-<p>Depending on how long your stream is, this may take a while to run.  You may want to use <code class="docutils literal"><span class="pre">screen</span></code> or <code class="docutils literal"><span class="pre">tmux</span></code> to run the command above.</p>
+<p>Depending on how long your stream is, this may take a while to run.  You may want to use <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code> to run the command above.</p>
 <p>After the pipeline run ends, there should be an entry in the web viewer, containing waterfall and trigger plots.
 (For information on the web viewer, see <a class="reference internal" href="../drao/web_services.html#web-services"><span class="std std-ref">Web Services</span></a>.)</p>
 <p>There should also be a large HDF5 file containing bonsai’s output arrays during the run.  We can postprocess
@@ -222,9 +222,9 @@ a real-time tool which runs in the pipeline, postprocesses the bonsai output arr
 <li><p class="first">At some point we should figure out how to query the SQL database to figure out what SNR values
 were reported by the real-time pipeline.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">KMS</span></code>: the bonsai HDF5 file format currently isn’t documented anywhere!  I’ll do this soon.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">KMS</span></code>: the bonsai HDF5 file format currently isn’t documented anywhere!  I’ll do this soon.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">KMS</span></code>: the bonsai HDF5 file should get written to the web viewer directory (or pipeline rundir).
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">KMS</span></code>: the bonsai HDF5 file should get written to the web viewer directory (or pipeline rundir).
 Currently it gets written to the current working directory when the pipeline is run.
 This is a recipe for different runs overwriting each other and creating confusion!</p>
 </li>
@@ -235,7 +235,7 @@ This is a recipe for different runs overwriting each other and creating confusio
 Our RFI removal chain includes a “detrender” (i.e. fitting and subtracting a slowly varying baseline) along the
 frequency axis of the (frequency, time) array.  This removes a fraction of the SNR, which will depend on the parameters
 of the pulse.</p>
-<p>In the memo <a class="reference download internal" href="../_downloads/18-03-19-pulsar-snr.pdf" download=""><code class="xref download docutils literal"><span class="pre">18-03-19-pulsar-snr.pdf</span></code></a>, we made an initial study of this
+<p>In the memo <a class="reference download internal" download="" href="../_downloads/838a5ad4c48e055e0b1e81b1424e1f04/18-03-19-pulsar-snr.pdf"><code class="xref download docutils literal notranslate"><span class="pre">18-03-19-pulsar-snr.pdf</span></code></a>, we made an initial study of this
 effect and found that the fractional SNR loss was a simple function of (pulse DM) / (pulse width).  For typical FRB
 parameters, the SNR loss is small, but for pulsars it can be very significant.</p>
 <p>Does this effect completely or partially explain our low reported SNR’s?</p>
@@ -260,7 +260,7 @@ pulsars as we do in the real-time search.)</p>
 is unmasked or masked (i.e. the complement of the mask array), and sets the mask array to all ones.  We put this
 transform after RFI removal and before dedispersion.
 Then if we see the pulsar in the output of the dedispersion transform, we’ll know that we’re overclipping.</p>
-<p><code class="docutils literal"><span class="pre">KMS</span></code>: will add an example script showing how to write a new rf_pipelines transform in python.</p>
+<p><code class="docutils literal notranslate"><span class="pre">KMS</span></code>: will add an example script showing how to write a new rf_pipelines transform in python.</p>
 </li>
 <li><p class="first">Simulating a pulsar.  Are bonsai’s SNR estimates still unbiased if pulses are repeating (rather than isolated)?</p>
 <p>Here is something we should have done a long time ago!  The variance estimation logic in bonsai assumes that
@@ -277,11 +277,11 @@ weight frequency channel “i” by (s_i / v_i), where s_i is the frequency spec
 the strength of the pulsar in channel i), and v_i is the variance of channel i.</p>
 <p>We don’t know how much the quantity (s_i / v_i) varies from channel to channel, so we don’t know
 how suboptimal our current weighting is!</p>
-<p>There is already a <code class="docutils literal"><span class="pre">VarianceEstimator</span></code> class in rf_pipelines, so we should be able to use that
+<p>There is already a <code class="docutils literal notranslate"><span class="pre">VarianceEstimator</span></code> class in rf_pipelines, so we should be able to use that
 to get estimates for v_i.</p>
 <p>Getting estimates for s_i is harder and will require significant new code!  It helps a lot that
 we know the period and dispersion measure of the pulsar in advance.</p>
-<p><code class="docutils literal"><span class="pre">KMS</span></code>: will add an example script showing how to use the VarianceEstimator.</p>
+<p><code class="docutils literal notranslate"><span class="pre">KMS</span></code>: will add an example script showing how to use the VarianceEstimator.</p>
 </li>
 <li><p class="first">Some low-level data quality studies that don’t require running the pipeline!</p>
 <p>Is the radiometer equation satisfied?  The radiometer equation states that the variance V
@@ -299,7 +299,7 @@ larger than the quantization scale.</p>
 </li>
 <li><p class="first">If we end up finding it difficult to write an RFI transform chain which avoids overclipping bright pulsars,
 here is an idea which may be helpful.</p>
-<p>We can write a pair of transforms, the <code class="docutils literal"><span class="pre">pulsar_masker</span></code> and <code class="docutils literal"><span class="pre">pulsar_unmasker</span></code>, which respectively mask
+<p>We can write a pair of transforms, the <code class="docutils literal notranslate"><span class="pre">pulsar_masker</span></code> and <code class="docutils literal notranslate"><span class="pre">pulsar_unmasker</span></code>, which respectively mask
 pulses from a known pulsar, and undo this masking.  Then we can use a weaker level of RFI removal for data
 in pulses than for data outside pulses.  This would be implemented by applying the pulsar_masker, then applying
 “strong” RFI removal, then the pulsar_unmasker, then “weak” RFI removal.</p>
@@ -362,7 +362,6 @@ Or do we need to infer the arrival time directly from the data, by running a sim
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

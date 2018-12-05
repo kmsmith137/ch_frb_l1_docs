@@ -170,13 +170,13 @@
 <p>The main high-level components of the L1 code are:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">ch-frb-l1</span></code>: The “L1 server”.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">ch-frb-l1</span></code>: The “L1 server”.</p>
 <p>This is the master executable, which receives UDP packets
 containing one or more beams, dedisperses each beam in a
 separate thread, and passes coarse-grained triggers to “L1b”
 (which runs as a separate process for each beam).</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">ch-frb-simulate-l0</span></code>: The “L0 simulator”.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">ch-frb-simulate-l0</span></code>: The “L0 simulator”.</p>
 <p>This is for testing the L1 server.  It simulates a packet stream
 and sends it to L1.  Right now it can only simulate noise, but
 FRB’s will be added soon!</p>
@@ -216,7 +216,7 @@ have been increased from 5-minute runs to 20-minute runs.</p>
 First, a human-editable text file <cite>bonsai_xxx.txt</cite> is written (for an example, see
 bonsai_configs/bonsai_example1.txt).  Second, this must be processed into an HDF5
 file using the utility <cite>bonsai-mkweight</cite>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">hdf5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_xxx</span><span class="o">.</span><span class="n">hdf5</span>
 </pre></div>
 </div>
 <p>where the <cite>bonsai-mkweight</cite> utility is part of bonsai, not ch_frb_l1.</p>
@@ -299,7 +299,6 @@ will probably uncover bugs!</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

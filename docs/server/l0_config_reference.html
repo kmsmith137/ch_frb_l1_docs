@@ -164,19 +164,19 @@
 <p>In this section, we document the YAML configuration file which is used by the L0 simulator.</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">nbeams</span></code> (integer).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">nbeams</span></code> (integer).</p>
 <p>Number of beams being simulated.
 Must match the value of ‘nbeams’ in the L1 server’s config file.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">nfreq</span></code> (integer).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">nfreq</span></code> (integer).</p>
 <p>Number of frequency channels (usually 1024 in subscale testing, or 16384 in production-scale).
 Must match the value of ‘nfreq’ in the L1 server’s config file.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">nt_per_packet</span></code> (integer).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">nt_per_packet</span></code> (integer).</p>
 <p>Number of time samples sent in each UDP packet.  Must match the value of ‘nt_per_packet’
 in the L1 server’s config file.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">fpga_counts_per_sample</span></code> (integer, default 384).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">fpga_counts_per_sample</span></code> (integer, default 384).</p>
 <p>Number of FPGA counts per time sample.  Must match the value of ‘fpga_counts_per_sample’
 in the L1 server’s config file.</p>
 <p>This is an indirect way of specifiying the sampling rate.  One FPGA count corresponds to
@@ -188,26 +188,26 @@ faster than normal, you can take fpga_counts_per_sample=349.  (Note that you’l
 need to decrease the value of ‘dt_sample’ in the bonsai config file by 10%, and the
 max DM of the search will automatically decrease by 10%.)</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">ipaddr</span></code> (either a string, or a list of strings).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">ipaddr</span></code> (either a string, or a list of strings).</p>
 <p>This has the same meaning as the <cite>ipaddr</cite> parameter in the L1 config file (see above).</p>
 <p>It can either be a list of strings (one for each stream) or a single string
-(if all strings use the same IP address).  IP addresses are specified as strings, e.g. <code class="docutils literal"><span class="pre">&quot;127.0.0.1&quot;</span></code>.</p>
+(if all strings use the same IP address).  IP addresses are specified as strings, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;127.0.0.1&quot;</span></code>.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">port</span></code> (either an integer, or a list of integers).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">port</span></code> (either an integer, or a list of integers).</p>
 <p>This has the same meaning as the <cite>port</cite> parameter in the L1 config file (see above).</p>
 <p>One or more UDP ports, for the L1 server’s stream(s).  This can be either a list
 of UDP ports (one for each stream), or a single UDP port (if all streams use the same
 port).</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">nthreads</span></code> (integer).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">nthreads</span></code> (integer).</p>
 <p>Number of threads used by the L0 simulator.  This must be a multiple of the number of
 streams, i.e. the number of distinct (ipaddr, udp_port) pairs.  Usually I just set nthreads = nstreams.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">max_packet_size</span></code> (integer, default 8900).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">max_packet_size</span></code> (integer, default 8900).</p>
 <p>If running on a network with ethernet jumbo frames enabled, the default of 8900
 bytes is a good choice.  Otherwise, I suggest 1400.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">nfreq_coarse_per_packet</span></code> (integer, optional).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">nfreq_coarse_per_packet</span></code> (integer, optional).</p>
 <p>If specified, this determines the number of “coarse” frequency channels sent per packet.
 A “coarse” frequency channel is always 1/1024 of the full CHIME band.  For example, if
 nfreq=16384, then one coarse frequency channel contains 16 “fine” frequency channels.</p>
@@ -216,7 +216,7 @@ the max_packet_size.  (We send as many frequency channels as possible, given the
 max packet size constraint, the number of beams and time samples, and some
 internal constraints of the code.)</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">initial_time_index</span></code> (integer, default 0).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">initial_time_index</span></code> (integer, default 0).</p>
 <p>Time index of the first packet sent by the simulator.  (More precisely, the FPGA count
 in the first packet will be initial_time_index * fpga_counts_per_sample.)</p>
 </li>
@@ -275,7 +275,6 @@ in the first packet will be initial_time_index * fpga_counts_per_sample.)</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -174,16 +174,16 @@ over the loopback interface (127.0.0.1).</p>
 <blockquote>
 <div><ul>
 <li><p class="first"><strong>This step only needs to be done once.</strong> Initialize the bonsai HDF5 file,
-using the utility <code class="docutils literal"><span class="pre">bonsai-mkweight</span></code>, which should have been installed in
+using the utility <code class="docutils literal notranslate"><span class="pre">bonsai-mkweight</span></code>, which should have been installed in
 your $PATH when bonsai was built:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
 <span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_example1</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_example1</span><span class="o">.</span><span class="n">hdf5</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Start the L1 server:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
    <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example1</span><span class="o">.</span><span class="n">yaml</span>  \
    <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_placeholder</span><span class="o">.</span><span class="n">json</span>  \
    <span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_example1</span><span class="o">.</span><span class="n">hdf5</span>  \
@@ -196,7 +196,7 @@ next section (<a class="reference internal" href="configuration_file_overview.ht
 and the server will pause.</p>
 </li>
 <li><p class="first">In another window, start the L0 simulator:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example1</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">30</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example1</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">30</span>
 </pre></div>
 </div>
 <p>This will simulate 30 seconds of data.  If you switch back to the L1 server’s window,
@@ -209,7 +209,7 @@ mentioned previously in <a class="reference internal" href="high_level_overview.
 </li>
 <li><p class="first">Optional: if you would like to try sending RPC’s, you can either run ‘./rpc-client’
 (C++), or ‘python rpc_client.py’ (python).  While the L1 server is running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Send get_statistics RPC using a C++ client, and print the result.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Send get_statistics RPC using a C++ client, and print the result.</span>
 <span class="c1"># Port number 5555 from l1_configs/l1_example1.yaml</span>
 <span class="o">./</span><span class="n">rpc</span><span class="o">-</span><span class="n">client</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5555</span>
 
@@ -239,14 +239,14 @@ This is more representative of the real search, where we plan to use
 <blockquote>
 <div><ul>
 <li><p class="first"><strong>This step only needs to be done once.</strong> Initialize the bonsai HDF5 file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">bonsai_configs</span><span class="o">/</span>
 <span class="n">bonsai</span><span class="o">-</span><span class="n">mkweight</span> <span class="n">bonsai_example2</span><span class="o">.</span><span class="n">txt</span> <span class="n">bonsai_example2</span><span class="o">.</span><span class="n">hdf5</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Start the L1 server:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span>  \
    <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example2</span><span class="o">.</span><span class="n">yaml</span>  \
    <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_placeholder</span><span class="o">.</span><span class="n">json</span>  \
    <span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_example2</span><span class="o">.</span><span class="n">hdf5</span>  \
@@ -257,7 +257,7 @@ This is more representative of the real search, where we plan to use
 next section (<a class="reference internal" href="configuration_file_overview.html#configuration-file-overview"><span class="std std-ref">Configuration file overview</span></a>).</p>
 </li>
 <li><p class="first">In another window, start the L0 simulator:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example2</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">30</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example2</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">30</span>
 </pre></div>
 </div>
 <p>After the example finishes, you should see four plots <cite>toy_l1b_beam$N.png</cite>,
@@ -270,7 +270,7 @@ rows of output, corresponding to the three dedispersion trees in this example.</
 associated RPC servers on TCP ports 5555 and 5566 (see l1_configs/l1_example2.yaml).
 Each stream processes two beams.</p>
 <p>While the L1 server is running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Send get_statistics RPC using a C++ client, and print the result.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Send get_statistics RPC using a C++ client, and print the result.</span>
 <span class="o">./</span><span class="n">rpc</span><span class="o">-</span><span class="n">client</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5555</span>
 <span class="o">./</span><span class="n">rpc</span><span class="o">-</span><span class="n">client</span> <span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5556</span>
 
@@ -336,7 +336,6 @@ Each stream processes two beams.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -172,17 +172,17 @@
 <h1>File-writing parameters<a class="headerlink" href="#file-writing-parameters" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">output_devices</span></code> (list of strings).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">output_devices</span></code> (list of strings).</p>
 <p>This is a list of devices (or filesystems) on the L1 server which can be written to independently.
-Each output_device is identified by a pathname (usually the mount point of a filesystem) such as <code class="docutils literal"><span class="pre">&quot;/ssd&quot;</span></code>
-or <code class="docutils literal"><span class="pre">&quot;/frb-archiver1&quot;</span></code>.  Each output_device will get a separate I/O thread.</p>
+Each output_device is identified by a pathname (usually the mount point of a filesystem) such as <code class="docutils literal notranslate"><span class="pre">&quot;/ssd&quot;</span></code>
+or <code class="docutils literal notranslate"><span class="pre">&quot;/frb-archiver1&quot;</span></code>.  Each output_device will get a separate I/O thread.</p>
 <p>When the L1 server needs to write a file, it looks for a “matching” output_device whose identifying pathname is a prefix
 of the filename being written.  For example, the output_device <cite>/ssd</cite> would match the filename <cite>/ssd/dir/file</cite>.
 The file will then be queued for writing by the appropriate I/O thread.</p>
-<p>In subscale testing on a laptop, I usually set <code class="docutils literal"><span class="pre">output_devices:</span> <span class="pre">[&quot;&quot;]</span></code>, which creates one output_device
+<p>In subscale testing on a laptop, I usually set <code class="docutils literal notranslate"><span class="pre">output_devices:</span> <span class="pre">[&quot;&quot;]</span></code>, which creates one output_device
 which matches all filenames, and a single I/O thread to process all write requests.</p>
 <p>On the real nodes, I usually set:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">output_devices</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;/ssd&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-1&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-2&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output_devices</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;/ssd&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-1&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-2&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;/frb-archiver-3&quot;</span><span class="p">,</span> <span class="s2">&quot;/frb-archiver-4&quot;</span> <span class="p">]</span>
 </pre></div>
 </div>
@@ -190,8 +190,8 @@ which matches all filenames, and a single I/O thread to process all write reques
 Recall that the L1 node is configured so that it “thinks” the NFS server is four different
 servers, mounted on directories /frb-archiver1, /frb-archiver2, /frb-archiver3, /frb-archiver4.
 File writes to each of these four filesystems will be sent from the corresponding NIC.</p>
-<p>Note that <code class="docutils literal"><span class="pre">output_devices:</span> <span class="pre">[</span> <span class="pre">]</span></code> (an empty list) means that the server spawns no I/O threads and all write_requests
-fail, whereas <code class="docutils literal"><span class="pre">output_devices:</span> <span class="pre">[&quot;&quot;]</span></code> means that the server spawns one I/O thread which matches every write request.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">output_devices:</span> <span class="pre">[</span> <span class="pre">]</span></code> (an empty list) means that the server spawns no I/O threads and all write_requests
+fail, whereas <code class="docutils literal notranslate"><span class="pre">output_devices:</span> <span class="pre">[&quot;&quot;]</span></code> means that the server spawns one I/O thread which matches every write request.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -199,18 +199,18 @@ fail, whereas <code class="docutils literal"><span class="pre">output_devices:</
 to either its local SSD or NFS.</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">stream_acqname</span></code> (string, optional).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">stream_acqname</span></code> (string, optional).</p>
 <p>If this parameter is specified, then the node will continuously stream all incoming data
 to either its local SSD or NFS.  Warning: it’s very easy to use a lot of disk space this way!</p>
 <p>The ‘string_acqname’ parameter is a unique identifying directory name for the acqisition.
 If the given acquisition already exists (probably from a previous run) then the L1 server will abort.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">stream_devname</span></code> (string, optional).</p>
-<p>Either <code class="docutils literal"><span class="pre">&quot;ssd&quot;</span></code> (the default) or <code class="docutils literal"><span class="pre">&quot;nfs&quot;</span></code>.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">stream_devname</span></code> (string, optional).</p>
+<p>Either <code class="docutils literal notranslate"><span class="pre">&quot;ssd&quot;</span></code> (the default) or <code class="docutils literal notranslate"><span class="pre">&quot;nfs&quot;</span></code>.</p>
 <p>NFS bandwidth is limited, so if you’re writing to NFS then you probably want to reduce the
 number of beam_ids, by assigning a value to ‘stream_beam_ids’ (see below).</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">stream_beam_ids</span></code> (list of integers, optional).</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">stream_beam_ids</span></code> (list of integers, optional).</p>
 <p>A list of beam_ids to stream to disk.</p>
 <p>Must be a subset of ‘beam_ids’, the set of all beam_ids processed by the server.
 If unspecified, every beam_id processed by the server will be streamed.</p>
@@ -270,7 +270,6 @@ If unspecified, every beam_id processed by the server will be streamed.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

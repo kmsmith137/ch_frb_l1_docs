@@ -185,7 +185,7 @@ but not yet integrated into our primary L1 dashboards (minor permissions problem
 would be to add the following fields to the “get statistics” RPC:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Largest FPGA count which has been stored in a finalized <code class="docutils literal"><span class="pre">udp_packet_list</span></code> object.  Not exactly
+<li><p class="first">Largest FPGA count which has been stored in a finalized <code class="docutils literal notranslate"><span class="pre">udp_packet_list</span></code> object.  Not exactly
 the same thing as the largest FPGA count received by the network thread!  But this avoids the
 network thread needing to acquire a lock in every iteration of its inner packet loop.</p>
 </li>
@@ -199,7 +199,7 @@ transform, to be placed between the RFI transforms and the bonsai transform.</p>
 the previous bullet point).  This is because the bonsai_transform marks a chunk of data “complete” as soon as
 the data has been copied from the rf_pipelines ring buffer into a bonsai data structure.  (This is so that
 RFI removal and dedispersion can run in separate threads, in parallel without waiting for each other.)</p>
-<p>I (KMS) think the best approach is to add a new thread-safe member function to <code class="docutils literal"><span class="pre">bonsai::dedisperser</span></code> which
+<p>I (KMS) think the best approach is to add a new thread-safe member function to <code class="docutils literal notranslate"><span class="pre">bonsai::dedisperser</span></code> which
 returns the number of chunks which have been processed so far.  I’ll offer to write this, since I’m familiar
 with bonsai internals!</p>
 </li>
@@ -237,8 +237,8 @@ and all of its prerequisites).  We should coordinate with everyone on details su
 new repo (or would it make more sense to make another new repo for the webapp?)  We should also check to make
 sure we’re not introducing conflicts on feature branches (e.g. I think Alex Roman is editing the python RPC client
 on his slow pulsar feature branches).</p>
-<p>Related: currently many python source files are duplicated in the source tree (e.g. <code class="docutils literal"><span class="pre">ch_frb_l1/cnc_ssh.py</span></code> and
-<code class="docutils literal"><span class="pre">ch_frb_l1/webapp/cnc_ssh.py</span></code> are copies of each other).</p>
+<p>Related: currently many python source files are duplicated in the source tree (e.g. <code class="docutils literal notranslate"><span class="pre">ch_frb_l1/cnc_ssh.py</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ch_frb_l1/webapp/cnc_ssh.py</span></code> are copies of each other).</p>
 </li>
 <li><p class="first">Cleanup: add documentation for all RPC’s.  (There is a placeholder section in the manual here: <a class="reference external" href="https://kmsmith137.github.io/ch_frb_l1_docs/server/rpc_reference.html">https://kmsmith137.github.io/ch_frb_l1_docs/server/rpc_reference.html</a>)</p>
 </li>
@@ -323,7 +323,6 @@ is currently 500 lines, and factoring into one function for each RPC would be a 
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

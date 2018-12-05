@@ -193,7 +193,7 @@ toplevel repo, whose documentation you’re reading right now.</li>
 between repositories.  So for example, if you update bonsai and do ‘make install’, you
 should rebuild everything which depends on bonsai (for example rf_pipelines) from scratch.
 Otherwise you can get unpredictable results, such as segfaults.</p>
-<p><strong>Important:</strong> In the previous paragraph, “rebuild from scratch” means <code class="docutils literal"><span class="pre">make</span> <span class="pre">clean;</span> <span class="pre">make</span> <span class="pre">all</span> <span class="pre">install</span></code>.
+<p><strong>Important:</strong> In the previous paragraph, “rebuild from scratch” means <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean;</span> <span class="pre">make</span> <span class="pre">all</span> <span class="pre">install</span></code>.
 Rebuilding with <cite>make all install</cite> wouldn’t be enough, since dependencies aren’t tracked between repositories!</p>
 <p>For this reason, it’s easier to end up with a broken pipeline than you might think.  If you get into trouble,
 see the (<a class="reference internal" href="help_my_pipeline_is_broken.html#help-my-pipeline-is-broken"><span class="std std-ref">Help! My pipeline is broken</span></a>) section below.</p>
@@ -204,7 +204,7 @@ then all of these should already be installed, and you can skip to the next step
 <blockquote>
 <div><ul>
 <li><p class="first">Python-centric things which can be installed painlessly with <cite>pip</cite>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">scipy</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">Pillow</span>
@@ -215,8 +215,8 @@ then all of these should already be installed, and you can skip to the next step
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pyyaml</span>
 </pre></div>
 </div>
-<p>To install without root privileges, do <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code>.
-To upgrade a previous pip install, do <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span></code>.</p>
+<p>To install without root privileges, do <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code>.
+To upgrade a previous pip install, do <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span></code>.</p>
 <p>You might need to upgrade your cython, since bonsai currently requires a very
 recent cython (I know that cython 0.24 works, and cython 0.20 is too old).</p>
 </li>
@@ -228,58 +228,58 @@ which is neither too old nor too new, please see <a class="reference external" h
 <li><p class="first">lz4.</p>
 <blockquote>
 <div><ul class="simple">
-<li>osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">lz4</span></code></li>
-<li>centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">lz4-devel</span></code></li>
-<li>ubuntu one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">liblz4-dev</span></code></li>
+<li>osx one-liner: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">lz4</span></code></li>
+<li>centos one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">lz4-devel</span></code></li>
+<li>ubuntu one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">liblz4-dev</span></code></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">libcurl.</p>
 <blockquote>
 <div><ul class="simple">
-<li>ubuntu one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libcurl4-openssl-dev</span></code></li>
+<li>ubuntu one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libcurl4-openssl-dev</span></code></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">msgpack.</p>
 <blockquote>
 <div><ul>
-<li><p class="first">osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">msgpack</span></code></p>
+<li><p class="first">osx one-liner: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">msgpack</span></code></p>
 </li>
-<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">msgpack-devel.x86_64</span></code></p>
+<li><p class="first">centos one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">msgpack-devel.x86_64</span></code></p>
 </li>
 <li><p class="first">ubuntu: don’t install the apt-get version, it is too old!  (e.g. it is missing <cite>/usr/include/msgpack/fbuffer.hpp</cite>).
 Instead you should build from scratch, see next bullet point.</p>
 </li>
 <li><p class="first">Building from scratch.  This is easy because we only use the msgpack headers, not the compiled library.
 You can either follow Kendrick’s procedure for building from scratch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">msgpack</span><span class="o">/</span><span class="n">msgpack</span><span class="o">-</span><span class="n">c</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">msgpack</span><span class="o">/</span><span class="n">msgpack</span><span class="o">-</span><span class="n">c</span>
 <span class="n">sudo</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">msgpack</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="n">include</span><span class="o">/*</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
 </pre></div>
 </div>
 <p>or Dustin’s procedure for building from scratch: (1) download the <a class="reference external" href="https://github.com/msgpack/msgpack-c/releases/download/cpp-2.1.0/msgpack-2.1.0.tar.gz">msgpack source package</a>,
-(2) extract it and add its subdirectory <code class="docutils literal"><span class="pre">msgpack-2.1.0/include</span></code> into the include path.</p>
+(2) extract it and add its subdirectory <code class="docutils literal notranslate"><span class="pre">msgpack-2.1.0/include</span></code> into the include path.</p>
 </li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">zeromq and cppzmq.</p>
 <ul>
-<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">cppzmq-devel.x86_64</span></code></p>
+<li><p class="first">centos one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">cppzmq-devel.x86_64</span></code></p>
 </li>
 <li><p class="first">ubuntu: don’t use the apt-get packages, they are too old!.  You’ll need to build both zeromq and cppzmq from scratch, see bullet point below.</p>
 </li>
-<li><p class="first">osx: zeromq can be installed with <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">zeromq</span></code>, but you’ll need to build cppzmq from scratch, see bullet point below.</p>
+<li><p class="first">osx: zeromq can be installed with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">zeromq</span></code>, but you’ll need to build cppzmq from scratch, see bullet point below.</p>
 </li>
 <li><p class="first">Building zmq from scratch.  Download from zeromq.org, and then do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
 <span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Building cppzmq from scratch.  Since it’s a header-only library with two source files, I just ignored the build system and did:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">zeromq</span><span class="o">/</span><span class="n">cppzmq</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">zeromq</span><span class="o">/</span><span class="n">cppzmq</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">cppzmq</span>
 <span class="n">sudo</span> <span class="n">cp</span> <span class="n">zmq</span><span class="o">.</span><span class="n">hpp</span> <span class="n">zmq_addon</span><span class="o">.</span><span class="n">hpp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
 </pre></div>
@@ -289,14 +289,14 @@ You can either follow Kendrick’s procedure for building from scratch:</p>
 </li>
 <li><p class="first"><a class="reference external" href="https://github.com/open-source-parsers/jsoncpp">jsoncpp</a></p>
 <ul>
-<li><p class="first">osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">jsoncpp</span></code></p>
+<li><p class="first">osx one-liner: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">jsoncpp</span></code></p>
 </li>
-<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">jsoncpp-devel</span></code></p>
+<li><p class="first">centos one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">jsoncpp-devel</span></code></p>
 </li>
-<li><p class="first">ubuntu one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libjsoncpp-dev</span></code></p>
+<li><p class="first">ubuntu one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libjsoncpp-dev</span></code></p>
 </li>
 <li><p class="first">Building jsoncpp from scratch is a pain, but the following procedure worked for me:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>git clone https://github.com/open-source-parsers/jsoncpp
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/open-source-parsers/jsoncpp
 mkdir -p build/debug
 cd build/debug
 cmake -DCMAKE_INSTALL_PREFIX=$HOME -DCMAKE_CXX_FLAGS=-fPIC -DCMAKE_C_FLAGS=-fPIC -DCMAKE_BUILD_TYPE=debug -G &quot;Unix Makefiles&quot; ../..
@@ -313,12 +313,12 @@ make install
 </ul>
 <blockquote>
 <div><ul>
-<li><p class="first">osx one-liner: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">yaml-cpp</span></code>.</p>
+<li><p class="first">osx one-liner: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">yaml-cpp</span></code>.</p>
 </li>
-<li><p class="first">centos one-liner: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">yaml-cpp-devel</span></code>.</p>
+<li><p class="first">centos one-liner: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">yaml-cpp-devel</span></code>.</p>
 </li>
 <li><p class="first">ubuntu two-liner:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libboost</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">dev</span>    <span class="c1"># overkill?</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libboost</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">dev</span>    <span class="c1"># overkill?</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libyaml</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
@@ -337,7 +337,7 @@ bother trying to figure out exactly which boost libraries were needed.</p>
 <div><p>You’ll need this if you want to read or write bitshuffle-compressed files with ch_frb_io
 (note that CHIME pathfinder data is generally bitshuffle-compresed).</p>
 <p>The following recipe worked for me:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>git clone https://github.com/kiyo-masui/bitshuffle.git
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/kiyo-masui/bitshuffle.git
 cd bitshuffle/
 
 # The HDF5 library can dynamically load the bitshuffle plugin, i.e. you don&#39;t need
@@ -397,16 +397,16 @@ Roughly, it works like this.  For each package, in the order above,
 you’ll need to do the following:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Create a file <code class="docutils literal"><span class="pre">Makefile.local</span></code> in the toplevel directory which defines
+<li><p class="first">Create a file <code class="docutils literal notranslate"><span class="pre">Makefile.local</span></code> in the toplevel directory which defines
 a bunch of machine-dependent variables, such as compiler flags, install directories,
 and boolean flags indicating which optional dependencies are available.</p>
 <p>The variables which need to be defined are slightly different for each of the
 packages above, and are listed in the Makefile.  However, it’s easiest to
-start with one of the template Makefile.locals in the <code class="docutils literal"><span class="pre">site/</span></code> subdirectory of
+start with one of the template Makefile.locals in the <code class="docutils literal notranslate"><span class="pre">site/</span></code> subdirectory of
 the toplevel directory, and either modify it, or just copy/symlink it to the
 toplevel directory if it doesn’t need modification.</p>
 </li>
-<li><p class="first">Type <code class="docutils literal"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">install</span></code></p>
+<li><p class="first">Type <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">install</span></code></p>
 </li>
 <li><p class="first">Some of these packages have unit tests which you may want to run; see the
 per-package README file for details.</p>
@@ -418,12 +418,12 @@ per-package README file for details.</p>
 <div><ul>
 <li><p class="first">The bonsai package has an optional dependency on libpng which you’ll want to enable for CHIMEFRB.
 Therefore, your Makefile.local should contain the line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HAVE_PNG</span><span class="o">=</span><span class="n">y</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HAVE_PNG</span><span class="o">=</span><span class="n">y</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">The rf_pipelines package has the following optional dependencies which you’ll want to enable:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HAVE_BONSAI</span><span class="o">=</span><span class="n">y</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HAVE_BONSAI</span><span class="o">=</span><span class="n">y</span>
 <span class="n">HAVE_CH_FRB_IO</span><span class="o">=</span><span class="n">y</span>
 <span class="n">HAVE_SIMPULSE</span><span class="o">=</span><span class="n">y</span>
 <span class="n">HAVE_HDF5</span><span class="o">=</span><span class="n">y</span>
@@ -434,7 +434,7 @@ Therefore, your Makefile.local should contain the line:</p>
 </li>
 <li><p class="first">Some of the packages need to include header files from your python installation.
 This is the case if the example Makefile.locals contain lines like these:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># This directory should contain e.g. Python.h
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># This directory should contain e.g. Python.h
 PYTHON_INCDIR=/usr/include/python2.7
 
 # This directory should contain e.g. numpy/arrayobject.h
@@ -447,7 +447,7 @@ CPP=g++ -I$(PYTHON_INCDIR) -I$(NUMPY_INCDIR) ...
 that you’re actually using!  (There may some confusion if more than one python interpreter
 is installed on your machine.)  The safest thing to do is to determine these directions
 from within the python interpreter itself, as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">distutils.sysconfig</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">distutils.sysconfig</span>
 <span class="nb">print</span> <span class="n">distutils</span><span class="o">.</span><span class="n">sysconfig</span><span class="o">.</span><span class="n">get_python_inc</span><span class="p">()</span>   <span class="c1"># prints PYTHON_INCDIR</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span>
@@ -456,7 +456,7 @@ from within the python interpreter itself, as follows:</p>
 </div>
 </li>
 <li><p class="first">Each package also defines some installation directories, e.g. Makefile.local will contain something like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Directory where executables will be installed
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Directory where executables will be installed
 BINDIR=$(HOME)/bin
 
 # Directory where C++ libraries will be installed
@@ -471,8 +471,8 @@ PYDIR=$(HOME)/lib/python2.7/site-packages
 </div>
 <p>You’ll want to make sure that your PATH, PYTHONPATH, and LD_LIBRARY_PATH environment variables
 contain the BINDIR, PYDIR, and LIBDIR directories from the Makefile.local.  For example, given the
-Makefile.local above, your <code class="docutils literal"><span class="pre">$HOME/.bashrc</span></code> should contain something like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>export PATH=$HOME/bin:$PATH
+Makefile.local above, your <code class="docutils literal notranslate"><span class="pre">$HOME/.bashrc</span></code> should contain something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=$HOME/bin:$PATH
 export PYTHONPATH=$HOME/lib/python2.7/site-packages:$PYTHONPATH
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 </pre></div>
@@ -492,7 +492,7 @@ You can disable the conda environment by adding code early in your .bashrc which
 restores the PATH and PYTHONPATH variables to their CentOS defaults (followed by
 “standard” code which configures environment variables for the L1 pipeline).</p>
 <p>I suggest adding the following lines to your .bashrc:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Restore CentOS defaults (undoing anaconda and astrosoft configuration on frb-analysis)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Restore CentOS defaults (undoing anaconda and astrosoft configuration on frb-analysis)
 export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 export PYTHONPATH=
 
@@ -507,7 +507,7 @@ export PYTHONPATH=$HOME/lib/python2.7/site-packages:$PYTHONPATH
 </div>
 <p>Next you’ll need to install (in your user directory, not globally!) up-to-date versions of
 some python packages which are not installed on frb-analysis:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">user</span> <span class="n">pip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">user</span> <span class="n">pip</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">user</span> <span class="n">numpy</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">user</span> <span class="n">scipy</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">user</span> <span class="n">matplotlib</span>
@@ -523,7 +523,7 @@ some python packages which are not installed on frb-analysis:</p>
 doesn’t work with recent versions of HDF5.  This is getting to be a big nuisance issue, and
 and I hope to fix it soon!  In the meantime you’ll need to download an old version of HDF5
 (I recommend 1.8.20) and install it in your user directory as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd ~
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd ~
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.20/src/hdf5-1.8.20.tar.gz
 tar zxvf hdf5-1.8.20.tar.gz
 cd hdf5-1.8.20/
@@ -533,15 +533,15 @@ make install
 </pre></div>
 </div>
 <p><strong>Note:</strong> the site/Makefile.local.frb-analysis files in the L1 git repositories assume
-that you’re using the CentOS system python (<code class="docutils literal"><span class="pre">/usr/bin/python</span></code>), and a numpy instance
-which has been installed (by pip install –user) in <code class="docutils literal"><span class="pre">$HOME/.local</span></code>.  This will be
+that you’re using the CentOS system python (<code class="docutils literal notranslate"><span class="pre">/usr/bin/python</span></code>), and a numpy instance
+which has been installed (by pip install –user) in <code class="docutils literal notranslate"><span class="pre">$HOME/.local</span></code>.  This will be
 the case if you’ve followed the instructions below, otherwise you’ll need to modify the
 Makefile.local files.</p>
 <p><strong>Note 2:</strong> bitshuffle is temporarily omitted from the instructions below, I’ll fix
 this at some point (this should be OK since we’ve basically phased out bitshuffle-compressed
 HDF5 files from the L1 pipeline).</p>
 <p>Now you should be able to check out the pipeline modules and build them as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">simd_helpers</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">simd_helpers</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">pyclops</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">rf_kernels</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">sp_hdf5</span>
@@ -609,7 +609,7 @@ HDF5 files from the L1 pipeline).</p>
 <p>Here are instructions for building the L1 pipeline from scratch on frb1.physics.mcgill.ca.
 All external dependencies should already be installed.</p>
 <p>Directories and environment variables:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Binaries, header files, libraries, and python modules will be installed in these directories.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Binaries, header files, libraries, and python modules will be installed in these directories.
 mkdir -p ~/bin
 mkdir -p ~/include
 mkdir -p ~/lib
@@ -628,7 +628,7 @@ export HDF5_PLUGIN_PATH=$HOME/lib/hdf5_plugins
 </pre></div>
 </div>
 <p>Checking out the pipeline modules:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kiyo</span><span class="o">-</span><span class="n">masui</span><span class="o">/</span><span class="n">bitshuffle</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kiyo</span><span class="o">-</span><span class="n">masui</span><span class="o">/</span><span class="n">bitshuffle</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">simd_helpers</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">pyclops</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">rf_kernels</span>
@@ -642,7 +642,7 @@ export HDF5_PLUGIN_PATH=$HOME/lib/hdf5_plugins
 </pre></div>
 </div>
 <p>Compilation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd bitshuffle
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd bitshuffle
 python setup.py install --user --h5plugin --h5plugin-dir=$HOME/lib/hdf5_plugins
 cd ..
 
@@ -705,7 +705,7 @@ All external dependencies should already be installed.</p>
 <p>Note that we don’t build the <cite>ch_frb_rfi</cite> module here, since this module includes hardcoded
 pathnames on <cite>frb1.physics.mcgill.ca</cite>.</p>
 <p>Directories and environment variables:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Binaries, header files, libraries, and python modules will be installed in these directories.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Binaries, header files, libraries, and python modules will be installed in these directories.
 mkdir -p ~/bin
 mkdir -p ~/include
 mkdir -p ~/lib
@@ -724,7 +724,7 @@ export HDF5_PLUGIN_PATH=$HOME/lib/hdf5_plugins
 </pre></div>
 </div>
 <p>Checking out the pipeline modules:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kiyo</span><span class="o">-</span><span class="n">masui</span><span class="o">/</span><span class="n">bitshuffle</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kiyo</span><span class="o">-</span><span class="n">masui</span><span class="o">/</span><span class="n">bitshuffle</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">simd_helpers</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">pyclops</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kmsmith137</span><span class="o">/</span><span class="n">rf_kernels</span>
@@ -737,7 +737,7 @@ export HDF5_PLUGIN_PATH=$HOME/lib/hdf5_plugins
 </pre></div>
 </div>
 <p>Compilation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd bitshuffle
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd bitshuffle
 python setup.py install --user --h5plugin --h5plugin-dir=$HOME/lib/hdf5_plugins
 cd ..
 
@@ -841,7 +841,6 @@ cd ..
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

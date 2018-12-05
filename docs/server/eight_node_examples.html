@@ -151,25 +151,25 @@
 <p>The DRAO backend consists of the following machines:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Gateway machines: <code class="docutils literal"><span class="pre">tubular.drao.nrc.ca</span></code> and <code class="docutils literal"><span class="pre">liberty.drao.nrc.ca</span></code>.
+<li><p class="first">Gateway machines: <code class="docutils literal notranslate"><span class="pre">tubular.drao.nrc.ca</span></code> and <code class="docutils literal notranslate"><span class="pre">liberty.drao.nrc.ca</span></code>.
 All ssh connections to the outside world go through one of these machines!</p>
 </li>
-<li><p class="first">L1 compute nodes: <code class="docutils literal"><span class="pre">cf0g0</span></code>, <code class="docutils literal"><span class="pre">cf0g1</span></code>, …, <code class="docutils literal"><span class="pre">cf0g7</span></code>.  These machines are diskless and
+<li><p class="first">L1 compute nodes: <code class="docutils literal notranslate"><span class="pre">cf0g0</span></code>, <code class="docutils literal notranslate"><span class="pre">cf0g1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">cf0g7</span></code>.  These machines are diskless and
 share a root filesystem.  The root filesystem is mounted read-write on <cite>cf0g0</cite> and
 mounted read-only on the other nodes.  Therefore, to make changes (such as recompiling,
 editing a config file, etc.) you should use <cite>cf0g0</cite>, and the changes will automatically
 appear on the other nodes.</p>
 <p>There is also an SSD (actually two SSD’s in RAID-0) in each compute node, mounted
-at <code class="docutils literal"><span class="pre">/local</span></code>.</p>
+at <code class="docutils literal notranslate"><span class="pre">/local</span></code>.</p>
 </li>
-<li><p class="first">L1 head node: <code class="docutils literal"><span class="pre">cf0hn</span></code>.  This exports (via NFS) the root filesystem to the compute nodes,
+<li><p class="first">L1 head node: <code class="docutils literal notranslate"><span class="pre">cf0hn</span></code>.  This exports (via NFS) the root filesystem to the compute nodes,
 and is used for a few other things, like rebooting the nodes (see “Cookbook of miscelleanous
 tasks” below).</p>
 </li>
-<li><p class="first">L4 node: <code class="docutils literal"><span class="pre">cf0g9</span></code>.  Our web services run here, and can be accessed from outside DRAO
+<li><p class="first">L4 node: <code class="docutils literal notranslate"><span class="pre">cf0g9</span></code>.  Our web services run here, and can be accessed from outside DRAO
 using ad hoc ssh tunnels.</p>
 </li>
-<li><p class="first">NFS server: <code class="docutils literal"><span class="pre">cf0fs</span></code>.  A central machine where L1 nodes can write data (although currently
+<li><p class="first">NFS server: <code class="docutils literal notranslate"><span class="pre">cf0fs</span></code>.  A central machine where L1 nodes can write data (although currently
 we usually use the local SSD’s in the L1 nodes instead of the NFS server).</p>
 <p>Right now our NFS server is a pulsar node which has been retrofitted with a few HDD’s.
 It may be a little underpowered, but we have a much larger NFS server coming soon.</p>
@@ -179,11 +179,11 @@ It may be a little underpowered, but we have a much larger NFS server coming soo
 <div class="section" id="example-5">
 <h2>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h2>
 <p>This is a production-scale example with
-nodes <code class="docutils literal"><span class="pre">cf0g[0-3]</span></code> acting as receivers and <code class="docutils literal"><span class="pre">cf0g[4-7]</span></code> acting as senders.
+nodes <code class="docutils literal notranslate"><span class="pre">cf0g[0-3]</span></code> acting as receivers and <code class="docutils literal notranslate"><span class="pre">cf0g[4-7]</span></code> acting as senders.
 The L1 server will dedisperse 8 beams, with 16384 frequency channels,
 and use real RFI removal (as in example 4).</p>
 <p>We currently need a separate config file for each node (i.e. node <cite>cf0g0</cite>
-uses <code class="docutils literal"><span class="pre">l1_example5_0.yaml</span></code>, node <cite>cf0g1</cite> uses <code class="docutils literal"><span class="pre">l1_example5_1.yaml</span></code>, etc.)</p>
+uses <code class="docutils literal notranslate"><span class="pre">l1_example5_0.yaml</span></code>, node <cite>cf0g1</cite> uses <code class="docutils literal notranslate"><span class="pre">l1_example5_1.yaml</span></code>, etc.)</p>
 <p>Note that node <cite>cf0g0</cite> gets all of its packets from <cite>cf0g4</cite>, node <cite>cf0g1</cite> gets
 all of its packets from <cite>cf0g5</cite>, etc.  This does not reflect what happens
 on the real backend, where every L0 node sends packets to every L1 node.
@@ -194,7 +194,7 @@ However it’s all we can script with our existing tools!</p>
 check that they are not processing real data!</strong></p>
 </li>
 <li><p class="first">Log into <cite>cf0g0</cite>, <cite>cf0g1</cite>, <cite>cf0g2</cite>, <cite>cf0g3</cite> separately and start L1 servers:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># on cf0g0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># on cf0g0</span>
 <span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">l1</span> <span class="n">l1_configs</span><span class="o">/</span><span class="n">l1_example5_0</span><span class="o">.</span><span class="n">yaml</span> <span class="n">rfi_configs</span><span class="o">/</span><span class="n">rfi_production_v1</span><span class="o">.</span><span class="n">json</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">bonsai_configs</span><span class="o">/</span><span class="n">bonsai_production_noups_nbeta1_v2</span><span class="o">.</span><span class="n">hdf5</span> <span class="n">l1b_placeholder</span>
 
 <span class="c1"># on cf0g1</span>
@@ -210,7 +210,7 @@ check that they are not processing real data!</strong></p>
 </li>
 <li><p class="first">When the servers finish initializing and are listening for packets, log
 into <cite>cf0g4</cite>, <cite>cf0g5</cite>, <cite>cf0g6</cite>, <cite>cf0g7</cite> separately and start L0 simulators:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># on cf0g4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># on cf0g4</span>
 <span class="o">./</span><span class="n">ch</span><span class="o">-</span><span class="n">frb</span><span class="o">-</span><span class="n">simulate</span><span class="o">-</span><span class="n">l0</span> <span class="n">l0_configs</span><span class="o">/</span><span class="n">l0_example5_4</span><span class="o">.</span><span class="n">yaml</span> <span class="mi">1200</span>
 
 <span class="c1"># on cf0g5</span>
@@ -271,7 +271,6 @@ into <cite>cf0g4</cite>, <cite>cf0g5</cite>, <cite>cf0g6</cite>, <cite>cf0g7</ci
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
