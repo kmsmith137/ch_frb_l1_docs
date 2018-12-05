@@ -20,7 +20,9 @@ def run_sphinx(toplevel_dir):
     # appears to have changed.  This is necessary because 'sphinx-build' has no way of
     # knowing if docstrings have been changed since last time.
     
-    utils.system("sphinx-build -E -b html sphinx docs")
+    input_dir = os.path.join(toplevel_dir, 'sphinx')
+    output_dir = os.path.join(toplevel_dir, 'docs')
+    utils.system("sphinx-build -E -b html %s %s" % (input_dir, output_dir))
 
     # The only thing I don't like about the RTD Sphinx theme is that it doesn't put any
     # spacing between bullet points in unordered lists.  I got carried away and wrote
