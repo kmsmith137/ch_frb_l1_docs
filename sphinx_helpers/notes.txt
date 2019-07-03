@@ -1,0 +1,6 @@
+cd PROJNAME
+git subtree add --squash --prefix=sphinx_helpers github:kmsmith137/sphinx_helpers master
+
+mkdir sphinx
+cd sphinx
+../sphinx_helpers/make_sphinx_conf.py PROJNAME ../../PROJNAME
